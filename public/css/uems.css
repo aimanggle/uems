@@ -1,0 +1,32 @@
+/*
+*---------------------------------------
+* Font Class
+*---------------------------------------
+*/
+.text-magenta{
+    color: #8B008B;
+}
+
+.text-orange{
+    color: #FF8C00;
+}
+
+.text-indian-red{
+    color: #CD5C5C;
+}
+
+.text-blue{
+    color: #191970;
+}
+
+.text-dark-orange{
+    color: #FF4500;
+}
+
+.text-rebecca-purple{
+    color: #663399;
+}
+
+.text-white{
+    color: white;
+}

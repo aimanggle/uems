@@ -1,0 +1,16 @@
+.sidebarbg{
+    background-color: #5e3ffe;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+.navbar-text{
+    color: black;
+}
+
+.bg-nav{
+    background-color: #5e3ffe;
+}
