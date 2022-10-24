@@ -23,10 +23,11 @@ class Event extends BaseController
         return view('event/event', $data);
     }
 
-    public function detail()
+    public function detail($eventid)
     {
         $data=[
-            'title' => 'Event Detail | UEMS'
+            'title' => 'Event Detail | UEMS',
+            'event' => $this->eventModel->Find($eventid),
         ];
         return view('event/detail', $data);
     }

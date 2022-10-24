@@ -9,12 +9,12 @@ class Email extends BaseConfig
     /**
      * @var string
      */
-    public $fromEmail;
+    public $fromEmail = 'info@emceejunior.com';
 
     /**
      * @var string
      */
-    public $fromName;
+    public $fromName = 'Emcee Junior';
 
     /**
      * @var string
@@ -33,7 +33,7 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $protocol = 'mail';
+    public $protocol = 'smtp';
 
     /**
      * The server path to Sendmail.
@@ -47,28 +47,36 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $SMTPHost;
+    // public $SMTPHost = 'smtp-relay.sendinblue.com';
+    // public $SMTPHost = 'smtp.gmail.com';
+    // public $SMTPHost = 'mail.emceejunior.com';
+    public $SMTPHost = 'smtp-pulse.com';
 
     /**
      * SMTP Username
      *
      * @var string
      */
-    public $SMTPUser;
+    public $SMTPUser = 'aimanggle21@gmail.com';
 
     /**
      * SMTP Password
      *
      * @var string
      */
-    public $SMTPPass;
+    // public $SMTPPass = 'dYscEFR4TfZ8SX9A';
+    // public $SMTPPass = 'zbzxzgphcnoxcgsn';
+    public $SMTPPass = '2jNMK7bKSE8J';
 
     /**
      * SMTP Port
      *
      * @var int
      */
-    public $SMTPPort = 25;
+    public $SMTPPort = 587; //for SMTPCrypto 'tls'
+    //  public $SMTPPort = 465; //for SMTPCrypto 'ssl';
+    //  public $SMTPPort = 25 ; //for SMTPCrypto 'tls' 
+    //  public $SMTPPort; //for SMTPCrypto 'tls' 
 
     /**
      * SMTP Timeout (in seconds)
@@ -110,7 +118,7 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $mailType = 'text';
+    public $mailType = 'html';
 
     /**
      * Character set (utf-8, iso-8859-1, etc.)

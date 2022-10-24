@@ -12,6 +12,7 @@ class Auth extends BaseController
      {
           $this->validation = Services::validation();
           $this->UserModel = new UserModel();
+          $this->email = \Config\Services::email();
      }
 
      public function index()
@@ -83,6 +84,67 @@ class Auth extends BaseController
                 return redirect()->back()->withInput();
             }
      }
+
+ /*
+
+     public function forgotPassword()
+     {
+          $data = [
+               // 'title' => 'Forgot Password',
+               'validation' => $this->validation
+          ];
+          return view('auth/forgot',$data);
+     }
+
+     // attempt to send password reset link
+     public function attemptForgotPassword()
+     {
+          //validate input
+          if (!$this->validate([
+               'email' => [
+                    'rules' => 'required|valid_email',
+                    'errors' => [
+                         'required' => 'Email is required',
+                         'valid_email' => 'Please enter a valid email address'
+                    ]
+               ]
+          ])) 
+          {
+               return redirect()->to('/forgot-password')->withInput()->with('validation', $this->validation);
+          }
+          //get user input from login form
+          $email = $this->request->getVar('email');
+          //check if user exists in database
+          $user = $this->UserModel->where('email', $email)->first();
+          //if user exists
+          if ($user) 
+          {
+               //check if user is active or not
+               if($user['userstat'] == "inactive")
+               {
+                    session()->setFlashdata('error', 'Sorry, Your account is inactive. Please contact the administrator.');
+                    return redirect()->to('/forgot-password');
+               }
+               else
+               {
+                    //generate random token
+                    $token = bin2hex(random_bytes(32));
+                    //set token in database
+                    // $this->UserModel->setToken($token, $email);
+                    //send email
+                    $this->email->send($token, 'forgot');
+                    session()->setFlashdata('success', 'Please check your email to reset your password');
+                    return redirect()->to('/forgot-password');
+               }
+          }
+          //if user does not exist
+          else 
+          {
+               session()->setFlashdata('error', 'Email does not exist');
+               return redirect()->back()->withInput();
+          }
+     }
+     */
 
      public function register()
      {

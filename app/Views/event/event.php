@@ -16,11 +16,13 @@
           </div>
       </div>
 
+<?php if (session()->get('error')) :?>
       <div class="alert alert-success alert-dismissible fade show" role="alert">
             alert
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     </div>
+<?php endif;?>
 
     <div class="container-fluid">
       <div class="row">
@@ -31,7 +33,7 @@
             </div>
               
               <hr>
-              <table class="table">
+              <table class="table table-reponsive">
                   <thead>
                       <tr>
                           <th>#</th>
@@ -45,7 +47,7 @@
                   <tbody class="table-group-divider">
                     <?php $bil = 1; ?>
                         <?php foreach($event as $e):?>
-                            <?php $eventdate = date('d-m-Y',strtotime($e['eventdate']));?>
+                            <?php $eventdate = date('d-M-Y',strtotime($e['eventdate']));?>
                             <tr>
                                 <td><?=$bil++?></td>
                                 <td><?=$e['eventname'];?> <span class="badge text-bg-warning"><?=$e['eventstatus'];?></span></td>

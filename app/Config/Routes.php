@@ -44,6 +44,8 @@ $routes->get('/', 'Auth::index');
 $routes->get('/login', 'Auth::login');
 $routes->post('/login', 'Auth::attemptLogin');
 $routes->get('/logout', 'Auth::logout');
+// $routes->get('/forgot-password', 'Auth::forgotPassword');
+// $routes->post('/forgot-password', 'Auth::attemptForgotPassword');
 
 /**
  * --------------------------------------------------------------------
@@ -61,6 +63,8 @@ $routes->get('/dashboard', 'Dashboard::dashboard', ['filter' => 'auth']);
 $routes->get('/event', 'Event::index', ['filter' => 'auth']);
 $routes->get('/event/create', 'Event::create', ['filter' => 'auth']);
 $routes->post('/event/create', 'Event::insert', ['filter' => 'auth']);
+$routes->get('/event/detail/(:num)', 'Event::detail/$1', ['filter' => 'auth']);
+$routes->get('/event/edit/(:num)', 'Event::edit/$1', ['filter' => 'auth']);
 
 /**
  * --------------------------------------------------------------------

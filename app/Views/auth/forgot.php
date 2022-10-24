@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?=csrf_meta();?>
     
-
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
@@ -18,7 +17,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
     <!-- Page Title -->
-    <title>Login | UEMS</title>
+    <title>Forgot Password | UEMS</title>
 
     <!-- Page Favicon -->
     <link rel="shortcut icon" href="/asset/unitensidebarlogo.png" type="image/x-icon">
@@ -40,8 +39,18 @@
                         <h5 class="mt-3">Uniten Event Management System (UEMS)</h5>
                     </div>
                     <div class="row">
-                        <h6 class="text-muted">Login to your account</h6>
+                        <h6 class="text-muted">Reset Password</h6>
                     </div>
+<?php if (session()->get('success')) :?>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-success alert-dismissible fade show" role="alert" id="alert">
+                                <?=session()->getFlashdata('success');?>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        </div>
+                    </div>
+<?php endif;?>
 <?php if (session()->get('error')) :?>
                     <div class="row">
                         <div class="col-md-12">
@@ -55,26 +64,17 @@
                 </div>
                 
                 <div class="card-body">
-                    <form action="/login" method="post" autocomplete="off">
+                    <form action="/forgot-password" method="post" autocomplete="off">
                         <?=csrf_field()?>
                         <div class="mb-3">
                             <!-- <label for="exampleInputEmail1" class="form-label">Username</label> -->
-                            <input type="text" name="auth" class="form-control <?=  ($validation->hasError('auth')) ? 'is-invalid' : ''?>" value="<?=old('auth');?>" placeholder="Username" autofocus="on">
-                            <div class="invalid-feedback"><?= $validation->getError('auth');?></div>
-                        </div>
-                        <div class="mb-3">
-                            <!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
-                            <input type="password" name="password" class="form-control <?=  ($validation->hasError('password')) ? 'is-invalid' : ''?>" value="<?=old('password');?>" placeholder="Password" id="pwd">
-                            <div class="invalid-feedback"><?= $validation->getError('password');?></div>
-                        </div>
-                        <div class="mb-3">
-                            <input class="form-check-input" type="checkbox"  id="showpw" onclick="showPw()">
-                            <label class="form-check-label" for="flexCheckDefault">Show Password</label>
-                            <?php /*<a href="/forgot-password" class="float-end text-decoration-none text-dark">Forgot Password ?</a> */?>
+                            <input type="text" name="email" class="form-control <?=  ($validation->hasError('email')) ? 'is-invalid' : ''?>" value="<?=old('email');?>" placeholder="Enter your email address" autofocus="on">
+                            <div class="invalid-feedback"><?= $validation->getError('email');?></div>
                         </div>
                         <div class="row mt-4">
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-block mb-3" id="btn"><span><i class="bi bi-box-arrow-in-right pr-1"></i></span> Log in</button>
+                            <button type="submit" class="btn btn-block mb-3" id="btn">Reset Password</button>
+                            <a href="/login" class="text-dark text-center text-decoration-underline">Back to login</a>
                             </div>
                         </div>
                     </form>

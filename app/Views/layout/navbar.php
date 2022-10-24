@@ -16,14 +16,14 @@
                         Event
                         </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">                    
-                                <li><a class="dropdown-item" href="/event">Manage Event</a></li>
+                                <li><a class="dropdown-item" href="/event"><span><i class="fa-solid fa-calendar"></i></span> Manage Event</a></li>
                             </ul>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Registrant
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">                    
-                                <li><a class="dropdown-item" href="/registrant">Manage Registrant</a></li>
+                                <li><a class="dropdown-item" href="/registrant"> <span><i class="fa-solid fa-person"></i></span> Manage Registrant</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -31,7 +31,7 @@
                                 User
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">                    
-                                <li><a class="dropdown-item" href="/user">Manage User</a></li>
+                                <li><a class="dropdown-item" href="/user"> <span><i class="fa-solid fa-users-line"></i></span> Manage User</a></li>
                             </ul>
                         </li>
                     </li>
@@ -44,13 +44,13 @@
                 <ul class="dropdown-menu dropdown-menu-right" role="menu">  
                     <li class="nav-item">
                         <a class="dropdown-item" href="/logout">
-                            <i class="bi bi-sliders"></i> Setting
+                            <i class="fa-solid fa-sliders"></i> Setting
                         </a>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
                         <a class="dropdown-item" href="/logout">
-                            <i class="bi bi-box-arrow-right pr-2"></i> Logout
+                            <i class="fa-solid fa-right-from-bracket"></i> Logout
                         </a>
                     </li>
                 </ul>

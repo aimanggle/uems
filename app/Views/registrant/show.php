@@ -38,7 +38,7 @@
                   <tbody class="table-group-divider">
                     <?php $bil = 1; ?>
                         <?php foreach($event as $e):?>
-                            <?php $eventdate = date('d-m-Y',strtotime($e['eventdate']));?>
+                            <?php $eventdate = date('d-M-Y',strtotime($e['eventdate']));?>
                             <tr>
                                 <td><?=$bil++?></td>
                                 <td><?=$e['eventname'];?> <span class="badge text-bg-warning"><?=$e['eventstatus'];?></span></td>

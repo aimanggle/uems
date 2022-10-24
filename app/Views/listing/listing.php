@@ -14,11 +14,6 @@
             <div class="col-md-12 mt-4">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Search Event" aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                            <option value="On Going">On Going</option>
-                            <option value="Complete">Complete</option>
-                        </select>
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
                 </div>
             </div>
