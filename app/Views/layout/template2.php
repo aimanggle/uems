@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?=csrf_meta();?>
     
+   
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
@@ -15,9 +16,6 @@
 
     <!-- CDN Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-
-    <!-- Font Awesome Kit  -->
-    <script src="https://kit.fontawesome.com/e5eb685012.js" crossorigin="anonymous"></script>
 
     <!-- Page Title -->
     <title><?=$title;?></title>
@@ -30,7 +28,7 @@
     <link rel="stylesheet" href="/css/uems.css">
   </head>
   <body>
-    <?=$this->include('layout/navbar');?>
+    <?=$this->include('layout/navbar2');?>
     <?=$this->renderSection('content');?>
     
     <!-- CDN Bootstrap JS -->

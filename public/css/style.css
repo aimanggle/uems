@@ -12,5 +12,31 @@ body{
 }
 
 .bg-nav{
-    background-color: #5e3ffe;
+    /* background-color: #5e3ffe; */
+    background: rgb(207,186,234);
+    background: linear-gradient(100deg, rgba(207,186,234,1) 0%, rgba(163,178,237,1) 50%, rgba(126,172,239,1) 100%);
+}
+
+.a-nav{
+    color: black;
+}
+
+.bg-gradient-1{
+    background: rgb(101,34,195);
+    background: linear-gradient(103deg, rgba(101,34,195,1) 0%, rgba(45,56,253,1) 100%);
+}
+
+.bg-gradient-2{
+    background: rgb(195,50,34);
+    background: linear-gradient(103deg, rgba(195,50,34,1) 0%, rgba(253,111,45,1) 100%);
+}
+
+.bg-gradient-3{
+    background: rgb(78,195,34);
+    background: linear-gradient(103deg, rgba(78,195,34,1) 0%, rgba(45,253,124,1) 100%);
+}
+
+.bg-gradient-4{
+    background: rgb(182,34,195);
+    background: linear-gradient(103deg, rgba(182,34,195,1) 0%, rgba(253,138,45,1) 100%);
 }

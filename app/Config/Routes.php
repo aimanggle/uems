@@ -35,10 +35,61 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
-$routes->get('/dashboard', 'Dashboard::dashboard', ['as' => 'dash']);
-$routes->get('/event', 'Event::index', ['as' => 'event']);
+/**
+ * --------------------------------------------------------------------
+ * Routes for Auth
+ * --------------------------------------------------------------------
+ */
+$routes->get('/', 'Auth::index');
+$routes->get('/login', 'Auth::login');
+$routes->post('/login', 'Auth::attemptLogin');
+$routes->get('/logout', 'Auth::logout');
 
+/**
+ * --------------------------------------------------------------------
+ * Routes for Dashboard
+ * --------------------------------------------------------------------
+ */
+$routes->get('/dashboard', 'Dashboard::dashboard', ['filter' => 'auth']);
+
+
+/**
+ * --------------------------------------------------------------------
+ * Routes for Event
+ * --------------------------------------------------------------------
+ */
+$routes->get('/event', 'Event::index', ['filter' => 'auth']);
+$routes->get('/event/create', 'Event::create', ['filter' => 'auth']);
+$routes->post('/event/create', 'Event::insert', ['filter' => 'auth']);
+
+/**
+ * --------------------------------------------------------------------
+ * Routes for Registrant
+ * --------------------------------------------------------------------
+ */
+$routes->get('/registrant', 'Registrant::index', ['filter' => 'auth']);
+/**
+ * --------------------------------------------------------------------
+ * Routes for User
+ * --------------------------------------------------------------------
+ */
+$routes->get('/user', 'User::index', ['filter' => 'auth']);
+
+/**
+ * --------------------------------------------------------------------
+ * Routes for Event Listing
+ * --------------------------------------------------------------------
+ */
+$routes->get('/event/listing', 'Listing::index');
+$routes->get('/event/listing/detail/(:any)', 'Listing::detail/$1'); 
+
+/**
+ * --------------------------------------------------------------------
+ * Routes for Track Program
+ * --------------------------------------------------------------------
+ */
+$routes->get('/event/track', 'Track::index');
+$routes->post('/event/track/', 'Track::detail');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

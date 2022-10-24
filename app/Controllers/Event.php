@@ -2,14 +2,23 @@
 
 namespace App\Controllers;
 
+use App\Models\EventModel;
 use App\Controllers\BaseController;
 
 class Event extends BaseController
 {
+    public function __construct()
+    {
+        $this->eventModel = new EventModel();
+    }
+
     public function index()
     {
+        
         $data=[
-            'title' => 'Event | UEMS'
+            'title' => 'Event | UEMS',
+            'event' => $this->eventModel->FindAll(),
+            
         ];
         return view('event/event', $data);
     }
@@ -22,40 +31,41 @@ class Event extends BaseController
         return view('event/detail', $data);
     }
 
-    public function showinsertevent()
+    public function create()
     {
         $data=[
             'title' => 'New Event | UEMS'
         ];
 
-        return view('event/insertevent', $data);
+        return view('event/create', $data);
     }
 
     public function insert()
     {
-        $eventmodels = new \App\Models\EventModels();
-
+       
         $data=[
             'eventname' => $this->request->getVar('eventname'),
+            'eventdesc' => $this->request->getVar('eventdesc'),
             'eventdate' => $this->request->getVar('eventdate'),
-            'eventtime' => $this->request->getVar('eventtime'),
             'eventtype' => $this->request->getVar('eventtype'),
-            'eventcategory' => $this->request->getVar('eventcategory'),
-            'eventstatus' => $this->request->getVar('eventstatus'),
+            'eventtime' => $this->request->getVar('eventtime'),
+            // 'eventcategory' => $this->request->getVar('eventcategory'),
+            'eventstatus' => $this->request->getVar('eventstat'),
             'eventscorun' => $this->request->getVar('eventscorun'),
+            'register' => $this->request->getVar('register'),
         ];
-
-        $eventmodels->insert($data)->with('message', 'Success');
-        return redirect()->to('/event');
+        // dd($data);
+        $this->eventModel->insert($data);
+        return redirect()->to('/event')->with('message', 'Success');
     }
     
     public function editform()
     {
-        $eventmodels = new \App\Models\EventModels();
+        
 
         $data=[
             'title' => 'Edit Event | UEMS',
-            'event' => $eventmodels->find($this->request->getVar('id'))
+            'event' => $this->eventModel->find($this->request->getVar('id'))
         ];
 
         return view('event/editevent', $data);
