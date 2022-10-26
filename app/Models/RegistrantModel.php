@@ -6,37 +6,22 @@ use CodeIgniter\Model;
 
 class RegistrantModel extends Model
 {
-    protected $DBGroup          = 'default';
-    protected $table            = 'registrants';
-    protected $primaryKey       = 'id';
-    protected $useAutoIncrement = true;
-    protected $insertID         = 0;
-    protected $returnType       = 'array';
-    protected $useSoftDeletes   = false;
-    protected $protectFields    = true;
-    protected $allowedFields    = [];
+  
+    protected $table            = 'registrant';
+    protected $primaryKey       = 'regid';
+    protected $allowedFields    = ['regid', 'sid', 'eventid', 'regdate'];
 
-    // Dates
-    protected $useTimestamps = false;
-    protected $dateFormat    = 'datetime';
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
+    public function findbyeventid($eventid)
+    {
+        $sql = "SELECT * FROM registrant JOIN student ON registrant.sid = student.sid WHERE eventid = $eventid";
+        return $this->db->query($sql)->getResultArray();
+    }
 
-    // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
-    protected $skipValidation       = false;
-    protected $cleanValidationRules = true;
+    public function trackevent($sid)
+    {
+        $sql = "SELECT * FROM registrant JOIN event ON registrant.eventid = event.eventid WHERE sid = $sid";
+        return $this->db->query($sql)->getResultArray();
+    }
 
-    // Callbacks
-    protected $allowCallbacks = true;
-    protected $beforeInsert   = [];
-    protected $afterInsert    = [];
-    protected $beforeUpdate   = [];
-    protected $afterUpdate    = [];
-    protected $beforeFind     = [];
-    protected $afterFind      = [];
-    protected $beforeDelete   = [];
-    protected $afterDelete    = [];
+  
 }
