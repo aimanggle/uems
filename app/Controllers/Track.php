@@ -13,35 +13,36 @@ class Track extends BaseController
         $this->studentModel = new StudentModel();
         $this->registrantModel = new RegistrantModel();
     }
+
     public function index()
     {
+       
         $data = [
             'title' => 'Track | UEMS',
         ];
-        // d($data);
-    
         return view('trackprogram/show', $data);
+    
     }
 
-    //detail
-    public function detail()
+    public function show()
     {
         $studentid = $this->request->getVar('studentid');
-
-        $studetail = $this->studentModel->detail($studenid);
-
-        $sid = $studetail->sid;
-
-
-        $track = $this->registrantModel->trackevent($sid);
-        // d($studentid);
-        $data = [
-            'title' => 'Track | UEMS',
-            // 'student' => $this->studentModel->find($studenid),
-            'track' => $track
-        ];
-        d($data);
-    
-        return view('trackprogram/detail', $data);
+        $student = $this->studentModel->detail($studentid);
+        if ($student) 
+        {
+            $data = [
+                'title' => 'Track | UEMS',
+                'student' => $student,
+                'registrant' => $this->registrantModel->trackevent($student->sid),
+            ];
+            // dd($data);
+            return view('trackprogram/detail', $data);
+        } 
+        else 
+        {
+            session()->setFlashdata('message', 'Student ID not found');
+            return redirect()->to('/event/track');
+        }
     }
+    
 }
