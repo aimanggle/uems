@@ -2,11 +2,6 @@
 
 <?= $this->section('content'); ?>
 
-<style>
-    #searchtab{
-        visibility : show;
-    }
-</style>
 
 <div class="container-fluid">
 
@@ -17,10 +12,19 @@
             </div>
         </div>
         <div class="row">
+<?php if (session()->get('message')) :?>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?=session()->get('message');?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+<?php endif;?>
+        </div>
+        <div class="row">
             <div class="col-md-12 mt-4">
-                <form action="/event/track/" method="post">
+                <form action="/event/track" method="post">
                 <div class="input-group mb-3">
-                        
+                    <?=csrf_field();?>
                     <input type="text" class="form-control" id="studentid" name="studentid" placeholder="Enter your student id" aria-label="Recipient's username" aria-describedby="button-addon2">
                     <button class="btn btn-outline-secondary" type="submit" id="btn">Search</button>
                 </div>
@@ -28,39 +32,31 @@
             </div>
         </div>
     </div>
+
     <div class="container-fluid">
-        
-    <table class="table" id="searchtab">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody class="table-group-divider">
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-        
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table">
+            <thead>
+                <tr>
+                  <th>Event Name</th>
+                  <th>Event Date</th>
+                  <th>Event Time</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <?php if(empty($registrant)):?>
+                  <tr>
+                    <td colspan="4" class="text-center">No Record Found</td>
+                  </tr>
+                <?php endif;?>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
+
+  
 
 </div>
 
