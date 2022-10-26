@@ -16,7 +16,7 @@
           </div>
       </div>
 
-<?php if (session()->get('error')) :?>
+<?php if (session()->get('message')) :?>
       <div class="alert alert-success alert-dismissible fade show" role="alert">
             alert
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -42,7 +42,6 @@
                           <th>Event Type</th>
                           <th>Action</th>
                       </tr>
-                    
                   </thead>
                   <tbody class="table-group-divider">
                     <?php $bil = 1; ?>
@@ -56,13 +55,19 @@
                                 <td>
                                     <a href="/event/detail/<?= $e['eventid'];?>" class="btn btn-secondary" ><span><i class="bi bi-chevron-right"></i></span></a>
                                     <a href="/event/edit/<?= $e['eventid'];?>" class="btn btn-primary" ><span><i class="fa-regular fa-pen-to-square"></i></span></a>
-                                    <form action="/event/delete/<?= $e['eventid'];?>" method="post" class="d-inline" data-bs-toggle="tooltip" >
+                                    <form action="event/delete/<?= $e['eventid'];?>" method="post" class="d-inline" data-bs-toggle="tooltip" >
+                                        <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE" >
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure to delete this event ?')" ><span><i class="fa-solid fa-trash"></i></span></button>
                                     </form>
                                 </td>
                             </tr>
                         <?php endforeach;?>
+                        <?php if(empty($event)) : ?>
+                            <tr>
+                                <td colspan="5" class="text-center">No Event Found</td>
+                            </tr>
+                        <?php endif;?>
                   </tbody>
               </table>
           </div>

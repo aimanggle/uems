@@ -26,69 +26,71 @@
 
 <div class="container-fluid">
     <div class="row">
-    <div class="col-xl-3 col-sm-6 col-md-3 mb-2">
-                <div class="card border-1 shadow text-white bg-gradient-1 mb-3">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between px-md-1">
-                            <div>
-                                <h3 class="text-white"><?=$event?></h3>
-                                <p class="mb-0">Total Event</p>
-                            </div>
-                            <div class="align-self-center">
-                                <i class="bi bi-calendar-range fa-3x"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-xl-3 col-sm-6 col-md-3 mb-2">
-                <div class="card border-1 shadow text-white bg-gradient-3 mb-3">
-                    <div class="card-body ">
-                        <div class="d-flex justify-content-between px-md-1">
-                            <div>
-                                <h3 class="text-white">0</h3>
-                                <p class="mb-0">Total Register Today</p>
-                            </div>
-                            <div class="align-self-center">
-                                <i class="bi bi-person-check fa-3x"></i>
-                            </div>
+        <div class="col-xl-3 col-sm-6 col-md-3 mb-2">
+            <div class="card border-1 shadow text-white bg-gradient-1 mb-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between px-md-1">
+                        <div>
+                            <p class="mb-0">Total Event</p>
+                            <h3 class="text-white"><?=$event?></h3>
+                        </div>
+                        <div class="align-self-center">
+                            <i class="bi bi-calendar-range fa-3x"></i>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="col-xl-3 col-sm-6 col-md-3 mb-2">
-                <div class="card border-1 shadow text-white bg-gradient-2 mb-3">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between px-md-1">
-                            <div>
-                                <h3 class="text-white">0</h3>
-                                <p class="mb-0">Total On Going Event</p>
-                            </div>
-                            <div class="align-self-center">
-                                <i class="bi bi-calendar-minus fa-3x"></i>
-                            </div>
+        <div class="col-xl-3 col-sm-6 col-md-3 mb-2">
+            <div class="card border-1 shadow text-white bg-gradient-3 mb-3">
+                <div class="card-body ">
+                    <div class="d-flex justify-content-between px-md-1">
+                        <div>
+                            <p class="mb-0">Total Register Today</p>
+                            <h3 class="text-white">0</h3>
+                        </div>
+                        <div class="align-self-center">
+                            <i class="bi bi-person-check fa-3x"></i>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="col-xl-3 col-sm-6 col-md-3 mb-2">
-                <div class="card border-1 shadow text-white bg-gradient-4 mb-3">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between px-md-1">
-                            <div>
-                                <h3 class="text-white">0</h3>
-                                <p class="mb-0">Total Complete Event</p>
-                            </div>
-                            <div class="align-self-center">
-                            <i class="bi bi-calendar2-check fa-3x"></i>
-                            </div>
+        <div class="col-xl-3 col-sm-6 col-md-3 mb-2">
+            <div class="card border-1 shadow text-white bg-gradient-2 mb-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between px-md-1">
+                        <div>
+                            <p class="mb-0">Total On Going Event</p>
+                            <h3 class="text-white"><?=$ongoing?></h3>
+                        </div>
+                        <div class="align-self-center">
+                            <i class="bi bi-calendar-minus fa-3x"></i>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="col-xl-3 col-sm-6 col-md-3 mb-2">
+            <div class="card border-1 shadow text-white bg-gradient-4 mb-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between px-md-1">
+                        <div>
+                            <p class="mb-0">Total Complete Event</p>
+                            <h3 class="text-white"><?=$complete?></h3>
+                        </div>
+                        <div class="align-self-center">
+                        <i class="bi bi-calendar2-check fa-3x"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
@@ -115,26 +117,23 @@
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
+                    <?php $bil=1;?>
+                    <?php foreach($eventforthismonth as $eve):?>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
+                        <th scope="row"><?=$bil++;?></th>
+                        <td><?=$eve['eventname'];?></td>
                         <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
+                        <td><?=$eve['eventstatus'];?></td>
+                        <td>
+                            <a href="/event/detail/<?=$eve['eventid'];?>" class="btn btn-primary btn-sm">Detail</a>
+                        </td>
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                        <td>@twitter</td>
-                    </tr>
+                    <?php endforeach;?>
+                    <?php if(empty($eventforthismonth)): ?>
+                        <tr>
+                            <td colspan="5" class="text-center">No Event Available</td>
+                        </tr>
+                    <?php endif ?>
                 </tbody>
             </table>
         </div>

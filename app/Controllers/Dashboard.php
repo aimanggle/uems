@@ -17,6 +17,9 @@ class Dashboard extends BaseController
         $data=[
             'title' => 'Dashboard | UEMS',
             'event' => $this->eventModel->countevent(),
+            'ongoing' => $this->eventModel->countOnGoing(),
+            'complete' => $this->eventModel->countComplete(),
+            'eventforthismonth' => $this->eventModel->showeventforthismonth(),
 
         ];
         // d($data);

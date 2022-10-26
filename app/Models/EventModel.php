@@ -13,8 +13,29 @@ class EventModel extends Model
 
     public function countevent()
     {
+        // $sql = "SELECT COUNT(*) AS `numrows` FROM `event` '";
         return $this->countAll();
     }
+
+    public function countOnGoing()
+    {
+        // $sql = "SELECT COUNT(*) AS `numrows` FROM `event` WHERE `eventstatus` = 'On Going'";
+        return $this->where('eventstatus', 'On Going')->countAllResults();
+    }
+
+    public function countComplete()
+    {
+        // $sql = "SELECT COUNT(*) AS `numrows` FROM `event` WHERE `eventstatus` = 'Completed'";
+        return $this->where('eventstatus', 'Completed')->countAllResults();
+    }
+
+    public function showeventforthismonth()
+    {
+        $sql = "SELECT * FROM `event` WHERE MONTH(`eventdate`) = MONTH(CURRENT_DATE()) AND YEAR(`eventdate`) = YEAR(CURRENT_DATE())";
+        return $this->db->query($sql)->getResultArray();
+    }
+    
+    
    
    
 }

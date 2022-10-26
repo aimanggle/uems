@@ -25,12 +25,24 @@ class Listing extends BaseController
 
     public function detail($eventid)
     {
-        $data = [
-            'title' => 'Detail | UEMS',
-            'event' => $this->eventModel->find($eventid)
-        ];
-        // d($data);
-    
-        return view('listing/detail', $data);
+        $eventcheck = $this->eventModel->where('eventid', $eventid)->first();
+
+        if($eventcheck['register'] == "Open")
+        {
+            $data = [
+                'title' => 'Detail | UEMS',
+                'event' => $this->eventModel->find($eventid)
+            ];
+            // d($data);
+        
+            return view('listing/detail', $data);
+        }
+        else
+        {
+            $data = [
+                'title' => 'Detail | UEMS',
+            ];
+            return view('listing/close', $data);
+        }
     }
 }

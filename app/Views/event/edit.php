@@ -18,31 +18,41 @@
             </div>
         </div>
 
+<?php if (session()->get('message')) :?>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?= session()->get('message')?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+<?php endif;?>
+
+<div class="container-fluid">
+
 
         <div class="row mb-2">
             <div class="col-md-12 col-xl-12">
-                <h1 class="fs-4">View Event Detail</h1>
+                <h1 class="fs-4">Edit Event Detail</h1>
                 <hr>
             </div>
         </div>
 
-        <form class="row g-3" action="/event/detail/<?=$event['eventid'];?>" method="post">
+        <form class="row g-3" action="/event/edit/<?=$event['eventid'];?>" method="post">
             <?=csrf_field();?>       
             <div class="col-md-6">
                 <label for="eventname" class="form-label">Event Name</label>
-                <input type="text" class="form-control" id="eventname" name="eventname" value="<?=$event['eventname'];?>" disabled readonly>
+                <input type="text" class="form-control" id="eventname" name="eventname" value="<?=$event['eventname'];?>">
             </div>
             <div class="col-md-6">
                 <label for="eventname" class="form-label">Event Description</label>
-                <input type="textarea" class="form-control" id="eventdesc" name="eventdesc" value="<?=$event['eventdesc'];?>" disabled readonly>
+                <input type="textarea" class="form-control" id="eventdesc" name="eventdesc" value="<?=$event['eventdesc'];?>">
             </div>
             <div class="col-md-6">
                 <label for="startdate" class="form-label">Start Date</label>
-                <input type="date" class="form-control" id="startdate" name="eventdate" value="<?=$event['eventdate'];?>" disabled readonly>
+                <input type="date" class="form-control" id="startdate" name="eventdate" value="<?=$event['eventdate'];?>" >
             </div>
             <div class="col-md-6">
                 <label for="eventtype" class="form-label">Event Type</label>
-                    <select id="eventtype" class="form-select" name="eventtype" disabled readonly>
+                    <select id="eventtype" class="form-select" name="eventtype" >
                         <option selected>Choose...</option>
                         <option <?php if ($event['eventtype'] == "Physical") echo "selected";?>>Physical</option>
                         <option <?php if ($event['eventtype'] == "Online") echo "selected";?>>Online</option>
@@ -50,11 +60,11 @@
             </div>
             <div class="col-md-6">
                 <label for="starttime" class="form-label">Start time</label>
-                <input type="time" class="form-control" id="starttime" name="eventtime" value="<?=$event['eventtime'];?>" disabled readonly>
+                <input type="time" class="form-control" id="starttime" name="eventtime" value="<?=$event['eventtime'];?>" >
             </div>
             <div class="col-md-6">
                 <label for="eventstat" class="form-label">Event Status</label>
-                <select id="evenstat" class="form-select" name="eventstat" disabled readonly>
+                <select id="evenstat" class="form-select" name="eventstat" >
                     <option <?php if ($event['eventstatus'] == "On Going") echo "selected";?> >On Going</option>
                     <option <?php if ($event['eventstatus'] == "Completed") echo "selected";?> >Completed</option>
                     <option <?php if ($event['eventstatus'] == "Close") echo "selected";?> >Close</option>
@@ -62,46 +72,25 @@
             </div>
             <div class="col-md-6">
                 <label for="tqlink" class="form-label">Event Scorun</label>
-                <input type="text" class="form-control" id="tqlink" name="eventscorun" value="<?=$event['eventscorun'];?>" disabled readonly>
+                <input type="text" class="form-control" id="tqlink" name="eventscorun" value="<?=$event['eventscorun'];?>" >
             </div>
             <div class="col-md-6">
                 <label for="tqlink" class="form-label">Registration</label>
-                <select id="evenstat" class="form-select" name="register" disabled readonly>
+                <select id="evenstat" class="form-select" name="register" >
                     <option value="Open" <?php if ($event['register'] == "Open") echo "selected";?>>Open</option>
                     <option value="Close" <?php if ($event['register'] == "Close") echo "selected";?>>Close</option>
                 </select>
             </div>
+
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary float-end"><i class="bi bi-save pr-2"></i> Save Change</button>
+            </div>
+ 
         </form>
 
-        <div class="row mt-3">
-            <div class="col-md-12 col-xl-12">
-                <h1 class="fs-4">Event Register Link</h1>
-                <hr>
-            </div>
-        </div>
+        </div>    
 
-        <div class="row">
-            <div class="col-md-12">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <td scope="col">#</td>
-                            <td>Type</td>
-                            <td>Link</td>
-                            <td>Action</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td scope="row">1</td>
-                            <td>Register</td>
-                            <td><input type="text" id="reglink" class="form-control" value="<?= base_url('/event/listing/detail');?>/<?=$event['eventid'];?>" disabled readonly></td>
-                            <td><button class="btn btn-secondary" onclick="copyreglink()"><i class="fa-regular fa-copy"></i></button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        
 
     </div>
 

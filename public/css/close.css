@@ -1,0 +1,18 @@
+body{
+    background: rgb(207,186,234);
+    background: linear-gradient(100deg, rgba(207,186,234,1) 0%, rgba(163,178,237,1) 50%, rgba(126,172,239,1) 100%);
+}
+
+#btn{
+    background-color: #172334;
+    color: white;
+}
+
+#btn:hover{
+    background-color: #233144;;
+    color: white
+}
+
+.img{
+    max-width: 150px;
+}
