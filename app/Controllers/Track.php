@@ -2,13 +2,16 @@
 
 namespace App\Controllers;
 
+use App\Models\StudentModel;
+use App\Models\RegistrantModel;
 use App\Controllers\BaseController;
 
 class Track extends BaseController
 {
     public function __construct()
     {
-        // $this->studentModel = new \App\Models\StudentModel();
+        $this->studentModel = new StudentModel();
+        $this->registrantModel = new RegistrantModel();
     }
     public function index()
     {
@@ -24,12 +27,20 @@ class Track extends BaseController
     public function detail()
     {
         $studentid = $this->request->getVar('studentid');
-        d($studentid);
+
+        $studetail = $this->studentModel->detail($studenid);
+
+        $sid = $studetail->sid;
+
+
+        $track = $this->registrantModel->trackevent($sid);
+        // d($studentid);
         $data = [
             'title' => 'Track | UEMS',
             // 'student' => $this->studentModel->find($studenid),
+            'track' => $track
         ];
-        // d($data);
+        d($data);
     
         return view('trackprogram/detail', $data);
     }
