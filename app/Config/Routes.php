@@ -76,6 +76,7 @@ $routes->delete('/event/delete/(:any)', 'Event::delete/$1', ['filter' => 'auth']
  * --------------------------------------------------------------------
  */
 $routes->get('/registrant', 'Registrant::index', ['filter' => 'auth']);
+$routes->get('/registrant/detail/(:num)', 'Registrant::detail/$1', ['filter' => 'auth']);
 /**
  * --------------------------------------------------------------------
  * Routes for User
