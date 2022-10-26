@@ -98,7 +98,7 @@ $routes->get('/event/listing/detail/(:any)', 'Listing::detail/$1');
  * --------------------------------------------------------------------
  */
 $routes->get('/event/track', 'Track::index');
-$routes->post('/event/track/', 'Track::detail');
+$routes->post('/event/track', 'Track::show');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
