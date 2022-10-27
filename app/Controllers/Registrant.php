@@ -18,8 +18,7 @@ class Registrant extends BaseController
     {
         $data = [
             'title' => 'Registrant | UEMS',
-            'event' => $this->eventModel->FindAll(),
-           
+            'event' => $this->eventModel->orderBy('eventid', 'DESC')->FindAll(),
         ];
         return view('registrant/show', $data);
     }
@@ -28,9 +27,12 @@ class Registrant extends BaseController
     {
         $data = [
             'title' => 'Registrant | UEMS',
-            'regis' => $this->registrantModel->findbyeventid($eventid)
+            'event' => $this->eventModel->Find($eventid),
+            'regis' => $this->registrantModel->findbyeventid($eventid),
+            'ttlreg' => $this->registrantModel->countregbyevent($eventid),
+            'ttlregtoday' => $this->registrantModel->countregbyeventtoday($eventid),
         ];
-        dd($data);
+        // dd($data);
         return view('registrant/detail', $data);
     
     }
