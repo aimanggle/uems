@@ -13,7 +13,7 @@
         </div>
         <div class="row">
 <?php if (session()->get('message')) :?>
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <?=session()->get('message');?>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
@@ -39,6 +39,7 @@
           <table class="table">
             <thead>
                 <tr>
+                  <th>#</th>
                   <th>Event Name</th>
                   <th>Event Date</th>
                   <th>Event Time</th>
