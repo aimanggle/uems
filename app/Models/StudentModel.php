@@ -12,7 +12,7 @@ class StudentModel extends Model
 
     public function detail($studentid)
     {
-        $sql = "SELECT * FROM `student` WHERE studentid = '$studentid'";
+        $sql = "SELECT * FROM student JOIN program ON student.programid = program.programid WHERE studentid = '$studentid'";
         return $this->db->query($sql)->getRow();
     }
 }
