@@ -50,7 +50,7 @@
                     <hr>
                 </div> -->
                 <div class="d-grid">
-                    <a href="/event/listing/<?=$event['eventid'];?>/register" class="btn btn-primary btn-block">Register</a>
+                    <a href="/event/listing/register/<?=$event['eventid'];?>" class="btn btn-primary btn-block">Register Me<span><i class="bi bi-arrow-right ps-2"></i></span> </a>
                 </div>
                 <!-- <a href="/event/listing/<?=$event['eventid'];?>/register" class="btn btn-primary btn-block">Register</a> -->
             </div>
