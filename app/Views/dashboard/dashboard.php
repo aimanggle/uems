@@ -3,9 +3,6 @@
 
 <div class="container-fluid">
 
-
-
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
@@ -49,7 +46,7 @@
                     <div class="d-flex justify-content-between px-md-1">
                         <div>
                             <p class="mb-0">Total Register Today</p>
-                            <h3 class="text-white">0</h3>
+                            <h3 class="text-white"><?=$regtoday['total'];?></h3>
                         </div>
                         <div class="align-self-center">
                             <i class="bi bi-person-check fa-3x"></i>
