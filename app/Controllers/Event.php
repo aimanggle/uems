@@ -18,7 +18,7 @@ class Event extends BaseController
         
         $data=[
             'title' => 'Event | UEMS',
-            'event' => $this->eventModel->FindAll(),
+            'event' => $this->eventModel->orderBy('eventid', 'DESC')->FindAll(),
             
         ];
         return view('event/event', $data);
@@ -58,7 +58,7 @@ class Event extends BaseController
         ];
         // dd($data);
         $this->eventModel->insert($data);
-        return redirect()->to('/event')->with('message', 'Success');
+        return redirect()->to('/event')->with('success', 'Success Add New Event');
     }
     
     public function edit($eventid)
@@ -98,6 +98,6 @@ class Event extends BaseController
         $builder->delete();
     
 
-        return redirect()->to('/event')->with('message', 'Success');
+        return redirect()->to('/event')->with('error', 'Event has been delete!');
     }
 }
