@@ -12,6 +12,7 @@ class Auth implements FilterInterface
         {
             return redirect()->to('/login');
         }
+        
     }
     
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
