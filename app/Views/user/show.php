@@ -37,44 +37,46 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12 table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-group-divider">
-                        <?php $bil = 1; ?>
-                            <?php foreach($user as $u):?>
-                                <tr>
-                                    <td><?=$bil++?></td>
-                                    <td><?=$u['username'];?></td>
-                                    <td><?=$u['email'];?></td>
-                                    <td><?=$u['role'];?></td>
-                                    <td><span class="badge text-bg-<?php 
-                                        if($u['userstat'] == 'active')
-                                        {
-                                            echo 'success';
-                                        }
-                                        else
-                                        {
-                                            echo 'secondary';
-                                        }                                          
-                                        ?>"><?=$u['userstat'];?></span></td>
-                                    <td>
-                                        <button  class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modal<?=$u['id'];?>"><span><i class="fa-regular fa-pen-to-square"></i></span></button>
-                                        <button  class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#modalstat<?=$u['id'];?>"><span><i class="fa-regular fa-user"></i></span></button>  
-                                    </td>
-                                </tr>
-                            <?php endforeach;?>
-                    </tbody>
-                </table>  
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-striped table-">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <?php $bil = 1; ?>
+                                <?php foreach($user as $u):?>
+                                    <tr>
+                                        <td><?=$bil++?></td>
+                                        <td><?=$u['username'];?></td>
+                                        <td><?=$u['email'];?></td>
+                                        <td><?=$u['role'];?></td>
+                                        <td><span class="badge text-bg-<?php 
+                                            if($u['userstat'] == 'active')
+                                            {
+                                                echo 'success';
+                                            }
+                                            else
+                                            {
+                                                echo 'secondary';
+                                            }                                          
+                                            ?>"><?=$u['userstat'];?></span></td>
+                                        <td>
+                                            <button  class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modal<?=$u['id'];?>"><span><i class="fa-regular fa-pen-to-square"></i></span></button>
+                                            <button  class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#modalstat<?=$u['id'];?>"><span><i class="fa-regular fa-user"></i></span></button>  
+                                        </td>
+                                    </tr>
+                                <?php endforeach;?>
+                        </tbody>
+                    </table>  
+                </div>
             </div>
         </div>
     </div>
