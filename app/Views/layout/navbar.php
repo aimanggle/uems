@@ -1,6 +1,6 @@
 <?php $this->session = \Config\Services::session(); ?>
 
-<nav class="navbar navbar-expand-lg sticky-top px-5 py-3 bg-nav">
+<nav class="navbar navbar-expand-lg sticky-top px-5-5 py-3 bg-nav">
     <div class="container-fluid">
         <a class="navbar-brand" href="/dashboard"><b>UEMS</b></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,12 +43,6 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right" role="menu">  
                     <li class="nav-item">
-                        <a class="dropdown-item" href="/logout">
-                            <i class="fa-solid fa-sliders"></i> Setting
-                        </a>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
                         <a class="dropdown-item" href="/logout">
                             <i class="fa-solid fa-right-from-bracket"></i> Logout
                         </a>
