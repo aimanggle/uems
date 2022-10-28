@@ -24,7 +24,8 @@
                     <h1 class="fs-3">Registrant</h1>
                 </div>
                     <hr>
-                        <table class="table">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -66,6 +67,7 @@
                                     <?php endforeach;?>
                             </tbody>
                         </table>
+                    </div>
                 </div>
         </div>
     </div>
