@@ -29,10 +29,7 @@
                                 <div class="row my-1">
                                     <div class="col">
                                         <div class="bg-dark rounded text-white px-2 py-2">
-                                            View Student Detail :
-                                                <div class="progress my-1" style="height: 20px;">
-                                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-label="Example 20px high" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                                </div>
+                                            Step 1/3 : Student Detail
                                         </div>
                                         
                                     </div>
