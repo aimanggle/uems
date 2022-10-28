@@ -39,7 +39,8 @@
                     <a href="/event/create" class="btn btn-outline-secondary btn-sm float-end">New Event <span><i class="bi bi-plus-lg"></i></span></a>
                 </div>
                     <hr>
-                        <table class="table table-reponsive">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -93,6 +94,7 @@
                                         <?php endif;?>
                             </tbody>
                         </table>
+                    </div>
             </div>
         </div>
     </div>
