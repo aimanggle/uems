@@ -21,4 +21,18 @@ class User extends BaseController
         // dd($data);
         return view('user/show', $data);
     }
+
+    public function insert()
+    {
+        $data =[
+            'email' => $this->request->getVar('email'),
+            'username' => $this->request->getVar('username'),
+            'password' => $this->request->getVar('password'),
+            'role' => $this->request->getVar('role'),
+            'userstat' => $this->request->getVar('userstat'),
+        ];
+
+        $this->userModel->insert($data);
+        return redirect()->back()->with('success', 'User has been added successfully');
+    }
 }
