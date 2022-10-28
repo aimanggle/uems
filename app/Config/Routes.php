@@ -84,6 +84,8 @@ $routes->get('/registrant/detail/(:num)', 'Registrant::detail/$1', ['filter' => 
  */
 $routes->get('/user', 'User::index', ['filter' => 'auth']);
 $routes->post('/user', 'User::insert', ['filter' => 'auth']);
+$routes->post('/user/(:num)', 'User::updatedetail/$1', ['filter' => 'auth']);
+$routes->post('/user/status/(:num)', 'User::updatestat/$1', ['filter' => 'auth']);
 
 /**
  * --------------------------------------------------------------------
