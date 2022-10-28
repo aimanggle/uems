@@ -17,12 +17,19 @@
         </div>
     </div>
 
-    <?php if (session()->get('success')) :?>
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <?= session()->get('success');?>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <?php if (session()->get('success')) :?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <?= session()->get('success');?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php endif;?>
+            </div>
         </div>
-    <?php endif;?>
+    </div>
+    
 
     <div class="container-fluid">
         <div class="row">
