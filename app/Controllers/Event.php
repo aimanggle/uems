@@ -96,6 +96,11 @@ class Event extends BaseController
         $builder = $db->table('event');
         $builder->where('eventid', $eventid);
         $builder->delete();
+
+        $db = \Config\Database::connect();
+        $builder = $db->table('registrant');
+        $builder->where('eventid', $eventid);
+        $builder->delete();
     
 
         return redirect()->to('/event')->with('error', 'Event has been delete!');

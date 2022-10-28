@@ -12,7 +12,7 @@ class Auth extends BaseController
      {
           $this->validation = Services::validation();
           $this->UserModel = new UserModel();
-          $this->email = \Config\Services::email();
+      
      }
 
      public function index()
@@ -37,7 +37,8 @@ class Auth extends BaseController
                'auth' => [
                     'rules' => 'required',
                     'errors' => [
-                         'required' => 'Username is required'
+                         'required' => 'Username is required',
+                         
                     ]
                ],
                'password' => [
@@ -50,24 +51,24 @@ class Auth extends BaseController
           {
                return redirect()->to('/login')->withInput()->with('validation', $this->validation);
           }
-        //get user input from login form
-        $auth = $this->request->getVar('auth');
-        $password = $this->request->getVar('password');
+          //get user input from login form
+          $auth = $this->request->getVar('auth');
+          $password = $this->request->getVar('password');
 
-        //check if user exists in database
-        $user = $this->UserModel->where('username', $auth)->first();
+          //check if user exists in database
+          $user = $this->UserModel->where('username', $auth)->first();
 
           //   if (password_verify($password, $user['password'])) 
-            if ($password == $user['password'])
-            {
-                //check if user is active or not
-                if($user['userstat'] == "inactive")
-                {
+          if ($password == $user['password'])
+          {
+               //check if user is active or not
+               if($user['userstat'] == "inactive")
+               {
                     session()->setFlashdata('error', 'Sorry, Your account is inactive. Please contact the administrator.');
                     return redirect()->to('/login');
-                }
-                else
-                {
+               }
+               else
+               {
                     //set session variables
                     $this->session->set('user_id', $user['id']);
                     $this->session->set('user_name', $user['username']);
@@ -75,17 +76,17 @@ class Auth extends BaseController
                     $this->session->set('user_role', $user['role']);
                     $this->session->set('isLoggedIn', TRUE);
                     return redirect()->to('/dashboard');
-                }
-            }
-            //if user does not exist
-            else 
-            {
-                session()->setFlashdata('error', 'Incorrect Password');
-                return redirect()->back()->withInput();
-            }
+               }
+          }
+          //if user does not exist
+          else 
+          {
+               session()->setFlashdata('error', 'Incorrect Password');
+               return redirect()->back()->withInput();
+          }
      }
 
- /*
+/*
 
      public function forgotPassword()
      {

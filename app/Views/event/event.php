@@ -38,9 +38,28 @@
                     <h1 class="fs-3">Event</h1>
                     <a href="/event/create" class="btn btn-outline-secondary btn-sm float-end">New Event <span><i class="bi bi-plus-lg"></i></span></a>
                 </div>
+                <!-- <div class="container-fluid"> -->
+                    <div class="row">
+                        <div class="col-md-4">
+                            <form action="" method="post">
+                                <select class="form-select float-start" name="attendance" onchange="submit()">
+                                    <option value>Select Event Type</option>
+                                    <option value="" >Semua</option>
+                                    <option value="On Going" >On Going</option>
+                                    <option value="Close" >TClose</option>
+                                </select>    
+                            </form>
+                        </div>
+                        <div class="col-md-4">      
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" name="nama_penuh" id="filter" class="form-control"  placeholder="Search event anme"  value="" onkeyup="searchfunct()" >      
+                        </div>
+                    </div>
+                <!-- </div> -->
                     <hr>
                     <div class="table-responsive">
-                        <table class="table table-striped">
+                        <table class="table table-striped" id="table">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -79,11 +98,7 @@
                                             <td>
                                                 <a href="/event/detail/<?= $e['eventid'];?>" class="btn btn-secondary" ><span><i class="bi bi-chevron-right"></i></span></a>
                                                 <a href="/event/edit/<?= $e['eventid'];?>" class="btn btn-primary" ><span><i class="fa-regular fa-pen-to-square"></i></span></a>
-                                                <form action="event/delete/<?= $e['eventid'];?>" method="post" class="d-inline" data-bs-toggle="tooltip" >
-                                                    <?= csrf_field(); ?>
-                                                    <input type="hidden" name="_method" value="DELETE" >
-                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure to delete this event ?')" ><span><i class="fa-solid fa-trash"></i></span></button>
-                                                </form>
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletemodal<?=$e['eventid'];?>"><span><i class="fa-regular fa-trash-alt"></i></span></button>
                                             </td>
                                         </tr>
                                     <?php endforeach;?>
@@ -99,6 +114,64 @@
         </div>
     </div>
 
+    <?php foreach($event as $e):?>
+        <div class="modal fade" id="deletemodal<?=$e['eventid'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Event</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                        <div class="modal-body">
+                            <h1 class="small text-muted">Are you sure to delete this event ? This action will delete all the related data to this event.</h1>
+                        <form action="event/delete/<?= $e['eventid'];?>" method="post" class="d-inline" data-bs-toggle="tooltip" >
+                            <?= csrf_field(); ?>
+                            <input type="hidden" name="_method" value="DELETE" >                                       
+                        </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-danger">Delete Event</button>
+                        </form>
+                            </div>
+                </div>
+            </div>
+        </div>
+    <?php endforeach;?>
+
 </div>
+
+<script>
+    //live search
+    function searchfunct()
+    {
+        var input, filter, table, tr, td, i, txtValue;
+
+        input = document.getElementById("filter");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("table");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) 
+        {
+            td = tr[i].getElementsByTagName("td")[1];    
+            if (td) 
+            {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) 
+                {
+                    tr[i].style.display = "";
+                } 
+                else 
+                {
+                    tr[i].style.display = "none";
+                }
+            }       
+        }
+    } 
+
+
+
+
+</script>
 
 <?= $this->endSection(); ?>

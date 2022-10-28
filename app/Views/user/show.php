@@ -42,6 +42,8 @@
         </div>
     </div>
 
+
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -76,8 +78,8 @@
                                             }                                          
                                             ?>"><?=$u['userstat'];?></span></td>
                                         <td>
-                                            <button  class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modal<?=$u['id'];?>"><span><i class="fa-regular fa-pen-to-square"></i></span></button>
-                                            <button  class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#modalstat<?=$u['id'];?>"><span><i class="fa-regular fa-user"></i></span></button>  
+                                            <button  class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modal<?=$u['id'];?>"><span><i class="fa-regular fa-pen-to-square"></i></span></button>
+                                            <button  class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalstat<?=$u['id'];?>"><span><i class="fa-regular fa-user"></i></span></button>  
                                         </td>
                                     </tr>
                                 <?php endforeach;?>
@@ -226,6 +228,8 @@
 
 
 </div>
+
+
 
 
 <?= $this->endSection(); ?>
