@@ -35,4 +35,29 @@ class User extends BaseController
         $this->userModel->insert($data);
         return redirect()->back()->with('success', 'User has been added successfully');
     }
+
+    public function updatedetail($id)
+    {
+        $data =[
+            'email' => $this->request->getVar('email'),
+            'username' => $this->request->getVar('username'),
+            'password' => $this->request->getVar('password'),
+            'role' => $this->request->getVar('role'),
+            'userstat' => 'active',
+        ];
+
+        $this->userModel->update($id, $data);
+        return redirect()->back()->with('success', 'User has been updated successfully');
+    }
+
+    public function updatestat($id)
+    {
+        $data =[
+            'userstat' => $this->request->getVar('userstat'),
+        ];
+
+        $this->userModel->update($id, $data);
+        return redirect()->back()->with('success', 'User Status has been updated successfully');
+    }
+   
 }
