@@ -61,7 +61,7 @@
                                     </div>
                             </div>
                         </div>
-                            <form action="/event/listing/register/14/step3" method="post" class="needs-validation" novalidate>
+                            <form action="/event/listing/register/14/step2" method="post" class="needs-validation" novalidate>
                                 <?= csrf_field(); ?> 
                                     <div class="d-grid my-1">
                                         <button type="submit" class="btn btn-secondary float-end">Register Now</button>
