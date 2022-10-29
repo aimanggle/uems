@@ -15,10 +15,14 @@ class Event extends BaseController
 
     public function index()
     {
-        
+        $currentPage = $this->request->getVar('page_event') ? $this->request->getVar('page_event') : 1;
+
+        $event = $this->eventModel->findAll();
         $data=[
             'title' => 'Event | UEMS',
-            'event' => $this->eventModel->orderBy('eventid', 'DESC')->FindAll(),
+            'event' => $this->eventModel->orderBy('eventid', 'DESC')->paginate(15, 'event'),
+            'pager' => $this->eventModel->pager,
+            'currentpage' => $currentPage,
             
         ];
         return view('event/event', $data);

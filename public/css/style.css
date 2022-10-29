@@ -5,6 +5,7 @@
 body{
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
+    background-color: rgb(252, 252, 252);
 }
 
 .navbar-text{
@@ -44,6 +45,21 @@ body{
 .bg-gradient-4{
     background: rgb(182,34,195);
     background: linear-gradient(103deg, rgba(182,34,195,1) 0%, rgba(253,138,45,1) 100%);
+}
+
+.text-gradient{
+    color : rgb(111, 0, 255);
+    /* color: linear-gradient(100deg, rgba(207,186,234,1) 0%, rgba(163,178,237,1) 50%, rgba(126,172,239,1) 100%); */
+}
+
+.btn-nav{
+    background-color : rgb(150, 69, 255); 
+}
+
+#detailbtn:hover{
+    
+    background-color : rgb(111, 0, 255); 
+    color: white
 }
 
 

@@ -1,6 +1,7 @@
 <?= $this->extend('layout/template'); ?>
 <?= $this->section('content'); ?>
 
+
 <div class="container-fluid py-4 px-4">
 
 <div class="container-fluid">
@@ -34,7 +35,7 @@
         </div>
         <div class="col-md-6">
             <label for="eventname" class="form-label">Event Description</label>
-            <input type="textarea" class="form-control" id="eventdesc" name="eventdesc">
+            <textarea class="form-control" id="eventdesc" name="eventdesc"></textarea>
         </div>
         <div class="col-md-6">
             <label for="startdate" class="form-label">Start Date</label>
@@ -82,4 +83,7 @@
 
    
     </div>
+
+
+
 <?= $this->endSection(); ?>

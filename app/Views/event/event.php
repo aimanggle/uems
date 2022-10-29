@@ -17,19 +17,24 @@
         </div>
     </div>
 
-<?php if (session()->get('success')) :?>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <?=session()->get('success');?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <?php if (session()->get('success')) :?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <?=session()->get('success');?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php endif;?>
+                <?php if (session()->get('error')) :?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <?=session()->get('error');?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php endif;?>
+            </div>
+        </div>
     </div>
-<?php endif;?>
-
-<?php if (session()->get('error')) :?>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <?=session()->get('error');?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-<?php endif;?>
 
     <div class="container-fluid">
         <div class="row">
@@ -38,7 +43,6 @@
                     <h1 class="fs-3">Event</h1>
                     <a href="/event/create" class="btn btn-outline-secondary btn-sm float-end">New Event <span><i class="bi bi-plus-lg"></i></span></a>
                 </div>
-                <!-- <div class="container-fluid"> -->
                     <div class="row">
                         <div class="col-md-4">
                             <form action="" method="post">
@@ -53,10 +57,9 @@
                         <div class="col-md-4">      
                         </div>
                         <div class="col-md-4">
-                            <input type="text" name="nama_penuh" id="filter" class="form-control"  placeholder="Search event anme"  value="" onkeyup="searchfunct()" >      
+                            <input type="text" name="nama_penuh" id="filter" class="form-control"  placeholder="Search event name"  value="" onkeyup="searchfunct()" >      
                         </div>
                     </div>
-                <!-- </div> -->
                     <hr>
                     <div class="table-responsive">
                         <table class="table table-striped" id="table">
@@ -70,7 +73,7 @@
                                 </tr>
                             </thead>
                             <tbody class="table-group-divider">
-                                <?php $bil = 1; ?>
+                                <?php $bil = 1 +(15 * ($currentpage -1));?>
                                     <?php foreach($event as $e):?>
                                         <?php $eventdate = date('d-M-Y',strtotime($e['eventdate']));?>
                                         <tr>
@@ -102,17 +105,19 @@
                                             </td>
                                         </tr>
                                     <?php endforeach;?>
-                                        <?php if(empty($event)) : ?>
-                                        <tr>
-                                            <td colspan="5" class="text-center">No Event Found</td>
-                                        </tr>
-                                        <?php endif;?>
+                                    <?php if(empty($event)) : ?>
+                                    <tr>
+                                        <td colspan="5" class="text-center">No Event Found</td>
+                                    </tr>
+                                    <?php endif;?>
                             </tbody>
                         </table>
                     </div>
             </div>
         </div>
     </div>
+
+    <?= $pager->links('event', 'pagination')?>
 
     <?php foreach($event as $e):?>
         <div class="modal fade" id="deletemodal<?=$e['eventid'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -168,9 +173,6 @@
             }       
         }
     } 
-
-
-
 
 </script>
 
