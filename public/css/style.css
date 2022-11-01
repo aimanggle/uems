@@ -18,6 +18,10 @@ body{
     background: linear-gradient(100deg, rgba(207,186,234,1) 0%, rgba(163,178,237,1) 50%, rgba(126,172,239,1) 100%);
 }
 
+.bg-white{
+    background-color: white;
+}
+
 .px-5-5 {
     padding-left:  5.5rem !important;
     padding-right:  5.5rem !important;
@@ -60,6 +64,12 @@ body{
     
     background-color : rgb(111, 0, 255); 
     color: white
+}
+
+.th-text{
+    background-color : rgb(111, 0, 255); 
+    color : white;
+    /* font-weight: 500; */
 }
 
 

@@ -3,8 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Meta Csrf -->
     <?=csrf_meta();?>
     
+
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
@@ -18,6 +21,9 @@
 
     <!-- Font Awesome Kit  -->
     <script src="https://kit.fontawesome.com/e5eb685012.js" crossorigin="anonymous"></script>
+
+    <!-- Apex Chart -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
     <!-- Page Title -->
     <title><?=$title;?></title>
@@ -43,7 +49,4 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </body>
 </html>
-
-   
-   
 

@@ -1,3 +1,5 @@
+<?php $this->session = \Config\Services::session(); ?>
+
 <?= $this->extend('layout/template');?>
 <?= $this->section('content'); ?>
 
@@ -6,7 +8,7 @@
     <div class="container-fluid pt-4">
         <div class="row">
             <div class="col-md-12">
-                <h3>Dashboard</h3>
+                <h3>Welcome Back, <span class="fw-normal"><?=$this->session->get('user_name');?></span>!</h3>
                 <!-- <hr> -->
             </div>
         </div>
@@ -81,6 +83,118 @@
         </div>
     </div>
 
+    <div class="container-fluid">
+        <div class="row" rowspan="4">
+            <div class="col-md-12">
+                <h3 class="">Graphical Information</h3>
+                <!-- <hr> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card rounded shadow-lg">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5 class="text-center">Top 5 Popular Event</h5>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <td>#</td>
+                                                <td>Event Name</td>
+                                                <td>Detail</td>                                         
+                                            </tr>
+                                        </thead>
+                                        <tbody>                                         
+                                            <tr>
+                                                <td>1</td></td>
+                                                <td>etst1</td>
+                                                <td><a href="/event/detail/" class="btn btn-outline-primary btn-sm text-dark" id="">Detail</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td></td>
+                                                <td>etst2</td>
+                                                <td><a href="/event/detail/" class="btn btn-outline-primary btn-sm text-dark" id="">Detail</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td></td>
+                                                <td>etst1</td>
+                                                <td><a href="/event/detail/" class="btn btn-outline-primary btn-sm text-dark" id="">Detail</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td></td>
+                                                <td>etst1</td>
+                                                <td><a href="/event/detail/" class="btn btn-outline-primary btn-sm text-dark" id="">Detail</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td></td>
+                                                <td>etst1</td>
+                                                <td><a href="/event/detail/" class="btn btn-outline-primary btn-sm text-dark" id="">Detail</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card border-1 shadow text-dark mb-3">
+                            <div class="card-header">
+                                <h5 class="text-center">Total Event</h5>
+                            </div>
+                            <div class="card-body">
+                                <div id="testchart"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-1 shadow text-dark mb-3">
+                            <div class="card-header">
+                                <h5 class="text-center">Total Event</h5>
+                            </div>
+                            <div class="card-body">
+                                <div id="testchart2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>      
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+              <div class="col-md-6">
+                        <div class="card border-1 shadow text-dark mb-3">
+                            <div class="card-header">
+                                <h5 class="text-center">Total Event</h5>
+                            </div>
+                            <div class="card-body">
+                                <div id="testchart3"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-1 shadow text-dark mb-3">
+                            <div class="card-header">
+                                <h5 class="text-center">Total Event</h5>
+                            </div>
+                            <div class="card-body">
+                                <div id="testchart4"></div>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+    </div>
+    
     <div class="container-fluid pt-2">
         <div class="row">
             <div class="col-md-12">
@@ -91,22 +205,22 @@
     </div>
 
     <div class="container-fluid">
-        <div class="card rounded shadow-lg">
-            <div class="container-fluid">
+        <!-- <div class="card rounded shadow-lg"> -->
+            <!-- <div class="container-fluid"> -->
                 <div class="row pt-1">
                     <div class="col-md-12">
-                        <div class="table-reponsive">
+                        <div class="table-reponsive ">
                             <table class="table table-striped">
-                                <thead>
+                                <thead class="th-text">
                                     <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Event</th>
-                                        <th scope="col">Date</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Action</th>
+                                        <th scope="col" class="fw-normal">#</th>
+                                        <th scope="col" class="fw-normal">Event</th>
+                                        <th scope="col" class="fw-normal">Date</th>
+                                        <th scope="col" class="fw-normal">Status</th>
+                                        <th scope="col" class="fw-normal">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody class="table-group-divider">
+                                <tbody class="">
                                     <?php $bil=1;?>
                                     <?php foreach($eventforthismonth as $eve):?>
                                     <tr>
@@ -115,7 +229,7 @@
                                         <td>Otto</td>
                                         <td><?=$eve['eventstatus'];?></td>
                                         <td>
-                                            <a href="/event/detail/<?=$eve['eventid'];?>" class="btn btn-nav btn-sm text-white" id="detailbtn">Detail</a>
+                                            <a href="/event/detail/<?=$eve['eventid'];?>" class="btn btn-outline-primary btn-sm text-dark" id="">Detail</a>
                                         </td>
                                     </tr>
                                     <?php endforeach;?>
@@ -129,21 +243,129 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            <!-- </div> -->
+        <!-- </div> -->
     </div>
 
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="my-3 py-2">Graphical Information</h3>
-                <hr>
-            </div>
-        </div>
-    </div>
 
 
 </div>
+
+<script>
+    var options = {
+  chart: {
+    type: 'line'
+  },
+  series: [{
+    name: 'sales',
+    data: [30,40,35,50,49,60,70,91,125]
+  }],
+  xaxis: {
+    categories: [1991,1992,1993,1994,1995,1996,1997, 1998,1999]
+  }
+}
+
+var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+chart.render();
+</script>
+
+<script>
+    var options = {
+  chart: {
+      height: 300,
+      type: 'radialBar',
+  },
+  series: [98],
+  colors: ["#9645ff"],
+  labels: ['Progress'],
+}
+
+var chart = new ApexCharts(document.querySelector("#progresschart"), options);
+
+chart.render();
+</script>
+
+<script>
+    var options = {
+  chart: {
+      height: 300,
+      type: 'radialBar',
+  },
+  series: [98],
+  colors: ["#9645ff"],
+  labels: ['Progress'],
+}
+
+var chart = new ApexCharts(document.querySelector("#progchart"), options);
+
+chart.render();
+</script>
+
+<script>
+    var options = {
+  chart: {
+      height: 300,
+      type: 'radialBar',
+  },
+  series: [98],
+  colors: ["#9645ff"],
+  labels: ['Progress'],
+}
+
+var chart = new ApexCharts(document.querySelector("#testchart"), options);
+
+chart.render();
+</script>
+
+<script>
+    var options = {
+  chart: {
+      height: 300,
+      type: 'radialBar',
+  },
+  series: [98],
+  colors: ["#9645ff"],
+  labels: ['Progress'],
+}
+
+var chart = new ApexCharts(document.querySelector("#testchart2"), options);
+
+chart.render();
+</script>
+
+</script>
+
+<script>
+    var options = {
+  chart: {
+      height: 300,
+      type: 'radialBar',
+  },
+  series: [98],
+  colors: ["#9645ff"],
+  labels: ['Progress'],
+}
+
+var chart = new ApexCharts(document.querySelector("#testchart3"), options);
+
+chart.render();
+</script>
+
+<script>
+    var options = {
+  chart: {
+      height: 300,
+      type: 'radialBar',
+  },
+  series: [98],
+  colors: ["#9645ff"],
+  labels: ['Progress'],
+}
+
+var chart = new ApexCharts(document.querySelector("#testchart4"), options);
+
+chart.render();
+</script>
 
 <?= $this->endSection(); ?>
