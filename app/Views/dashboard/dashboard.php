@@ -1,5 +1,3 @@
-<?php $this->session = \Config\Services::session(); ?>
-
 <?= $this->extend('layout/template');?>
 <?= $this->section('content'); ?>
 
@@ -8,7 +6,7 @@
     <div class="container-fluid pt-4">
         <div class="row">
             <div class="col-md-12">
-                <h3>Welcome Back, <span class="fw-normal"><?=$this->session->get('user_name');?></span>!</h3>
+                <h3>Welcome Back, <span class="fw-normal"><?=$username;?></span>!</h3>
                 <!-- <hr> -->
             </div>
         </div>
@@ -99,7 +97,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <h5 class="text-center">7 Days Previous Register Trend</h5>
+                                <h5 class="text-center">Trend Registration Per Day</h5>
                                 <div id="sevendayschart" class="w-auto" style="height: 300px;"></div>
                             </div>
                         </div>
@@ -107,56 +105,19 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card border-1 shadow text-dark mb-3">
-                            <div class="card-header">
-                                <h5 class="text-center">Total Event</h5>
-                            </div>
-                            <div class="card-body">
-                                <div id="testchart"></div>
+            <div class="col-md-6 mb-3">
+                <div class="card rounded shadow-lg">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5 class="text-center">Student Registration By College</h5>
+                                <div id="chart" class="w-auto"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="card border-1 shadow text-dark mb-3">
-                            <div class="card-header">
-                                <h5 class="text-center">Total Event</h5>
-                            </div>
-                            <div class="card-body">
-                                <div id="testchart2"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>      
+                </div>
             </div>
 
-        </div>
-    </div>
-
-    <div class="container-fluid">
-        <div class="row">
-              <div class="col-md-6">
-                        <div class="card border-1 shadow text-dark mb-3">
-                            <div class="card-header">
-                                <h5 class="text-center">Total Event</h5>
-                            </div>
-                            <div class="card-body">
-                                <div id="testchart3"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card border-1 shadow text-dark mb-3">
-                            <div class="card-header">
-                                <h5 class="text-center">Total Event</h5>
-                            </div>
-                            <div class="card-body">
-                                <div id="testchart4"></div>
-                            </div>
-                        </div>
-                    </div>
         </div>
     </div>
     
@@ -218,19 +179,21 @@
 
 <!-- 7 Days Chart -->
 <script>
+
+
     var options = {
   chart: {
     type: 'area',
-    height: '300px' 
+    height: '290px'
+    
   },
-  
   series: [{
     name: 'Register per day',
-    data: ['<?=$regseventhdate['total']?>','<?=$regsixthdate['total']?>','<?=$regfifthdate['total']?>','<?=$regfourthdate['total']?>','<?=$regthirddate['total']?>','<?=$regseconddate['total']?>','<?=$regfirstdate['total']?>']
+    data: [<?=$regfirstdate['total']?>,<?=$regseconddate['total']?>,<?=$regthirddate['total']?>,<?=$regfourthdate['total']?>,<?=$regfifthdate['total']?>,<?=$regsixthdate['total']?>,<?=$regseventhdate['total']?>]
   }],
   colors:['RGB(150 69 255)'],
   xaxis: {
-    categories: ['<?=$date7;?>', '<?=$date6;?>', '<?=$date5;?>', '<?=$date4;?>', '<?=$date3;?>', '<?=$date2;?>', '<?=$date;?>',]
+    categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun',]
   }
   
 }
@@ -241,18 +204,20 @@ chart.render();
 </script>
 
 
-
+<!-- Line Chart -->
 <script>
     var options = {
   chart: {
-    type: 'line'
+    type: 'bar',
+    height: '290px'
   },
   series: [{
-    name: 'sales',
-    data: [30,40,35,50,49,60,70,91,125]
+    name: 'Register By College',
+    data: [30,40,35,50,49,]
   }],
+  colors:['RGB(150 69 255)'],
   xaxis: {
-    categories: [1991,1992,1993,1994,1995,1996,1997, 1998,1999]
+    categories: ['COE', 'CCI', 'COBA', 'COGS', 'TEST2']
   }
 }
 
@@ -261,102 +226,10 @@ var chart = new ApexCharts(document.querySelector("#chart"), options);
 chart.render();
 </script>
 
-<script>
-    var options = {
-  chart: {
-      height: 300,
-      type: 'radialBar',
-  },
-  series: [98],
-  colors: ["#9645ff"],
-  labels: ['Progress'],
-}
 
-var chart = new ApexCharts(document.querySelector("#progresschart"), options);
 
-chart.render();
-</script>
 
-<script>
-    var options = {
-  chart: {
-      height: 300,
-      type: 'radialBar',
-  },
-  series: [98],
-  colors: ["#9645ff"],
-  labels: ['Progress'],
-}
 
-var chart = new ApexCharts(document.querySelector("#progchart"), options);
 
-chart.render();
-</script>
-
-<script>
-    var options = {
-  chart: {
-      height: 300,
-      type: 'radialBar',
-  },
-  series: [98],
-  colors: ["#9645ff"],
-  labels: ['Progress'],
-}
-
-var chart = new ApexCharts(document.querySelector("#testchart"), options);
-
-chart.render();
-</script>
-
-<script>
-    var options = {
-  chart: {
-      height: 300,
-      type: 'radialBar',
-  },
-  series: [98],
-  colors: ["#9645ff"],
-  labels: ['Progress'],
-}
-
-var chart = new ApexCharts(document.querySelector("#testchart2"), options);
-
-chart.render();
-</script>
-
-</script>
-
-<script>
-    var options = {
-  chart: {
-      height: 300,
-      type: 'radialBar',
-  },
-  series: [98],
-  colors: ["#9645ff"],
-  labels: ['Progress'],
-}
-
-var chart = new ApexCharts(document.querySelector("#testchart3"), options);
-
-chart.render();
-</script>
-
-<script>
-    var options = {
-  chart: {
-      height: 300,
-      type: 'radialBar',
-  },
-  series: [98],
-  colors: ["#9645ff"],
-  labels: ['Progress'],
-}
-
-var chart = new ApexCharts(document.querySelector("#testchart4"), options);
-
-chart.render();
-</script>
 
 <?= $this->endSection(); ?>
