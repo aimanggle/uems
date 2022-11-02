@@ -41,5 +41,45 @@ class RegistrantModel extends Model
         return $this->db->query($sql)->getRowArray();
     }
 
-  
+    public function countregfirstdate($currentdate)
+    {
+        $sql = "SELECT COUNT(*) AS total FROM registrant WHERE date(regdate) = '$currentdate'";
+        return $this->db->query($sql)->getRowArray();
+    }
+
+    public function countregseconddate($seconddate)
+    {
+        $sql = "SELECT COUNT(*) AS total FROM registrant WHERE date(regdate) = '$seconddate'";
+        return $this->db->query($sql)->getRowArray();
+    }
+
+    public function countregthirddate($thirddate)
+    {
+        $sql = "SELECT COUNT(*) AS total FROM registrant WHERE date(regdate) = '$thirddate'";
+        return $this->db->query($sql)->getRowArray();
+    }
+
+    public function countregfourthdate($fourthdate)
+    {
+        $sql = "SELECT COUNT(*) AS total FROM registrant WHERE date(regdate) = '$fourthdate'";
+        return $this->db->query($sql)->getRowArray();
+    }
+
+    public function countregfifthdate($fifthdate)
+    {
+        $sql = "SELECT COUNT(*) AS total FROM registrant WHERE date(regdate) = '$fifthdate'";
+        return $this->db->query($sql)->getRowArray();
+    }
+
+    public function countregsixthdate($sixthdate)
+    {
+        $sql = "SELECT COUNT(*) AS total FROM registrant WHERE date(regdate) = '$sixthdate'";
+        return $this->db->query($sql)->getRowArray();
+    }
+
+    public function countregseventhdate($seventhdate)
+    {
+        $sql = "SELECT COUNT(*) AS total FROM registrant WHERE date(regdate) = '$seventhdate'";
+        return $this->db->query($sql)->getRowArray();
+    }
 }

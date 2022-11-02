@@ -83,59 +83,24 @@
         </div>
     </div>
 
-    <div class="container-fluid">
+    <!-- <div class="container-fluid">
         <div class="row" rowspan="4">
             <div class="col-md-12">
                 <h3 class="">Graphical Information</h3>
-                <!-- <hr> -->
+                <hr> 
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 mb-3">
                 <div class="card rounded shadow-lg">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <h5 class="text-center">Top 5 Popular Event</h5>
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <td>#</td>
-                                                <td>Event Name</td>
-                                                <td>Detail</td>                                         
-                                            </tr>
-                                        </thead>
-                                        <tbody>                                         
-                                            <tr>
-                                                <td>1</td></td>
-                                                <td>etst1</td>
-                                                <td><a href="/event/detail/" class="btn btn-outline-primary btn-sm text-dark" id="">Detail</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td></td>
-                                                <td>etst2</td>
-                                                <td><a href="/event/detail/" class="btn btn-outline-primary btn-sm text-dark" id="">Detail</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td></td>
-                                                <td>etst1</td>
-                                                <td><a href="/event/detail/" class="btn btn-outline-primary btn-sm text-dark" id="">Detail</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td></td>
-                                                <td>etst1</td>
-                                                <td><a href="/event/detail/" class="btn btn-outline-primary btn-sm text-dark" id="">Detail</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td></td>
-                                                <td>etst1</td>
-                                                <td><a href="/event/detail/" class="btn btn-outline-primary btn-sm text-dark" id="">Detail</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                <h5 class="text-center">7 Days Previous Register Trend</h5>
+                                <div id="sevendayschart" class="w-auto" style="height: 300px;"></div>
                             </div>
                         </div>
                     </div>
@@ -250,6 +215,32 @@
 
 
 </div>
+
+<!-- 7 Days Chart -->
+<script>
+    var options = {
+  chart: {
+    type: 'area',
+    height: '300px' 
+  },
+  
+  series: [{
+    name: 'Register per day',
+    data: ['<?=$regseventhdate['total']?>','<?=$regsixthdate['total']?>','<?=$regfifthdate['total']?>','<?=$regfourthdate['total']?>','<?=$regthirddate['total']?>','<?=$regseconddate['total']?>','<?=$regfirstdate['total']?>']
+  }],
+  colors:['RGB(150 69 255)'],
+  xaxis: {
+    categories: ['<?=$date7;?>', '<?=$date6;?>', '<?=$date5;?>', '<?=$date4;?>', '<?=$date3;?>', '<?=$date2;?>', '<?=$date;?>',]
+  }
+  
+}
+
+var chart = new ApexCharts(document.querySelector("#sevendayschart"), options);
+
+chart.render();
+</script>
+
+
 
 <script>
     var options = {
