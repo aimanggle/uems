@@ -16,16 +16,15 @@ class Dashboard extends BaseController
     
     public function dashboard()
     {
-        $currentdate = date('Y-m-d');
-        $seconddate = date("Y-m-d", strtotime("-1 days"));
-        $thirddate = date("Y-m-d", strtotime("-2 days"));
-        $fourthdate = date("Y-m-d", strtotime("-3 days"));
-        $fifthdate = date("Y-m-d", strtotime("-4 days"));
-        $sixthdate = date("Y-m-d", strtotime("-5 days"));
-        $seventhdate = date("Y-m-d", strtotime("-6 days"));
 
-
-
+        $mondaydate = date('Y-m-d', strtotime('monday this week'));
+        $tuesdaydate = date('Y-m-d', strtotime('tuesday this week'));
+        $wednesdaydate = date('Y-m-d', strtotime('wednesday this week'));
+        $thursdaydate = date('Y-m-d', strtotime('thursday this week'));
+        $fridaydate = date('Y-m-d', strtotime('friday this week'));
+        $saturdaydate = date('Y-m-d', strtotime('saturday this week'));
+        $sundaydate = date('Y-m-d', strtotime('sunday this week'));
+        
         $data=[
             'title' => 'Dashboard | UEMS',
             'event' => $this->eventModel->countevent(),
@@ -33,23 +32,18 @@ class Dashboard extends BaseController
             'complete' => $this->eventModel->countComplete(),
             'eventforthismonth' => $this->eventModel->showeventforthismonth(),
             'regtoday' => $this->registrantModel->countregtoday(),
-            'regfirstdate' => $this->registrantModel->countregfirstdate($currentdate),
-            'regseconddate' => $this->registrantModel->countregseconddate($seconddate),
-            'regthirddate' => $this->registrantModel->countregthirddate($thirddate),
-            'regfourthdate' => $this->registrantModel->countregthirddate($fourthdate),
-            'regfifthdate' => $this->registrantModel->countregthirddate($fifthdate),
-            'regsixthdate' => $this->registrantModel->countregthirddate($sixthdate),
-            'regseventhdate' => $this->registrantModel->countregthirddate($seventhdate),
-            'date' => date('d-M'),
-            'date2' => date("d-M", strtotime("-1 days")),
-            'date3' => date("d-M", strtotime("-2 days")),
-            'date4' => date("d-M", strtotime("-3 days")),
-            'date5' => date("d-M", strtotime("-4 days")),
-            'date6' => date("d-M", strtotime("-5 days")),
-            'date7' => date("d-M", strtotime("-6 days")),
+            'regfirstdate' => $this->registrantModel->countregfirstdate($mondaydate),
+            'regseconddate' => $this->registrantModel->countregseconddate($tuesdaydate),
+            'regthirddate' => $this->registrantModel->countregthirddate($wednesdaydate),
+            'regfourthdate' => $this->registrantModel->countregfourthdate($thursdaydate),
+            'regfifthdate' => $this->registrantModel->countregfifthdate($fridaydate),
+            'regsixthdate' => $this->registrantModel->countregsixthdate($saturdaydate),
+            'regseventhdate' => $this->registrantModel->countregseventhdate($sundaydate),
+            'username' => session()->get('user_name'),
 
         ];
         // dd($data);
+
         return view('dashboard/dashboard', $data);
     }
 
