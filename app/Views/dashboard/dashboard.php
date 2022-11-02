@@ -184,14 +184,25 @@
     var options = {
   chart: {
     type: 'area',
-    height: '290px'
+    height: '380px'
     
   },
   series: [{
     name: 'Register per day',
     data: [<?=$regfirstdate['total']?>,<?=$regseconddate['total']?>,<?=$regthirddate['total']?>,<?=$regfourthdate['total']?>,<?=$regfifthdate['total']?>,<?=$regsixthdate['total']?>,<?=$regseventhdate['total']?>]
   }],
-  colors:['RGB(150 69 255)'],
+colors : ['RGB(150 69 255)'],
+fill: {
+    type: "gradient",
+    gradient: {
+      shadeIntensity: 1,
+      opacityFrom: 0.7,
+      opacityTo: 0.9,
+      stops: [0, 90,],
+      type : "vertical",
+      gradientToColors:["#82acee"],
+    }
+  },
   xaxis: {
     categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun',]
   }
@@ -203,19 +214,29 @@ var chart = new ApexCharts(document.querySelector("#sevendayschart"), options);
 chart.render();
 </script>
 
-
-<!-- Line Chart -->
+<!-- Student By College Chart -->
 <script>
     var options = {
   chart: {
     type: 'bar',
-    height: '290px'
+    height: '380px'
   },
   series: [{
     name: 'Register By College',
     data: [30,40,35,50,49,]
   }],
-  colors:['RGB(150 69 255)'],
+  colors: ["#82acee"],
+  fill: {
+    type: "gradient",
+    gradient: {
+      shadeIntensity: 1,
+      opacityFrom: 0.7,
+      opacityTo: 0.9,
+      stops: [0, 90,],
+      type : "vertical",
+      gradientToColors:['RGB(150 69 255)'],
+    }
+  },
   xaxis: {
     categories: ['COE', 'CCI', 'COBA', 'COGS', 'TEST2']
   }
@@ -225,10 +246,6 @@ var chart = new ApexCharts(document.querySelector("#chart"), options);
 
 chart.render();
 </script>
-
-
-
-
 
 
 
