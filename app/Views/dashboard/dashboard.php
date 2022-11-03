@@ -173,8 +173,6 @@
         <!-- </div> -->
     </div>
 
-
-
 </div>
 
 
@@ -197,37 +195,34 @@ $cogspercent = number_format($cogspercen, 0, '.', '');
 
 ?>
 
-
 <!-- 7 Days Chart -->
 <script>
 
-
     var options = {
-  chart: {
+    chart: {
     type: 'area',
     height: '380px'
     
-  },
-  series: [{
+    },
+    series: [{
     name: 'Register per day',
     data: [<?=$regfirstdate['total']?>,<?=$regseconddate['total']?>,<?=$regthirddate['total']?>,<?=$regfourthdate['total']?>,<?=$regfifthdate['total']?>,<?=$regsixthdate['total']?>,<?=$regseventhdate['total']?>]
-  }],
+    }],
 colors : ['RGB(150 69 255)'],
 fill: {
     type: "gradient",
     gradient: {
-      shadeIntensity: 1,
-      opacityFrom: 0.7,
-      opacityTo: 0.9,
-      stops: [0, 90,],
-      type : "vertical",
-      gradientToColors:["#82acee"],
+        shadeIntensity: 1,
+        opacityFrom: 0.7,
+        opacityTo: 0.9,
+        stops: [0, 90,],
+        type : "vertical",
+        gradientToColors:["#82acee"],
     }
-  },
-  xaxis: {
+    },
+    xaxis: {
     categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun',]
-  }
-  
+    }
 }
 
 var chart = new ApexCharts(document.querySelector("#sevendayschart"), options);
@@ -238,41 +233,40 @@ chart.render();
 <!-- Student By College Chart -->
 <script>
     var options = {
-  chart: {
+    chart: {
     type: 'bar',
     height: '380px',
     
-  },
-  series: [{
+    },
+    series: [{
     name: 'Register By College',
-   
     data: [<?=$coepercent?>,<?=$cobapercent?>,<?=$ccipercent?>,<?=$cespercent?>,<?=$cogspercent?>]
-  }],
-  colors: ["#82acee"],
-  fill: {
+    }],
+    colors: ["#82acee"],
+    fill: {
     type: "gradient",
     gradient: {
-      shadeIntensity: 1,
-      opacityFrom: 0.7,
-      opacityTo: 0.9,
-      stops: [0, 90,],
-      type : "vertical",
-      gradientToColors:['RGB(150 69 255)'],
+        shadeIntensity: 1,
+        opacityFrom: 0.7,
+        opacityTo: 0.9,
+        stops: [0, 90,],
+        type : "vertical",
+        gradientToColors:['RGB(150 69 255)'],
     }
-  },
-  xaxis: {
+    },
+    xaxis: {
     categories: [
         <?php foreach($college as $col):?>
             '<?=$col['collegeshortname']?>',
         <?php endforeach;?>
     ]
-  },
-  yaxis: {
-  labels: {
+    },
+    yaxis: {
+    labels: {
     formatter: function (data) {
-      return data + "%";
+        return data + "%";
     }
-  },
+    },
 },
 }
 
@@ -280,7 +274,5 @@ var chart = new ApexCharts(document.querySelector("#chart"), options);
 
 chart.render();
 </script>
-
-
 
 <?= $this->endSection(); ?>

@@ -19,10 +19,11 @@
             </div>
         </div>
     </div>
+
     <div class="container-fluid">
         <div class="row mt-2 mb-4">
             <?php foreach($event as $e):?>
-            <div class="col-md-4 mt-3 mb-3 shadow-md">
+            <div class="col-md-4 mt-3 mb-3 shadow-md" id="listing">
                 <div class="card border border-secondary border-opacity-50">
                     <div class="card-body">
                         <h5 class="card-title"><?=$e['eventname'];?>  <span class="badge text-bg-warning"><?=$e['eventstatus'];?></span></h5>
@@ -64,10 +65,5 @@
     </div>
 
 </div>
-
-<!-- <div class="container-fluid"> -->
-    
-<!-- </div> -->
-             
 
 <?= $this->endSection(); ?>

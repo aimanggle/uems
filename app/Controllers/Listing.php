@@ -16,6 +16,7 @@ class Listing extends BaseController
     
     public function index()
     {
+
         $data = [
             'title' => 'Listing | UEMS',
             'event' => $this->eventModel->orderBy('eventid', 'DESC')->findAll(),
