@@ -9,7 +9,7 @@ class RegistrantModel extends Model
     
     protected $table            = 'registrant';
     protected $primaryKey       = 'regid';
-    protected $allowedFields    = ['regid', 'sid', 'eventid', 'regdate'];
+    protected $allowedFields    = ['regid', 'sid', 'eventid', 'regdate', 'collegeid'];
 
     public function findbyeventid($eventid)
     {
@@ -80,6 +80,13 @@ class RegistrantModel extends Model
     public function countregseventhdate($seventhdate)
     {
         $sql = "SELECT COUNT(*) AS total FROM registrant WHERE date(regdate) = '$seventhdate'";
+        return $this->db->query($sql)->getRowArray();
+    }
+
+    //join table student and count by collegeid
+    public function countregbycollege($collegeid)
+    {
+        $sql = "SELECT COUNT(DISTINCT collegeid,sid) AS total FROM registrant WHERE collegeid = $collegeid";
         return $this->db->query($sql)->getRowArray();
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use Config\Database;
+use Config\Services;
 use App\Models\EventModel;
 use App\Controllers\BaseController;
 
@@ -11,6 +12,7 @@ class Event extends BaseController
     public function __construct()
     {
         $this->eventModel = new EventModel();
+        $this->validation = Services::validation();
     }
 
     public function index()
@@ -40,7 +42,8 @@ class Event extends BaseController
     public function create()
     {
         $data=[
-            'title' => 'New Event | UEMS'
+            'title' => 'New Event | UEMS',
+            'validation' => $this->validation,
         ];
 
         return view('event/create', $data);
@@ -48,7 +51,25 @@ class Event extends BaseController
 
     public function insert()
     {
-       
+        //validate input
+        if(!$this->validate([
+            'eventname' => [
+                'rules' => 'required|',
+                'errors' => [
+                    'required' => 'Event name is required',
+                ]
+            ],
+            'eventdesc' => [
+                'rules' => 'required|',
+                'errors' => [
+                    'required' => 'Event description is required',
+                ]
+            ],
+        ])){
+            $validation = $this->validation;
+            return redirect()->back()->withInput()->with('validation', $validation);
+        }
+
         $data=[
             'eventname' => $this->request->getVar('eventname'),
             'eventdesc' => $this->request->getVar('eventdesc'),

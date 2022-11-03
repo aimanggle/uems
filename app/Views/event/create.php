@@ -31,11 +31,13 @@
         <?=csrf_field();?>       
         <div class="col-md-6">
             <label for="eventname" class="form-label">Event Name</label>
-            <input type="text" class="form-control" id="eventname" name="eventname">
+            <input type="text" class="form-control <?=  ($validation->hasError('eventname')) ? 'is-invalid' : 'invalid'?>" id="eventname" name="eventname" value="<?=old('eventname')?>">
+            <div class="invalid-feedback"><?= $validation->getError('eventname');?></div>
         </div>
         <div class="col-md-6">
             <label for="eventname" class="form-label">Event Description</label>
-            <textarea class="form-control" id="eventdesc" name="eventdesc"></textarea>
+            <textarea class="form-control <?=  ($validation->hasError('eventdesc')) ? 'is-invalid' : 'invalid'?>" id="eventdesc" name="eventdesc"><?=old('eventdesc')?></textarea>
+            <div class="invalid-feedback"><?= $validation->getError('eventdesc');?></div>
         </div>
         <div class="col-md-6">
             <label for="startdate" class="form-label">Start Date</label>

@@ -15,4 +15,11 @@ class StudentModel extends Model
         $sql = "SELECT * FROM student JOIN program ON student.programid = program.programid WHERE studentid = '$studentid'";
         return $this->db->query($sql)->getRow();
     }
+
+    //count all student
+    public function countstudent()
+    {
+        $sql = "SELECT * FROM student";
+        return $this->db->query($sql)->getNumRows();
+    }
 }

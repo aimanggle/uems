@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\EventModel;
+use App\Models\CollegeModel;
+use App\Models\StudentModel;
 use App\Models\RegistrantModel;
 use App\Controllers\BaseController;
 
@@ -12,6 +14,8 @@ class Dashboard extends BaseController
     {
         $this->eventModel = new EventModel();
         $this->registrantModel = new RegistrantModel();
+        $this->collegeModel = new CollegeModel();
+        $this->studentModel = new StudentModel();
     }
     
     public function dashboard()
@@ -25,6 +29,18 @@ class Dashboard extends BaseController
         $saturdaydate = date('Y-m-d', strtotime('saturday this week'));
         $sundaydate = date('Y-m-d', strtotime('sunday this week'));
         
+        $collegeidcoe = '1';
+        $collegeidcoba = '2';
+        $collegeidcci = '3';
+        $collegeidces = '4';
+        $collegidcogs = '5';
+
+        $coe = $this->registrantModel->countregbycollege($collegeidcoe);
+        $coba = $this->registrantModel->countregbycollege($collegeidcoba);
+        $cci = $this->registrantModel->countregbycollege($collegeidcci);
+        $ces = $this->registrantModel->countregbycollege($collegeidces);
+        $cogs = $this->registrantModel->countregbycollege($collegidcogs);
+
         $data=[
             'title' => 'Dashboard | UEMS',
             'event' => $this->eventModel->countevent(),
@@ -40,10 +56,15 @@ class Dashboard extends BaseController
             'regsixthdate' => $this->registrantModel->countregsixthdate($saturdaydate),
             'regseventhdate' => $this->registrantModel->countregseventhdate($sundaydate),
             'username' => session()->get('user_name'),
-
+            'college' => $this->collegeModel->FindAll(),
+            'student' => $this->studentModel->countstudent(),
+            'coe' => $coe,
+            'coba' => $coba,
+            'cci' => $cci,  
+            'ces' => $ces,
+            'cogs' => $cogs,       
         ];
-        // dd($data);
-
+        // d($data);
         return view('dashboard/dashboard', $data);
     }
 

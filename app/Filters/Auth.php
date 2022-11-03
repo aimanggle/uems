@@ -11,8 +11,7 @@ class Auth implements FilterInterface
         if (!session()->get('isLoggedIn'))
         {
             return redirect()->to('/login');
-        }
-        
+        }       
     }
     
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)

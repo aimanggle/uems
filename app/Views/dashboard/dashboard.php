@@ -124,7 +124,7 @@
     <div class="container-fluid pt-2">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="">Event For This Month</h3>
+                <h3 class="">Upcoming Event For This Month</h3>
                 <!-- <hr> -->
             </div>
         </div>
@@ -152,7 +152,7 @@
                                     <tr>
                                         <th scope="row"><?=$bil++;?></th>
                                         <td><?=$eve['eventname'];?></td>
-                                        <td>Otto</td>
+                                        <td><?= date('d-M-y',strtotime($eve['eventdate']));?></td>
                                         <td><?=$eve['eventstatus'];?></td>
                                         <td>
                                             <a href="/event/detail/<?=$eve['eventid'];?>" class="btn btn-outline-primary btn-sm text-dark" id="">Detail</a>
@@ -176,6 +176,27 @@
 
 
 </div>
+
+
+<?php 
+
+$coepercen = ($coe['total']/$student)*100;
+$coepercent = number_format($coepercen, 0, '.', '');
+
+$ccipercen = ($cci['total']/$student)*100;
+$ccipercent = number_format($ccipercen, 0, '.', '');
+
+$cobapercen = ($coba['total']/$student)*100;
+$cobapercent = number_format($cobapercen, 0, '.', '');
+
+$cespercen = ($ces['total']/$student)*100;
+$cespercent = number_format($cespercen, 0, '.', '');
+
+$cogspercen = ($cogs['total']/$student)*100;
+$cogspercent = number_format($cogspercen, 0, '.', '');
+
+?>
+
 
 <!-- 7 Days Chart -->
 <script>
@@ -219,11 +240,13 @@ chart.render();
     var options = {
   chart: {
     type: 'bar',
-    height: '380px'
+    height: '380px',
+    
   },
   series: [{
     name: 'Register By College',
-    data: [30,40,35,50,49,]
+   
+    data: [<?=$coepercent?>,<?=$cobapercent?>,<?=$ccipercent?>,<?=$cespercent?>,<?=$cogspercent?>]
   }],
   colors: ["#82acee"],
   fill: {
@@ -238,8 +261,19 @@ chart.render();
     }
   },
   xaxis: {
-    categories: ['COE', 'CCI', 'COBA', 'COGS', 'TEST2']
-  }
+    categories: [
+        <?php foreach($college as $col):?>
+            '<?=$col['collegeshortname']?>',
+        <?php endforeach;?>
+    ]
+  },
+  yaxis: {
+  labels: {
+    formatter: function (data) {
+      return data + "%";
+    }
+  },
+},
 }
 
 var chart = new ApexCharts(document.querySelector("#chart"), options);
