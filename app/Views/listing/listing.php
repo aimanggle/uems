@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
 
-    <div class="container-fluid">
+    <div class="container-fluid m-0 p-0 bg-gradient-1">
         <div class="row mt-4">
             <div class="col-md-12">
                 <h1 class="mt-3 fs-2 text-center">Find Your Favourite Event</h1>
@@ -32,7 +32,7 @@
             <div class="col-md-4">              
                     <form action="" method="post" class="">
                         <?= csrf_field(); ?>
-                        <select name="query" id="" class="form-select" onchange="">
+                        <select name="query" id="filter" class="form-select" onchange="">
                             <option value="">--Event Type--</option>
                             <option value="Physical">Physical</option>
                             <option value="Online">Online</option>
@@ -42,7 +42,7 @@
             <div class="col-md-4">
                 <form action="" method="post" class="">
                     <?= csrf_field(); ?>
-                    <select name="query" id="" class="form-select">
+                    <select name="query" id="filter" class="form-select">
                         <option value="">--Event Scorun--</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -111,11 +111,33 @@
     desc.textContent = descText + '...';
 
     //jquery auto submit form
+    // $(document).ready(function(){
+    //     $('select').change(function(){
+    //         $(this).closest('form').submit();
+    //         console.log('test');
+    //     });
+    // });
+
+    //sort by category
     $(document).ready(function(){
-        $('select').change(function(){
-            $(this).closest('form').submit();
+        $('#filter').change(function(){
+            var category = $(this).val();
+            $.ajax({
+                url: "/event/listing",
+                method: "POST",
+                data: {category:category},
+                success: function(data){
+                    $('#listing').load(location.href + ' #listing');
+                    console.log('success');
+                },
+                error: function(data){
+                    
+                }
+            });
         });
     });
+
+   
 
 
 </script>
