@@ -21,6 +21,42 @@
     </div>
 
     <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="fs-4">Filter By</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">              
+                    <form action="" method="post" class="">
+                        <?= csrf_field(); ?>
+                        <select name="query" id="" class="form-select" onchange="">
+                            <option value="">--Event Type--</option>
+                            <option value="Physical">Physical</option>
+                            <option value="Online">Online</option>
+                        </select>  
+                    </form>                
+                </div>
+            <div class="col-md-4">
+                <form action="" method="post" class="">
+                    <?= csrf_field(); ?>
+                    <select name="query" id="" class="form-select">
+                        <option value="">--Event Scorun--</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
         <div class="row mt-2 mb-4">
             <?php foreach($event as $e):?>
             <div class="col-md-4 mt-3 mb-3 shadow-md" id="listing">
@@ -67,10 +103,20 @@
 </div>
 
 <script>
+
     //limit 35 word in description
     var desc = document.getElementById('desc');
     var descText = desc.textContent;
     var descText = descText.substring(0, 35);
     desc.textContent = descText + '...';
+
+    //jquery auto submit form
+    $(document).ready(function(){
+        $('select').change(function(){
+            $(this).closest('form').submit();
+        });
+    });
+
+
 </script>
 <?= $this->endSection(); ?>
