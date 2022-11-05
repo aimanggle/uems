@@ -22,8 +22,6 @@ class Auth extends BaseController
      public function index()
      {
           return redirect()->to('/login');
-          // return redirect using named route
-          // return redirect()->to(url_to('login'));
      }
 
      /**
