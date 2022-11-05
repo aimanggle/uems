@@ -61,7 +61,8 @@
                                             <td><?=$eventdate;?></td>
                                             <td><?=$e['eventtype'];?></td>
                                             <td>
-                                                <a href="/registrant/detail/<?= $e['eventid'];?>" class="btn btn-secondary" ><span><i class="bi bi-chevron-right"></i></span></a>
+                                                <!-- <a href="/registrant/detail/<?= $e['eventid'];?>" class="btn btn-secondary" ><span><i class="bi bi-chevron-right"></i></span></a> -->
+                                                <a href="<?= url_to('registrant.detail', $e['eventid'])?>" class="btn btn-secondary" ><span><i class="bi bi-chevron-right"></i></span></a>
                                             </td>
                                         </tr>
                                     <?php endforeach;?>
