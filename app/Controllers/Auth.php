@@ -12,14 +12,25 @@ class Auth extends BaseController
      {
           $this->validation = Services::validation();
           $this->UserModel = new UserModel();
-      
      }
 
+     /**
+      * --------------------------------------------------------------------
+      * Redirect To Login Page Function
+      * --------------------------------------------------------------------
+      */
      public function index()
      {
-        return redirect()->to('/login');
+          return redirect()->to('/login');
+          // return redirect using named route
+          // return redirect()->to(url_to('login'));
      }
 
+     /**
+      * --------------------------------------------------------------------
+      * Show Login Page Function
+      * --------------------------------------------------------------------
+      */
      public function login()
      {
           $data = [
@@ -30,6 +41,11 @@ class Auth extends BaseController
           return view('auth/login',$data);
      }
 
+     /**
+      * --------------------------------------------------------------------
+      * Attempt Login Function
+      * --------------------------------------------------------------------
+      */
      public function attemptLogin()
      {
           //validate input
@@ -147,60 +163,74 @@ class Auth extends BaseController
      }
      */
 
+     /**
+      * --------------------------------------------------------------------
+      * Show Register Page Function
+      * --------------------------------------------------------------------
+      */
      public function register()
      {
           return view('auth/register');
      }
 
+     /**
+      * --------------------------------------------------------------------
+      * Attempt Register Function
+      * --------------------------------------------------------------------
+      */
      public function attempRegister()
      {
-            //get user input from register form
-            $name = $this->request->getPost('name');
-            $email = $this->request->getPost('email');
-            $password = $this->request->getPost('password');
-            $confirm_password = $this->request->getPost('confirm_password');
+          //get user input from register form
+          $name = $this->request->getPost('name');
+          $email = $this->request->getPost('email');
+          $password = $this->request->getPost('password');
+          $confirm_password = $this->request->getPost('confirm_password');
+      
+          //check if user exists in database
+          $user = $this->userModel->where('email', $email)->first();
     
-            //check if user exists in database
-            $user = $this->userModel->where('email', $email)->first();
-    
-            //if user exists
-            if ($user) 
-            {
-                 $this->session->setFlashdata('error', 'Email is already registered');
-                 return redirect()->back()->withInput();
-            }
-            //if user does not exist
-            else 
-            {
-                 //check if password and confirm password match
-                 if($password != $confirm_password)
-                 {
-                        $this->session->setFlashdata('error', 'Password and confirm password do not match');
-                        return redirect()->back()->withInput();
-                 }
-                 //if password and confirm password match
-                 else
-                 {
-                        //hash password
-                        $password = password_hash($password, PASSWORD_DEFAULT);
-    
-                        //insert user data into database
-                        $data = [
-                             'name' => $name,
-                             'email' => $email,
-                             'password' => $password,
-                             'role' => 'user',
-                             'status' => 'active',
-                        ];
-                        $this->userModel->insert($data);
-    
-                        $this->session->setFlashdata('error', 'Successfully registered. Please login to continue.');
-                        return redirect()->to('/login');
-                 }
-            }
+          //if user exists
+          if ($user) 
+          {
+               $this->session->setFlashdata('error', 'Email is already registered');
+               return redirect()->back()->withInput();
+          }
+          //if user does not exist
+          else 
+          {
+               //check if password and confirm password match
+               if($password != $confirm_password)
+               {
+                    $this->session->setFlashdata('error', 'Password and confirm password do not match');
+                    return redirect()->back()->withInput();
+               }
+               //if password and confirm password match
+               else
+               {
+                    //hash password
+                    $password = password_hash($password, PASSWORD_DEFAULT);
+
+                    //insert user data into database
+                    $data = [
+                         'name' => $name,
+                         'email' => $email,
+                         'password' => $password,
+                         'role' => 'user',
+                         'status' => 'active',
+                    ];
+                    $this->userModel->insert($data);
+
+                    $this->session->setFlashdata('error', 'Successfully registered. Please login to continue.');
+                    return redirect()->to('/login');
+               }
+          }
      }
 
-     //logout
+     /**
+      * --------------------------------------------------------------------
+      * Logout Function
+      * --------------------------------------------------------------------
+      */
      public function logout()
      {
           $this->session->destroy();
