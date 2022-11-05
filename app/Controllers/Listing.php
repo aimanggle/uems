@@ -16,9 +16,20 @@ class Listing extends BaseController
     
     public function index()
     {
-        // d($this->request->getVar('query'));
-        $query = $this->request->getVar('query');
+
+        $data = [
+            'title' => 'Listing | UEMS',
+            'event' => $this->eventModel->OrderBy('eventid', 'DESC')->findAll()
+        ];
+        // d($data);
+    
+        return view('listing/listing', $data);
+    }
+
+    public function filter($query)
+    {
         
+
         if($query)
         {
             $event = $this->eventModel->like('eventname', $query)->orLike('eventdesc', $query)->orLike('eventtype', $query)->orLike('eventstatus', $query)->orLike('eventscorun',$query)->findAll();
@@ -27,7 +38,7 @@ class Listing extends BaseController
         {
             $event = $this->eventModel->findAll();
         }
-       
+
         $data = [
             'title' => 'Listing | UEMS',
             'event' => $event,
@@ -36,6 +47,7 @@ class Listing extends BaseController
     
         return view('listing/listing', $data);
     }
+
 
     public function detail($eventid)
     {
