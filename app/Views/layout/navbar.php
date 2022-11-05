@@ -23,7 +23,7 @@
                                 Registrant
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">                    
-                                <li><a class="dropdown-item" href="/registrant"> <span><i class="fa-solid fa-person"></i></span> Manage Registrant</a></li>
+                                <li><a class="dropdown-item" href="<?=url_to('registrant')?>"> <span><i class="fa-solid fa-person"></i></span> Manage Registrant</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
