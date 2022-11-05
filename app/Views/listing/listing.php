@@ -28,7 +28,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><?=$e['eventname'];?>  <span class="badge text-bg-warning"><?=$e['eventstatus'];?></span></h5>
                         <hr>
-                            <p class="card-text"><?=$e['eventdesc'];?></p>
+                            <p class="card-text" id="desc"><?=$e['eventdesc'];?></p>
                             <p class="card-text">
                                 <h1 class="fs-6">Detail </h1>
                                     <div class="row">
@@ -66,4 +66,11 @@
 
 </div>
 
+<script>
+    //limit 35 word in description
+    var desc = document.getElementById('desc');
+    var descText = desc.textContent;
+    var descText = descText.substring(0, 35);
+    desc.textContent = descText + '...';
+</script>
 <?= $this->endSection(); ?>
