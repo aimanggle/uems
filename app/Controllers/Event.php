@@ -15,6 +15,11 @@ class Event extends BaseController
         $this->validation = Services::validation();
     }
 
+    /**
+     * --------------------------------------------------------------------
+     * Show Event Page Function
+     * --------------------------------------------------------------------
+     */
     public function index()
     {
         $currentPage = $this->request->getVar('page_event') ? $this->request->getVar('page_event') : 1;
@@ -30,6 +35,11 @@ class Event extends BaseController
         return view('event/event', $data);
     }
 
+    /**
+     * --------------------------------------------------------------------
+     * Show Event Detail Page Function
+     * --------------------------------------------------------------------
+     */
     public function detail($eventid)
     {
         $data=[
@@ -39,6 +49,11 @@ class Event extends BaseController
         return view('event/detail', $data);
     }
 
+    /**
+     * --------------------------------------------------------------------
+     * Show Event Create Page Function
+     * --------------------------------------------------------------------
+     */
     public function create()
     {
         $data=[
@@ -49,6 +64,11 @@ class Event extends BaseController
         return view('event/create', $data);
     }
 
+    /**
+     * --------------------------------------------------------------------
+     * Attempt Event Create Function
+     * --------------------------------------------------------------------
+     */
     public function insert()
     {
         //validate input
