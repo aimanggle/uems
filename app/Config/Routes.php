@@ -60,13 +60,13 @@ $routes->get('/dashboard', 'Dashboard::dashboard', ['filter' => 'auth']);
  * Routes for Event
  * --------------------------------------------------------------------
  */
-$routes->get('/event', 'Event::index', ['filter' => 'auth']);
-$routes->get('/event/create', 'Event::create', ['filter' => 'auth']);
-$routes->post('/event/create', 'Event::insert', ['filter' => 'auth']);
-$routes->get('/event/detail/(:num)', 'Event::detail/$1', ['filter' => 'auth']);
-$routes->get('/event/edit/(:num)', 'Event::edit/$1', ['filter' => 'auth']);
-$routes->post('/event/edit/(:num)', 'Event::update/$1', ['filter' => 'auth']);
-$routes->get('/event/delete/(:any)', 'Event::delete/$1', ['filter' => 'auth']);
+$routes->get('/event', 'Event::index', ['filter' => 'auth', 'as' => 'event']);
+$routes->get('/event/create', 'Event::create', ['filter' => 'auth', 'as' => 'event.create']);
+$routes->post('/event/create', 'Event::insert', ['filter' => 'auth', 'as' => 'event.store']);
+$routes->get('/event/detail/(:num)', 'Event::detail/$1', ['filter' => 'auth', 'as' => 'event.detail']);
+$routes->get('/event/edit/(:num)', 'Event::edit/$1', ['filter' => 'auth', 'as' => 'event.edit']);
+$routes->post('/event/edit/(:num)', 'Event::update/$1', ['filter' => 'auth', 'as' => 'event.update']);
+$routes->get('/event/delete/(:any)', 'Event::delete/$1', ['filter' => 'auth', 'as' => 'event.delete']);
 $routes->post('/event/delete/(:any)', 'Event::delete/$1', ['filter' => 'auth']);
 $routes->delete('/event/delete/(:any)', 'Event::delete/$1', ['filter' => 'auth']);
 
@@ -75,8 +75,8 @@ $routes->delete('/event/delete/(:any)', 'Event::delete/$1', ['filter' => 'auth']
  * Routes for Registrant
  * --------------------------------------------------------------------
  */
-$routes->get('/registrant', 'Registrant::index', ['filter' => 'auth']);
-$routes->get('/registrant/detail/(:num)', 'Registrant::detail/$1', ['filter' => 'auth']);
+$routes->get('/registrant', 'Registrant::index', ['filter' => 'auth', 'as' => 'registrant']);
+$routes->get('/registrant/detail/(:num)', 'Registrant::detail/$1', ['filter' => 'auth', 'as' => 'registrant.detail']);
 /**
  * --------------------------------------------------------------------
  * Routes for User

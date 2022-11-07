@@ -38,6 +38,8 @@
             <label for="eventname" class="form-label">Event Description</label>
             <textarea class="form-control <?=  ($validation->hasError('eventdesc')) ? 'is-invalid' : 'invalid'?>" id="eventdesc" name="eventdesc"><?=old('eventdesc')?></textarea>
             <div class="invalid-feedback"><?= $validation->getError('eventdesc');?></div>
+            <!-- Count how many word remaining -->
+            <div class="text-muted float-end" id="count_message">255 word remaining</div>
         </div>
         <div class="col-md-6">
             <label for="startdate" class="form-label">Start Date</label>
@@ -86,6 +88,38 @@
    
     </div>
 
+
+<script>
+
+    //count how many word in eventdesc and disable submit button
+    $(document).ready(function(){
+        var text_max = 255;
+        $('#count_message').html(text_max + ' word remaining');
+
+        $('#eventdesc').keyup(function() {
+            var text_length = $('#eventdesc').val().length;
+            var text_remaining = text_max - text_length;
+            
+            if(text_remaining < 0)
+            {
+                $('#count_message').html('Word limit exceed');
+                $('button[type="submit"]').prop('disabled', true);
+            }
+            else
+            {
+                $('#count_message').html(text_remaining + ' word remaining');
+                $('button[type="submit"]').prop('disabled', false);
+            }
+            $('#count_message').html(text_remaining + ' word remaining');
+        });
+    });
+
+    //count how many word in eventdesc and disable submit button
+
+   
+
+
+</script>
 
 
 <?= $this->endSection(); ?>
