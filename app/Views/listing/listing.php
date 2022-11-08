@@ -27,27 +27,36 @@
             </div>
         </div>
     </div>
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4">              
-                    <select name="query" id="filtereventtype" class="form-select" onchange="">
-                        <option value="">--Event Type--</option>
-                        <option value="Physical">Physical</option>
-                        <option value="Online">Online</option>
-                    </select>                   
-                </div>
+                <select name="query" id="filtereventtype" class="form-select" onchange="">
+                    <option value="">--Event Type--</option>
+                    <option value="Physical">Physical</option>
+                    <option value="Online">Online</option>
+                </select>                   
+            </div>
             <div class="col-md-4">
-                
-                    <select name="query" id="filtereventscorun" class="form-select" onchange="">
-                        <option value="">--Event Scorun--</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                    </select>
-                </form>
+                <select name="query" id="filtereventscorun" class="form-select" onchange="">
+                    <option value="">--Event Scorun--</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <select name="query" id="filtereventcategory" class="form-select" onchange="">
+                    <option value="">--Event Category--</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Music">Music</option>
+                    <option value="Food">Food</option>
+                    <option value="Art">Art</option>
+                    <option value="Others">Others</option>
+                </select>
             </div>
         </div>
     </div>
@@ -92,6 +101,17 @@
                 </div>
             </div>
             <?php endforeach; ?>
+            <?php if(empty($event)):?>
+                <div class="col-md-12 mt-3 mb-3 shadow-md" id="listing">
+                    <div class="alert alert-danger" role="alert">
+                        <h4 class="alert-heading">No Event Found!</h4>
+                        <p>Sorry, we can't find any event that match your search. Please try again with different keywords.</p>
+                        <hr>
+                        <p class="mb-0">If you think this is a system error, please contact us.</p>
+                    </div>
+                </div>
+            <?php endif; ?>
+            
         </div>
         
     </div>
@@ -99,13 +119,6 @@
 </div>
 
 <script>
-
-    //limit 35 word in description
-    // var desc = document.getElementById('desc');
-    // // var descText = desc.textContent;
-    // var descText = descText.substring(0, 35);
-    // desc.textContent = descText + '...';
-
 
     //sort by category
     $(document).ready(function(){
@@ -135,26 +148,25 @@
                 method: "get",
                 data: {scorun:scorun},
                 success: function(data){
-                    //if $event empty then show alert
-                    if(data == 'empty')
-                    {
-                        alert('No Event Found');
-                    }
-                    else
-                    {
-                        window.history.pushState("", "", "/event/listing/search/"+scorun);
-                        location.reload();
-                    }
-            
-
-                    // window.history.pushState("", "", "/event/listing/search/"+scorun);
-                    // location.reload();                
+                    window.history.pushState("", "", "/event/listing/search/"+scorun);
+                    location.reload();                
                 },
-                error: function(data){
-                    window.history.pushState("", "", "/event/listing/");
-                    location.reload();
-                }
+            });
+        });
+    });
 
+    //sort by category
+    $(document).ready(function(){
+        $('#filtereventcategory').change(function(){
+            var category = $(this).val();
+            $.ajax({
+                url: "/event/listing/search/"+category,
+                method: "get",
+                data: {category:category},
+                success: function(data){
+                    window.history.pushState("", "", "/event/listing/search/"+category);
+                    location.reload();                
+                },
             });
         });
     });
