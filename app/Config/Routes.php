@@ -95,6 +95,7 @@ $routes->post('/user/status/(:num)', 'User::updatestat/$1', ['filter' => 'auth']
 $routes->get('/event/listing', 'Listing::index');
 $routes->post('/event/listing', 'Listing::index');
 // $routes->get('/event/listing/(:any)', 'Listing::index/$1');
+$routes->get('/event/listing/search/(:any)', 'Listing::filter/$1');
 $routes->get('/event/listing/detail/(:any)', 'Listing::detail/$1'); 
 $routes->get('/event/listing/register/(:any)', 'Listing::register/$1');
 $routes->post('/event/listing/register/(:any)/step1', 'Listing::register2/$1');

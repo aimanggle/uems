@@ -29,15 +29,15 @@ class Listing extends BaseController
     public function filter($query)
     {
         
-
         if($query)
         {
-            $event = $this->eventModel->like('eventname', $query)->orLike('eventdesc', $query)->orLike('eventtype', $query)->orLike('eventstatus', $query)->orLike('eventscorun',$query)->findAll();
+            $event = $this->eventModel->like('eventname', $query)->orLike('eventtype', $query)->orLike('eventstatus', $query)->orLike('eventscorun',$query)->findAll();
         }
         else
         {
-            $event = $this->eventModel->findAll();
+            $event = $this->eventModel->OrderBy('eventid', 'DESC')->findAll();
         }
+
 
         $data = [
             'title' => 'Listing | UEMS',

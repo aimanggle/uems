@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
 
-    <div class="container-fluid m-0 p-0 bg-gradient-1">
+    <div class="container-fluid">
         <div class="row mt-4">
             <div class="col-md-12">
                 <h1 class="mt-3 fs-2 text-center">Find Your Favourite Event</h1>
@@ -30,19 +30,15 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4">              
-                    <form action="" method="post" class="">
-                        <?= csrf_field(); ?>
-                        <select name="query" id="filter" class="form-select" onchange="">
-                            <option value="">--Event Type--</option>
-                            <option value="Physical">Physical</option>
-                            <option value="Online">Online</option>
-                        </select>  
-                    </form>                
+                    <select name="query" id="filtereventtype" class="form-select" onchange="">
+                        <option value="">--Event Type--</option>
+                        <option value="Physical">Physical</option>
+                        <option value="Online">Online</option>
+                    </select>                   
                 </div>
             <div class="col-md-4">
-                <form action="" method="post" class="">
-                    <?= csrf_field(); ?>
-                    <select name="query" id="filter" class="form-select">
+                
+                    <select name="query" id="filtereventscorun" class="form-select" onchange="">
                         <option value="">--Event Scorun--</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -64,7 +60,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><?=$e['eventname'];?>  <span class="badge text-bg-warning"><?=$e['eventstatus'];?></span></h5>
                         <hr>
-                            <p class="card-text" id="desc"><?=$e['eventdesc'];?></p>
+                            <p class="card-text" id="desc"><?=mb_strimwidth($e['eventdesc'], 0, 35, "...")?></p>
                             <p class="card-text">
                                 <h1 class="fs-6">Detail </h1>
                                     <div class="row">
@@ -105,40 +101,63 @@
 <script>
 
     //limit 35 word in description
-    var desc = document.getElementById('desc');
-    var descText = desc.textContent;
-    var descText = descText.substring(0, 35);
-    desc.textContent = descText + '...';
+    // var desc = document.getElementById('desc');
+    // // var descText = desc.textContent;
+    // var descText = descText.substring(0, 35);
+    // desc.textContent = descText + '...';
 
-    //jquery auto submit form
-    // $(document).ready(function(){
-    //     $('select').change(function(){
-    //         $(this).closest('form').submit();
-    //         console.log('test');
-    //     });
-    // });
 
     //sort by category
     $(document).ready(function(){
-        $('#filter').change(function(){
+        $('#filtereventtype').change(function(){
             var category = $(this).val();
             $.ajax({
-                url: "/event/listing",
-                method: "POST",
+                url: "/event/listing/search/"+category,
+                method: "get",
                 data: {category:category},
                 success: function(data){
-                    $('#listing').load(location.href + ' #listing');
-                    console.log('success');
+                    window.history.pushState("", "", "/event/listing/search/"+category);
+                    location.reload();                
                 },
                 error: function(data){
-                    
+                    console.log('error');
                 }
             });
         });
     });
 
-   
+    //sort by scorun
+    $(document).ready(function(){
+        $('#filtereventscorun').change(function(){
+            var scorun = $(this).val();
+            $.ajax({
+                url: "/event/listing/search/"+scorun,
+                method: "get",
+                data: {scorun:scorun},
+                success: function(data){
+                    //if $event empty then show alert
+                    if(data == 'empty')
+                    {
+                        alert('No Event Found');
+                    }
+                    else
+                    {
+                        window.history.pushState("", "", "/event/listing/search/"+scorun);
+                        location.reload();
+                    }
+            
 
+                    // window.history.pushState("", "", "/event/listing/search/"+scorun);
+                    // location.reload();                
+                },
+                error: function(data){
+                    window.history.pushState("", "", "/event/listing/");
+                    location.reload();
+                }
+
+            });
+        });
+    });
 
 </script>
 <?= $this->endSection(); ?>
