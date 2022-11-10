@@ -7,11 +7,21 @@ use App\Controllers\BaseController;
 
 class User extends BaseController
 {
+    /**
+     *  ----------------------------------------
+     *  Connect All Required Models 
+     *  ----------------------------------------
+     */
     public function __construct()
     {
         $this->userModel = new UserModel();
     }
 
+    /**
+     *  ----------------------------------------
+     *  Function to view all users
+     *  ----------------------------------------
+     */
     public function index()
     {
         $data = [
@@ -22,6 +32,11 @@ class User extends BaseController
         return view('user/show', $data);
     }
 
+    /**
+     *  ----------------------------------------
+     *  Function to insert new user
+     *  ----------------------------------------
+     */
     public function insert()
     {
         $data =[
@@ -36,6 +51,12 @@ class User extends BaseController
         return redirect()->back()->with('success', 'User has been added successfully');
     }
 
+    /**
+     *  ----------------------------------------
+     *  Function to update user detail
+     *  Parameter: $id
+     *  ----------------------------------------
+     */
     public function updatedetail($id)
     {
         $data =[
@@ -50,6 +71,12 @@ class User extends BaseController
         return redirect()->back()->with('success', 'User has been updated successfully');
     }
 
+    /**
+     *  ----------------------------------------
+     *  Function to update user status
+     *  Parameter: $id
+     *  ----------------------------------------
+     */
     public function updatestat($id)
     {
         $data =[
@@ -59,5 +86,4 @@ class User extends BaseController
         $this->userModel->update($id, $data);
         return redirect()->back()->with('success', 'User Status has been updated successfully');
     }
-   
 }
