@@ -8,6 +8,11 @@ use App\Controllers\BaseController;
 
 class Auth extends BaseController
 {
+     /**
+     *  ----------------------------------------
+     *  Connect All Required Models 
+     *  ----------------------------------------
+     */
      public function __construct()
      {
           $this->validation = Services::validation();
@@ -15,27 +20,26 @@ class Auth extends BaseController
      }
 
      /**
-      * --------------------------------------------------------------------
-      * Redirect To Login Page Function
-      * --------------------------------------------------------------------
-      */
+     *  ----------------------------------------
+     *  Redirect to login page
+     *  ----------------------------------------
+     */
      public function index()
      {
           return redirect()->to('/login');
      }
 
      /**
-      * --------------------------------------------------------------------
-      * Show Login Page Function
-      * --------------------------------------------------------------------
-      */
+     * ----------------------------------------
+     * Function to show login page
+     * ----------------------------------------
+     */
      public function login()
      {
           $data = [
                'title' => 'Login',
                'validation' => $this->validation
           ];
-          // d($data);
           return view('auth/login',$data);
      }
 
