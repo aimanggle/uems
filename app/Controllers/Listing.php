@@ -89,7 +89,12 @@ class Listing extends BaseController
 
         if(empty($this->studentModel->detail($studentid)))
         {   
-            return redirect()->back()->with('error', 'Student ID not found');
+            $data=[
+                'title' => 'Register | UEMS',
+                'validation' => \Config\Services::validation()
+            ];
+            // return redirect()->back()->with('error', 'Student ID not found');
+            return view('listing/register/student', $data);
         }
         else
         {
@@ -112,7 +117,7 @@ class Listing extends BaseController
             'event' => $this->eventModel->find($eventid),
             'student' => $this->studentModel->detail($studentid)
         ];
-        // dd($data);
+        d($data);
         return view('listing/register/step3', $data);
     }
 }

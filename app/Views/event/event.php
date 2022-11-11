@@ -158,7 +158,7 @@
 
         for (i = 0; i < tr.length; i++) 
         {
-            td = tr[i].getElementsByTagName("td")[1];    
+            td = tr[i].getElementsByTagName("td")[1];   
             if (td) 
             {
                 txtValue = td.textContent || td.innerText;
@@ -173,6 +173,11 @@
             }       
         }
     } 
+
+        
+    
+
+    
 
 </script>
 
