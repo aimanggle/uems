@@ -51,11 +51,9 @@
             <div class="col-md-4">
                 <select name="query" id="filtereventcategory" class="form-select" onchange="">
                     <option value="">--Event Category--</option>
-                    <option value="Sports">Sports</option>
-                    <option value="Music">Music</option>
-                    <option value="Food">Food</option>
-                    <option value="Art">Art</option>
-                    <option value="Others">Others</option>
+                    <?php foreach($eventcat as $ec):?>
+                        <option value="<?=$ec['eventcatname']?>"><?=$ec['eventcatname']?></option>
+                    <?php endforeach;?>
                 </select>
             </div>
         </div>
@@ -120,16 +118,16 @@
 
 <script>
 
-    //sort by category
+    //sort by eventtype
     $(document).ready(function(){
         $('#filtereventtype').change(function(){
-            var category = $(this).val();
+            var eventtype = $(this).val();
             $.ajax({
-                url: "/event/listing/search/"+category,
-                method: "get",
-                data: {category:category},
-                success: function(data){
-                    window.history.pushState("", "", "/event/listing/search/"+category);
+                url:"/event/listing/search/"+eventtype,
+                method:"get",
+                data:{eventtype:eventtype},
+                success:function(data){
+                    window.history.pushState("", "", "/event/listing/search/"+eventtype);
                     location.reload();                
                 },
                 error: function(data){
@@ -138,6 +136,7 @@
             });
         });
     });
+
 
     //sort by scorun
     $(document).ready(function(){
@@ -170,6 +169,8 @@
             });
         });
     });
+
+    
 
 </script>
 <?= $this->endSection(); ?>

@@ -8,11 +8,11 @@ use App\Controllers\BaseController;
 
 class Auth extends BaseController
 {
-     /**
-     *  ----------------------------------------
-     *  Connect All Required Models 
-     *  ----------------------------------------
-     */
+     /*
+     |--------------------------------------------------------------------------
+     | Connect All Required Model
+     |--------------------------------------------------------------------------
+    */
      public function __construct()
      {
           $this->validation = Services::validation();
@@ -231,6 +231,7 @@ class Auth extends BaseController
      /**
       * --------------------------------------------------------------------
       * Logout Function
+          
       * --------------------------------------------------------------------
       */
      public function logout()

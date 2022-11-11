@@ -18,6 +18,7 @@ class Event extends BaseController
     /**
      * --------------------------------------------------------------------
      * Show Event Page Function
+     * @param null
      * --------------------------------------------------------------------
      */
     public function index()
@@ -38,6 +39,7 @@ class Event extends BaseController
     /**
      * --------------------------------------------------------------------
      * Show Event Detail Page Function
+     * @param int $eventid
      * --------------------------------------------------------------------
      */
     public function detail($eventid)
@@ -52,6 +54,7 @@ class Event extends BaseController
     /**
      * --------------------------------------------------------------------
      * Show Event Create Page Function
+     * @param null
      * --------------------------------------------------------------------
      */
     public function create()
@@ -67,6 +70,7 @@ class Event extends BaseController
     /**
      * --------------------------------------------------------------------
      * Attempt Event Create Function
+     * @param null
      * --------------------------------------------------------------------
      */
     public function insert()
@@ -106,6 +110,12 @@ class Event extends BaseController
         return redirect()->to('/event')->with('success', 'Success Add New Event');
     }
     
+    /**
+     * --------------------------------------------------------------------
+     * Show Event Edit Page Function
+     * @param int $eventid
+     * --------------------------------------------------------------------
+     */
     public function edit($eventid)
     {
         $data=[
@@ -116,6 +126,12 @@ class Event extends BaseController
         return view('event/edit', $data);
     }
 
+     /**
+     * --------------------------------------------------------------------
+     * Update data into Db
+     * @param int $eventid
+     * --------------------------------------------------------------------
+     */
     public function update($eventid)
     {
         $data=[
@@ -135,6 +151,12 @@ class Event extends BaseController
         return redirect()->back()->with('message', 'Event Detail Has been update');
     }
 
+    /**
+     * --------------------------------------------------------------------
+     * Delete data from table
+     * @param int $eventid
+     * --------------------------------------------------------------------
+     */
     public function delete($eventid)
     {
         $db = \Config\Database::connect();

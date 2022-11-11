@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\EventModel;
 use App\Models\StudentModel;
+use App\Models\EventCategoryModel;
 use App\Controllers\BaseController;
 
 class Listing extends BaseController
@@ -12,6 +13,7 @@ class Listing extends BaseController
     {
         $this->eventModel = new EventModel();
         $this->studentModel = new StudentModel();
+        $this->EventCategoryModel = new EventCategoryModel();
     }
     
     public function index()
@@ -19,7 +21,8 @@ class Listing extends BaseController
 
         $data = [
             'title' => 'Listing | UEMS',
-            'event' => $this->eventModel->OrderBy('eventid', 'DESC')->findAll()
+            'event' => $this->eventModel->OrderBy('eventid', 'DESC')->findAll(),
+            'eventcat' => $this->EventCategoryModel->findAll()
         ];
         // d($data);
     
@@ -42,6 +45,7 @@ class Listing extends BaseController
         $data = [
             'title' => 'Listing | UEMS',
             'event' => $event,
+            'eventcat' => $this->EventCategoryModel->findAll()
         ];
         // d($data);
     

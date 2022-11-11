@@ -66,9 +66,7 @@ $routes->post('/event/create', 'Event::insert', ['filter' => 'auth', 'as' => 'ev
 $routes->get('/event/detail/(:num)', 'Event::detail/$1', ['filter' => 'auth', 'as' => 'event.detail']);
 $routes->get('/event/edit/(:num)', 'Event::edit/$1', ['filter' => 'auth', 'as' => 'event.edit']);
 $routes->post('/event/edit/(:num)', 'Event::update/$1', ['filter' => 'auth', 'as' => 'event.update']);
-$routes->get('/event/delete/(:any)', 'Event::delete/$1', ['filter' => 'auth', 'as' => 'event.delete']);
-$routes->post('/event/delete/(:any)', 'Event::delete/$1', ['filter' => 'auth']);
-$routes->delete('/event/delete/(:any)', 'Event::delete/$1', ['filter' => 'auth']);
+$routes->delete('/event/delete/(:any)', 'Event::delete/$1', ['filter' => 'auth', 'as' => 'event.delete']);
 
 /**
  * --------------------------------------------------------------------
