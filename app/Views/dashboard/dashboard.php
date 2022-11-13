@@ -178,20 +178,56 @@
 
 <?php 
 
-$coepercen = ($coe['total']/$student)*100;
-$coepercent = number_format($coepercen, 0, '.', '');
+if($ttlregis < 1)
+{
+    $coepercent = 0;
+}
+else
+{
+    $coepercen = ($coe['total']/$ttlregis)*100;
+    $coepercent = number_format($coepercen, 0, '.', '');
+}
 
-$ccipercen = ($cci['total']/$student)*100;
-$ccipercent = number_format($ccipercen, 0, '.', '');
+if($ttlregis < 1)
+{
+    $ccipercent = 0;
+}
+else
+{
+    $ccipercen = ($cci['total']/$ttlregis)*100;
+    $ccipercent = number_format($ccipercen, 0, '.', '');
+}
 
-$cobapercen = ($coba['total']/$student)*100;
-$cobapercent = number_format($cobapercen, 0, '.', '');
+if($ttlregis < 1)
+{
+    $cobapercent = 0;
+}
+else
+{
+    $cobapercen = ($coba['total']/$ttlregis)*100;
+    $cobapercent = number_format($cobapercen, 0, '.', '');
+}
 
-$cespercen = ($ces['total']/$student)*100;
-$cespercent = number_format($cespercen, 0, '.', '');
+if($ttlregis < 1)
+{
+    $cespercent = 0;
+}
+else
+{
+    $cespercen = ($ces['total']/$ttlregis)*100;
+    $cespercent = number_format($cespercen, 0, '.', '');
+}
 
-$cogspercen = ($cogs['total']/$student)*100;
-$cogspercent = number_format($cogspercen, 0, '.', '');
+if($ttlregis < 1)
+{
+    $cogspercent = 0;
+}
+else
+{
+    $cogspercen = ($cogs['total']/$ttlregis)*100;
+    $cogspercent = number_format($cogspercen, 0, '.', '');
+}
+
 
 ?>
 
