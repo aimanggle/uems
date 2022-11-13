@@ -40,7 +40,7 @@
                             <div class="col">
                                 <div class="row">
                                     <div class="col my-1">
-                                        <form action="/event/listing/register/14/step3" method="post" class="needs-validation" novalidate>
+                                        <form action="<?=url_to('event.register.attempt',$event['eventid'],$student->sid,$student->collegeid )?>" method="post" class="needs-validation" novalidate>
                                             <?= csrf_field(); ?> 
                                         <label for="notel" class="form-label">Student ID </label>
                                             <input type="text" class="form-control" id="studentid" name="studentid" placeholder="eg:DC97XXX, DM98XXX" value="<?=$student->studentid;?>" readonly> 
@@ -82,13 +82,13 @@
                                     <div class="row">
                                         <div class="col my-1">
                                             <label for="notel" class="form-label">Event Date </label>
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="eg:John Doe" value="" readonly>
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="eg:John Doe" value="<?=$event['eventdate'];?>" readonly>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col my-1">
                                             <label for="notel" class="form-label">Event Type</label>
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="eg:John Doe" value="" readonly>
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="eg:John Doe" value="<?=$event['eventtype'];?>" readonly>
                                         </div>
                                     </div>
                             </div>
