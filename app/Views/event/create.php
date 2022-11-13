@@ -65,11 +65,19 @@
                 <option>Close</option>
             </select>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <label for="tqlink" class="form-label">Event Scorun</label>
             <input type="text" class="form-control" id="tqlink" name="eventscorun" >
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
+            <label for="tqlink" class="form-label">Event Category</label>
+            <select id="evenstat" class="form-select" name="eventcategory">
+                <?php foreach($eventcategory as $ec) : ?>
+                    <option value="<?= $ec['eventcatname']; ?>"><?= $ec['eventcatname']; ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <div class="col-md-4">
             <label for="tqlink" class="form-label">Registration</label>
             <select id="evenstat" class="form-select" name="register">
                 <option value="Open">Open</option>
