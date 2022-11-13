@@ -70,11 +70,19 @@
                     <option <?php if ($event['eventstatus'] == "Close") echo "selected";?> >Close</option>
                 </select>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <label for="tqlink" class="form-label">Event Scorun</label>
                 <input type="text" class="form-control" id="tqlink" name="eventscorun" value="<?=$event['eventscorun'];?>" >
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
+                <label for="tqlink" class="form-label">Event Category</label>
+                <select id="evenstat" class="form-select" name="eventcategory">
+                    <?php foreach($eventcategory as $ec) : ?>
+                        <option value="<?= $ec['eventcatname']; ?>" <?php if ($ec['eventcatname'] == $event['eventcatname']) echo "selected";?>><?= $ec['eventcatname']; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="col-md-4">
                 <label for="tqlink" class="form-label">Registration</label>
                 <select id="evenstat" class="form-select" name="register" >
                     <option value="Open" <?php if ($event['register'] == "Open") echo "selected";?>>Open</option>
