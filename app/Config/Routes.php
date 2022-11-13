@@ -98,6 +98,8 @@ $routes->get('/event/listing/detail/(:any)', 'Listing::detail/$1');
 $routes->get('/event/listing/register/(:any)', 'Listing::register/$1');
 $routes->post('/event/listing/register/(:any)/step1', 'Listing::register2/$1');
 $routes->post('/event/listing/register/(:any)/step2', 'Listing::register3/$1');
+$routes->post('/event/listing/register/(:any)/step3/(:any)/(:any)', 'Listing::attemptRegister/$1/$2/$3', ['as' => 'event.register.attempt']);
+$routes->post('/student/store', 'Listing::storestudent', ['as' => 'student.store']);
 
 /**
  * --------------------------------------------------------------------
@@ -106,6 +108,13 @@ $routes->post('/event/listing/register/(:any)/step2', 'Listing::register3/$1');
  */
 $routes->get('/event/track', 'Track::index');
 $routes->post('/event/track', 'Track::show');
+
+/**
+ * --------------------------------------------------------------------
+ * Routes for Track Program
+ * --------------------------------------------------------------------
+ */
+$routes->get('/program/search/(:any)', 'Listing::findcollege/$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
