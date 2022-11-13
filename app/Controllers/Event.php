@@ -5,6 +5,7 @@ namespace App\Controllers;
 use Config\Database;
 use Config\Services;
 use App\Models\EventModel;
+use App\Models\EventCategoryModel;
 use App\Controllers\BaseController;
 
 class Event extends BaseController
@@ -12,6 +13,7 @@ class Event extends BaseController
     public function __construct()
     {
         $this->eventModel = new EventModel();
+        $this->eventCategoryModel = new EventCategoryModel();
         $this->validation = Services::validation();
     }
 
@@ -47,6 +49,7 @@ class Event extends BaseController
         $data=[
             'title' => 'Event Detail | UEMS',
             'event' => $this->eventModel->Find($eventid),
+            'eventcategory' => $this->eventCategoryModel->findAll(),
         ];
         return view('event/detail', $data);
     }
@@ -62,6 +65,7 @@ class Event extends BaseController
         $data=[
             'title' => 'New Event | UEMS',
             'validation' => $this->validation,
+            'eventcategory' => $this->eventCategoryModel->findAll(),
         ];
 
         return view('event/create', $data);
@@ -100,7 +104,7 @@ class Event extends BaseController
             'eventdate' => $this->request->getVar('eventdate'),
             'eventtype' => $this->request->getVar('eventtype'),
             'eventtime' => $this->request->getVar('eventtime'),
-            // 'eventcategory' => $this->request->getVar('eventcategory'),
+            'eventcatname' => $this->request->getVar('eventcategory'),
             'eventstatus' => $this->request->getVar('eventstat'),
             'eventscorun' => $this->request->getVar('eventscorun'),
             'register' => $this->request->getVar('register'),
@@ -120,7 +124,8 @@ class Event extends BaseController
     {
         $data=[
             'title' => 'Edit Event | UEMS',
-            'event' => $this->eventModel->find($eventid)
+            'event' => $this->eventModel->find($eventid),
+            'eventcategory' => $this->eventCategoryModel->findAll(),
         ];
 
         return view('event/edit', $data);
@@ -141,7 +146,7 @@ class Event extends BaseController
             'eventdate' => $this->request->getVar('eventdate'),
             'eventtype' => $this->request->getVar('eventtype'),
             'eventtime' => $this->request->getVar('eventtime'),
-            // 'eventcategory' => $this->request->getVar('eventcategory'),
+            'eventcatname' => $this->request->getVar('eventcategory'),
             'eventstatus' => $this->request->getVar('eventstat'),
             'eventscorun' => $this->request->getVar('eventscorun'),
             'register' => $this->request->getVar('register'),
