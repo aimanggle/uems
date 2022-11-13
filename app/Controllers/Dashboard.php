@@ -41,6 +41,8 @@ class Dashboard extends BaseController
         $ces = $this->registrantModel->countregbycollege($collegeidces);
         $cogs = $this->registrantModel->countregbycollege($collegidcogs);
 
+        $ttlregis = $this->registrantModel->countAll();
+
         $data=[
             'title' => 'Dashboard | UEMS',
             'event' => $this->eventModel->countevent(),
@@ -62,7 +64,8 @@ class Dashboard extends BaseController
             'coba' => $coba,
             'cci' => $cci,  
             'ces' => $ces,
-            'cogs' => $cogs,       
+            'cogs' => $cogs,    
+            'ttlregis' => $ttlregis   
         ];
         // d($data);
         return view('dashboard/dashboard', $data);
