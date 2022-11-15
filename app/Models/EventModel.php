@@ -9,7 +9,11 @@ class EventModel extends Model
    
     protected $table            = 'event';
     protected $primaryKey       = 'eventid';
-    protected $allowedFields    = ['eventid', 'eventname', 'eventdesc', 'eventdate', 'eventcatname', 'eventtype', 'eventtime', 'eventstatus', 'eventscorun', 'register'];
+    protected $useSoftDeletes   = true;
+    protected $createdField     = 'created_at';
+    protected $updatedField     = 'updated_at';
+    protected $deletedField     = 'deleted_at';
+    protected $allowedFields    = ['eventid', 'eventname', 'eventdesc', 'eventdate', 'eventcatname', 'eventtype', 'eventtime', 'eventstatus', 'eventscorun', 'register', 'created_at', 'updated_at','deleted_at'];
 
     public function countevent()
     {
