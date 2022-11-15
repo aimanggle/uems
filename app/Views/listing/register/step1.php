@@ -25,7 +25,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         <?php endif;?>
-                            <form action="/event/listing/register/14/step1" method="post" class="needs-validation" novalidate>
+                            <form action="/event/listing/register/<?=$event['eventid'];?>/step1" method="post" class="needs-validation" novalidate>
                                 <?= csrf_field(); ?> 
                                 <label for="notel" class="form-label">Student ID </label>
                                 <input type="text" class="form-control" id="studentid" name="studentid" placeholder="eg:DC97XXX, DM98XXX" required>

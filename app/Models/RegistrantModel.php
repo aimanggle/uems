@@ -89,4 +89,11 @@ class RegistrantModel extends Model
         $sql = "SELECT COUNT(DISTINCT collegeid,sid) AS total FROM registrant WHERE collegeid = $collegeid";
         return $this->db->query($sql)->getRowArray();
     }
+
+    //count register distinct by sid
+    public function countregbysid()
+    {
+        $sql = "SELECT COUNT(DISTINCT sid) AS totalreg FROM registrant";
+        return $this->db->query($sql)->getRowArray();
+    }
 }

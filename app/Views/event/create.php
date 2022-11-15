@@ -39,7 +39,7 @@
             <textarea class="form-control <?=  ($validation->hasError('eventdesc')) ? 'is-invalid' : 'invalid'?>" id="eventdesc" name="eventdesc"><?=old('eventdesc')?></textarea>
             <div class="invalid-feedback"><?= $validation->getError('eventdesc');?></div>
             <!-- Count how many word remaining -->
-            <div class="text-muted float-end" id="count_message">255 word remaining</div>
+            <div class="text-muted float-end" id="count_message">500 word remaining</div>
         </div>
         <div class="col-md-6">
             <label for="startdate" class="form-label">Start Date</label>
@@ -101,7 +101,7 @@
 
     //count how many word in eventdesc and disable submit button
     $(document).ready(function(){
-        var text_max = 255;
+        var text_max = 500;
         $('#count_message').html(text_max + ' word remaining');
 
         $('#eventdesc').keyup(function() {

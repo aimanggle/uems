@@ -184,7 +184,9 @@ if($ttlregis < 1)
 }
 else
 {
-    $coepercen = ($coe['total']/$ttlregis)*100;
+    //how to solve php unsupported operand type
+    $coepercen = ($coe['total'] / intval($ttlregis['totalreg'])) * 100;
+    // $coepercen = ($coe['total']/=$ttlregis)*100;
     $coepercent = number_format($coepercen, 0, '.', '');
 }
 
@@ -194,7 +196,7 @@ if($ttlregis < 1)
 }
 else
 {
-    $ccipercen = ($cci['total']/$ttlregis)*100;
+    $ccipercen = ($cci['total']/ intval($ttlregis['totalreg']))*100;
     $ccipercent = number_format($ccipercen, 0, '.', '');
 }
 
@@ -204,7 +206,7 @@ if($ttlregis < 1)
 }
 else
 {
-    $cobapercen = ($coba['total']/$ttlregis)*100;
+    $cobapercen = ($coba['total']/ intval($ttlregis['totalreg']))*100;
     $cobapercent = number_format($cobapercen, 0, '.', '');
 }
 
@@ -214,7 +216,7 @@ if($ttlregis < 1)
 }
 else
 {
-    $cespercen = ($ces['total']/$ttlregis)*100;
+    $cespercen = ($ces['total']/ intval($ttlregis['totalreg']))*100;
     $cespercent = number_format($cespercen, 0, '.', '');
 }
 
@@ -224,7 +226,7 @@ if($ttlregis < 1)
 }
 else
 {
-    $cogspercen = ($cogs['total']/$ttlregis)*100;
+    $cogspercen = ($cogs['total']/intval($ttlregis['totalreg']))*100;
     $cogspercent = number_format($cogspercen, 0, '.', '');
 }
 

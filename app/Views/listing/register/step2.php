@@ -39,7 +39,7 @@
                         <div class="row">
                             <div class="col">
                                     <div class="row">
-                                        <form action="/event/listing/register/14/step2" method="post" class="needs-validation" novalidate>
+                                        <form action="/event/listing/register/<?=$event['eventid'];?>/step2" method="post" class="needs-validation" novalidate>
                                             <?= csrf_field(); ?> 
                                         <div class="col my-1">
                                             <label for="notel" class="form-label">Student ID </label>
