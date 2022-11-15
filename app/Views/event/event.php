@@ -43,8 +43,10 @@
                 <div
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="fs-3">Event</h1>
-                    <a href="/event/create" class="btn btn-outline-secondary btn-sm float-end">New Event <span><i
-                                class="bi bi-plus-lg"></i></span></a>
+                        <div class="btn-group float-end" role="group" aria-label="Basic outlined example">
+                            <a href="<?=url_to('event.create')?>" class="btn btn-outline-primary">New Event</a>
+                            <a href="<?=url_to('event.retrieve')?>" class="btn btn-outline-primary">Retrieve Delete Event</a>                  
+                        </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
