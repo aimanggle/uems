@@ -108,6 +108,7 @@ class Event extends BaseController
             'eventstatus' => $this->request->getVar('eventstat'),
             'eventscorun' => $this->request->getVar('eventscorun'),
             'register' => $this->request->getVar('register'),
+            'created_at' => date('Y-m-d H:i:s'),
         ];
         // dd($data);
         $this->eventModel->insert($data);
@@ -150,10 +151,39 @@ class Event extends BaseController
             'eventstatus' => $this->request->getVar('eventstat'),
             'eventscorun' => $this->request->getVar('eventscorun'),
             'register' => $this->request->getVar('register'),
+            'updated_at' => date('Y-m-d H:i:s'),
         ];
         // dd($data);
         $this->eventModel->replace($data);
         return redirect()->back()->with('message', 'Event Detail Has been update');
+    }
+
+    /**
+     * --------------------------------------------------------------------
+     * Show retrieve event page
+     * @param null
+     * --------------------------------------------------------------------
+     */
+    public function retrieve()
+    {
+        $data=[
+            'title' => 'Deleted Event | UEMS',
+            'event' => $this->eventModel->onlyDeleted()->findAll(),
+        ];
+
+        return view('event/retrieve', $data);
+        d($data);
+
+    }
+
+    public function restore($eventid)
+    {
+        $data=[
+            'deleted_at' => null,
+            'updated_at' => date('Y-m-d H:i:s'),
+        ];
+        $this->eventModel->update($eventid, $data);
+        return redirect()->to('/event')->with('success', 'Event Has been restore');
     }
 
     /**
@@ -164,15 +194,18 @@ class Event extends BaseController
      */
     public function delete($eventid)
     {
-        $db = \Config\Database::connect();
-        $builder = $db->table('event');
-        $builder->where('eventid', $eventid);
-        $builder->delete();
-
+        
         $db = \Config\Database::connect();
         $builder = $db->table('registrant');
         $builder->where('eventid', $eventid);
         $builder->delete();
+
+        $data=[
+            'deleted_at' => date('Y-m-d H:i:s'),
+            // 'eventid' => $eventid,
+        ];
+        // dd($data);
+        $this->eventModel->update($eventid, $data);
     
 
         return redirect()->to('/event')->with('error', 'Event has been delete!');
