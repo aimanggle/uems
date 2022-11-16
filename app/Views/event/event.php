@@ -105,13 +105,9 @@
                                 <td><?=$eventdate;?></td>
                                 <td><?=$e['eventtype'];?></td>
                                 <td>
-                                    <a href="/event/detail/<?= $e['eventid'];?>" class="btn btn-secondary"><span><i
-                                                class="bi bi-chevron-right"></i></span></a>
-                                    <a href="/event/edit/<?= $e['eventid'];?>" class="btn btn-primary"><span><i
-                                                class="fa-regular fa-pen-to-square"></i></span></a>
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                        data-bs-target="#deletemodal<?=$e['eventid'];?>"><span><i
-                                                class="fa-regular fa-trash-alt"></i></span></button>
+                                    <a href="/event/detail/<?= $e['eventid'];?>" class="btn btn-secondary"><span><i class="bi bi-chevron-right"></i></span></a>
+                                    <a href="/event/edit/<?= $e['eventid'];?>" class="btn btn-primary"><span><i class="fa-regular fa-pen-to-square"></i></span></a>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletemodal<?=$e['eventid'];?>"><span><i class="fa-regular fa-trash-alt"></i></span></button>
                                 </td>
                             </tr>
                             <?php endforeach;?>
@@ -139,8 +135,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <h1 class="small text-muted">Are you sure to delete this event ? This action will delete all the
-                        related data to this event.</h1>
+                    <h1 class="small text-muted">Are you sure to delete this event ? This action will delete all the related data to this event.</h1>
                     <form action="event/delete/<?= $e['eventid'];?>" method="post" class="d-inline"
                         data-bs-toggle="tooltip">
                         <?= csrf_field(); ?>
