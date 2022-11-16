@@ -109,6 +109,8 @@ class Event extends BaseController
             'eventscorun' => $this->request->getVar('eventscorun'),
             'register' => $this->request->getVar('register'),
             'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => null,
+            'deleted_at' => null,
         ];
         // dd($data);
         $this->eventModel->insert($data);
@@ -208,9 +210,8 @@ class Event extends BaseController
 
         $data=[
             'deleted_at' => date('Y-m-d H:i:s'),
-            // 'eventid' => $eventid,
+            
         ];
-        // dd($data);
         $this->eventModel->update($eventid, $data);
     
 
