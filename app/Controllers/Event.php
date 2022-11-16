@@ -141,7 +141,7 @@ class Event extends BaseController
     public function update($eventid)
     {
         $data=[
-            'eventid' => $eventid,
+            // 'eventid' => $eventid,
             'eventname' => $this->request->getVar('eventname'),
             'eventdesc' => $this->request->getVar('eventdesc'),
             'eventdate' => $this->request->getVar('eventdate'),
@@ -154,7 +154,7 @@ class Event extends BaseController
             'updated_at' => date('Y-m-d H:i:s'),
         ];
         // dd($data);
-        $this->eventModel->replace($data);
+        $this->eventModel->update($eventid, $data);
         return redirect()->back()->with('message', 'Event Detail Has been update');
     }
 
@@ -176,6 +176,12 @@ class Event extends BaseController
 
     }
 
+    /**
+     * --------------------------------------------------------------------
+     * restore event 
+     * @param int $eventid
+     * --------------------------------------------------------------------
+     */
     public function restore($eventid)
     {
         $data=[
