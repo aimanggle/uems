@@ -178,19 +178,19 @@
 
 <?php 
 
-if($ttlregis < 1)
+if($ttlregis['totalreg'] < 1)
 {
     $coepercent = 0;
 }
 else
 {
-    //how to solve php unsupported operand type
+    
     $coepercen = ($coe['total'] / intval($ttlregis['totalreg'])) * 100;
     // $coepercen = ($coe['total']/=$ttlregis)*100;
     $coepercent = number_format($coepercen, 0, '.', '');
 }
 
-if($ttlregis < 1)
+if($ttlregis['totalreg'] < 1)
 {
     $ccipercent = 0;
 }
@@ -200,7 +200,7 @@ else
     $ccipercent = number_format($ccipercen, 0, '.', '');
 }
 
-if($ttlregis < 1)
+if($ttlregis['totalreg'] < 1)
 {
     $cobapercent = 0;
 }
@@ -210,7 +210,7 @@ else
     $cobapercent = number_format($cobapercen, 0, '.', '');
 }
 
-if($ttlregis < 1)
+if($ttlregis['totalreg'] < 1)
 {
     $cespercent = 0;
 }
@@ -220,7 +220,7 @@ else
     $cespercent = number_format($cespercen, 0, '.', '');
 }
 
-if($ttlregis < 1)
+if($ttlregis['totalreg'] < 1)
 {
     $cogspercent = 0;
 }
