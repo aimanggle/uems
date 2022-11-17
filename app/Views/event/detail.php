@@ -22,6 +22,7 @@
         <div class="row mb-2">
             <div class="col-md-12 col-xl-12">
                 <h1 class="fs-4">View Event Detail</h1>
+                <h1 class="text-muted fs-6">Last update at : <?=date('d-M-Y H:i:s', strtotime($event['updated_at']))?></h1>
                 <hr>
             </div>
         </div>

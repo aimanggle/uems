@@ -21,6 +21,14 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
+                <h1 class="float-none fs-3">Retrieve Event</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
                 <hr>
                 <div class="table-responsive">
                     <table class="table table-striped" id="table">
@@ -39,7 +47,7 @@
                                 <td><?=$bil++?></td>
                                 <td><?=$e['eventname'];?></td>
                                 <td>
-                                    <a href="<?=url_to('event.restore', $e['eventid'])?>" class="btn btn-outline-warning text-dark btn-sm">Retrieve Event</a>
+                                    <a href="<?=url_to('event.restore', $e['eventid'])?>" class="btn btn-warning text-dark"><i class="fa-solid fa-arrow-rotate-right"></i></a>
                                 </td>
                             </tr>
                             <?php endforeach;?>
