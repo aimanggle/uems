@@ -8,7 +8,7 @@ class StudentModel extends Model
 {
     protected $table            = 'student';
     protected $primaryKey       = 'sid';
-    protected $allowedFields    = ['sid', 'studentid', 'fullname', 'programid', ];
+    protected $allowedFields    = ['sid', 'studentid', 'fullname', 'programid', 'collegeid'];
 
     public function detail($studentid)
     {
