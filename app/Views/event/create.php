@@ -6,27 +6,26 @@
 
 <div class="container-fluid">
 
-     <!-- <div class="container-fluid"> -->
+    <!-- <div class="container-fluid"> -->
 
-      <div class="row">
-          <div class="col-md-12 pt-3">
-              <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb border px-2 py-2 bg-dark bg-opacity-10">
-                      <li class="breadcrumb-item "><a href="/dashboard" class="text-dark text-underline-hover">Dashboard</a></li>
-                      <li class="breadcrumb-item active text-dark text-muted" aria-current="page">Event</li>
-                  </ol>
-              </nav>
-          </div>
-      </div>
+    <div class="row">
+        <div class="col-md-12 pt-3">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb border px-2 py-2 bg-dark bg-opacity-10">
+                    <li class="breadcrumb-item "><a href="/dashboard" class="text-dark text-underline-hover">Dashboard</a></li>
+                    <li class="breadcrumb-item active text-dark text-muted" aria-current="page">Event</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
 
-      <div class="row mb-2">
+    <div class="row mb-2">
         <div class="col-md-12 col-xl-12">
             <h1 class="h2">Create New Event</h1>
             <hr>
         </div>
     </div>
 
-  
     <form class="row g-3" action="/event/create" method="post">
         <?=csrf_field();?>       
         <div class="col-md-6">
