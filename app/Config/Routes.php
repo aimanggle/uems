@@ -101,6 +101,7 @@ $routes->get('/event/listing/register/(:any)', 'Listing::register/$1');
 $routes->post('/event/listing/register/(:any)/step1', 'Listing::register2/$1');
 $routes->post('/event/listing/register/(:any)/step2', 'Listing::register3/$1');
 $routes->post('/event/listing/register/(:any)/step3/(:any)/(:any)', 'Listing::attemptRegister/$1/$2/$3', ['as' => 'event.register.attempt']);
+$routes->post('/event/listing/register/thankyou', 'Listing::thankyou');
 $routes->post('/student/store/(:num)', 'Listing::storestudent/$1', ['as' => 'student.store']);
 
 /**
