@@ -12,6 +12,11 @@ use App\Controllers\BaseController;
 
 class Listing extends BaseController
 {
+    /**
+     * ---------------------------------------------
+     * Public Methods
+     * ---------------------------------------------
+     */
     public function __construct()
     {
         $this->eventModel = new EventModel();
@@ -22,6 +27,11 @@ class Listing extends BaseController
         $this->programModel = new ProgramModel();
     }
     
+    /**
+     * ---------------------------------------------
+     * Public Methods
+     * ---------------------------------------------
+     */
     public function index()
     {
 
@@ -30,8 +40,7 @@ class Listing extends BaseController
             'event' => $this->eventModel->OrderBy('eventid', 'DESC')->findAll(),
             'eventcat' => $this->EventCategoryModel->findAll()
         ];
-        // d($data);
-    
+
         return view('listing/listing', $data);
     }
 
@@ -47,14 +56,12 @@ class Listing extends BaseController
             $event = $this->eventModel->OrderBy('eventid', 'DESC')->findAll();
         }
 
-
         $data = [
             'title' => 'Listing | UEMS',
             'event' => $event,
             'eventcat' => $this->EventCategoryModel->findAll()
         ];
         // d($data);
-    
         return view('listing/listing', $data);
     }
 
@@ -107,8 +114,7 @@ class Listing extends BaseController
                 'studentid' => $studentid,
                 'event' => $this->eventModel->find($eventid)
             ];
-            // d($data);
-            // return redirect()->back()->with('error', 'Student ID not found');
+
             return view('listing/register/student', $data);
         }
         else
@@ -145,9 +151,25 @@ class Listing extends BaseController
             'collegeid' => $collegeid,
         ];
 
-        $this->RegistrantModel->save($data);
-        return redirect()->to('/event/listing')->with('success', 'You have successfully registered for this event');
+        if($this->RegistrantModel->save($data))
+        {
+            $data1=[
+                'title' => 'Thank you | UEMS',
+                'event' => $this->eventModel->find($eventid),
+            ];
+            return view('listing/register/thankyou', $data1);
+            // return redirect()->to('event/listing/register/thankyou');
+        }
     }
+
+    public function thankyou()
+    {
+        $data1=[
+            'title' => 'Thank you | UEMS',
+        ];
+        return view('listing/register/thankyou', $data1);
+    }
+    
 
     public function storestudent($eventid)
     {
@@ -158,7 +180,7 @@ class Listing extends BaseController
             'collegeid' => $this->request->getVar('college'),
         ];
         $this->studentModel->save($data);
-        return redirect()->to('/event/listing/register/'.$eventid)->with('success', 'You have successfully register to the system');
+        return view('listing/register/thankyou', $data)->with('success', 'You have successfully register to the system');
 
     }
 

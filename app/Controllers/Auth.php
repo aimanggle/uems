@@ -172,7 +172,10 @@ class Auth extends BaseController
       */
      public function register()
      {
-          return view('auth/register');
+          $data = [
+               'title' => 'Register',
+          ];
+          return view('auth/register',$data);
      }
 
      /**
