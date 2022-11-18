@@ -19,6 +19,12 @@
             <div class="col-md-6 offset-sm-3">
                 <div class="card shadow">
                     <div class="card-body">  
+                        <?php if (session()->get('success')) :?>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <?=session()->get('success');?>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php endif;?>
                         <?php if (session()->get('error')) :?>
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                     <?=session()->get('error');?>

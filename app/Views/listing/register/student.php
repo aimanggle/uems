@@ -29,7 +29,7 @@
                         <div class="row">
                             <div class="col">
                                     <div class="row">
-                                        <form action="<?=url_to('student.store')?>" method="post" class="needs-validation" novalidate>
+                                        <form action="<?=url_to('student.store', $event['eventid'])?>" method="post" class="needs-validation" novalidate>
                                             <?= csrf_field(); ?> 
                                         <div class="col my-1">
                                             <label for="notel" class="form-label">Student ID </label>

@@ -2,23 +2,29 @@
 
 <?= $this->section('content'); ?>
 
-<div class="container-fluid">
+<!-- <div class="container-fluid"> -->
 
-    <div class="container-fluid">
-        <div class="row mt-4">
-            <div class="col-md-12">
-                <h1 class="mt-3 fs-2 text-center">Find Your Favourite Event</h1>
+
+    <div class="container-fluid bg-primary mt-3 ">
+        <div class="container-fluid">
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <h1 class="mt-3 fs-2 text-center">Find Your Favourite Event</h1>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 mt-4">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search Event" aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+            <div class="row mb-3">
+                <div class="col-md-12 mt-4">
+                    <div class="input-group mb-3">
+                        <input type="text" name="search" id="search"class="form-control" placeholder="Search Event" aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <button class="btn btn-danger" type="submit" id="btn">Search</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+<div class="container-fluid">
+
 
     <div class="container-fluid">
         <div class="row">
@@ -113,8 +119,8 @@
         </div>
         
     </div>
-
 </div>
+<!-- </div> -->
 
 <script>
 
@@ -170,6 +176,24 @@
         });
     });
 
+    //submit on click button
+    $(document).ready(function(){
+        $('#btn').click(function(){
+            var search = $('#search').val();
+            console.log(search);
+            $.ajax({
+                url: "/event/listing/search/"+search,
+                method: "get",
+                data: {search:search},
+                success: function(data){
+                    window.history.pushState("", "", "/event/listing/search/"+search);
+                    location.reload();                
+                },
+            });
+        });
+    });
+
+    
     
 
 </script>
