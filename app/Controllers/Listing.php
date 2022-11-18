@@ -105,6 +105,7 @@ class Listing extends BaseController
                 'college' => $this->collegeModel->findAll(),
                 'program' => $this->programModel->findAll(),
                 'studentid' => $studentid,
+                'event' => $this->eventModel->find($eventid)
             ];
             // d($data);
             // return redirect()->back()->with('error', 'Student ID not found');
@@ -142,14 +143,13 @@ class Listing extends BaseController
             'eventid' => $eventid,
             'regdate' => date('Y-m-d H:i:s'),
             'collegeid' => $collegeid,
-            
         ];
 
         $this->RegistrantModel->save($data);
         return redirect()->to('/event/listing')->with('success', 'You have successfully registered for this event');
     }
 
-    public function storestudent()
+    public function storestudent($eventid)
     {
         $data = [
             'studentid' => $this->request->getVar('studentid'),
@@ -157,8 +157,8 @@ class Listing extends BaseController
             'programid' => $this->request->getVar('program'),
             'collegeid' => $this->request->getVar('college'),
         ];
-        // dd($data);
         $this->studentModel->save($data);
+        return redirect()->to('/event/listing/register/'.$eventid)->with('success', 'You have successfully register to the system');
 
     }
 
