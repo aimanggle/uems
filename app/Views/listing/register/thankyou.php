@@ -8,7 +8,7 @@
             <div class="col-md-12">
                 <img src="/asset/unitensidebarlogo.png" style="max-width:150px">
                 <h3 class="my-3 py-2">Thank You | <?= $event['eventname'];?></h3>
-                    <h4>Successfully register</h4>
+                    <h4>Successfully register</h4> <span>You register Number is <?= $regno;?></span>
             </div>
         </div> 
     </div>
