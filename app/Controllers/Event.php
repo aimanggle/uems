@@ -27,12 +27,23 @@ class Event extends BaseController
     {
         $currentPage = $this->request->getVar('page_event') ? $this->request->getVar('page_event') : 1;
 
-        $event = $this->eventModel->findAll();
+        $keyword = $this->request->getVar('attendance');
+
+        if ($keyword) 
+        {
+            $event = $this->eventModel->search($keyword);
+        } 
+        else 
+        {
+            $event = $this->eventModel;
+        }
+
         $data=[
             'title' => 'Event | UEMS',
-            'event' => $this->eventModel->orderBy('eventid', 'DESC')->paginate(15, 'event'),
+            'event' => $event->paginate(15, 'event'),
             'pager' => $this->eventModel->pager,
             'currentpage' => $currentPage,
+            'keyword' => $keyword,
             
         ];
         return view('event/event', $data);
@@ -91,6 +102,48 @@ class Event extends BaseController
                 'rules' => 'required|',
                 'errors' => [
                     'required' => 'Event description is required',
+                ]
+            ],
+            'eventdate' => [
+                'rules' => 'required|',
+                'errors' => [
+                    'required' => 'Event date is required',
+                ]
+            ],
+            'eventtype' => [
+                'rules' => 'required|',
+                'errors' => [
+                    'required' => 'Event type is required',
+                ]
+            ],
+            'eventtime' => [
+                'rules' => 'required|',
+                'errors' => [
+                    'required' => 'Event time is required',
+                ]
+            ],
+            'eventstat' => [
+                'rules' => 'required|',
+                'errors' => [
+                    'required' => 'Event status is required',
+                ]
+            ],
+            'eventscorun' => [
+                'rules' => 'required|',
+                'errors' => [
+                    'required' => 'Event scorun is required',
+                ]
+            ],
+            'eventcategory' => [
+                'rules' => 'required|',
+                'errors' => [
+                    'required' => 'Event category is required',
+                ]
+            ],
+            'register' => [
+                'rules' => 'required|',
+                'errors' => [
+                    'required' => 'Event register is required',
                 ]
             ],
         ])){
