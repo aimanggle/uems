@@ -9,7 +9,7 @@ class User extends BaseController
 {
     /**
      *  ----------------------------------------
-     *  Connect All Required Models 
+     *  Public Methods
      *  ----------------------------------------
      */
     public function __construct()
@@ -19,7 +19,7 @@ class User extends BaseController
 
     /**
      *  ----------------------------------------
-     *  Function to view all users
+     *  Methods to view all users
      *  ----------------------------------------
      */
     public function index()
@@ -28,7 +28,6 @@ class User extends BaseController
             'title' => 'User',
             'user' => $this->userModel->findAll(),
         ];
-        // dd($data);
         return view('user/show', $data);
     }
 
@@ -54,7 +53,7 @@ class User extends BaseController
     /**
      *  ----------------------------------------
      *  Function to update user detail
-     *  Parameter: $id
+     *  @param int $id
      *  ----------------------------------------
      */
     public function updatedetail($id)
@@ -74,7 +73,7 @@ class User extends BaseController
     /**
      *  ----------------------------------------
      *  Function to update user status
-     *  Parameter: $id
+     *  @param int $id
      *  ----------------------------------------
      */
     public function updatestat($id)
