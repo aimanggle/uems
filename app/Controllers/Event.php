@@ -31,11 +31,11 @@ class Event extends BaseController
 
         if ($keyword) 
         {
-            $event = $this->eventModel->search($keyword);
+            $event = $this->eventModel->search($keyword)->orderBy('eventid', 'DESC');
         } 
         else 
         {
-            $event = $this->eventModel;
+            $event = $this->eventModel->orderBy('eventid', 'DESC');
         }
 
         $data=[
@@ -146,7 +146,8 @@ class Event extends BaseController
                     'required' => 'Event register is required',
                 ]
             ],
-        ])){
+        ]))
+        {
             $validation = $this->validation;
             return redirect()->back()->withInput()->with('validation', $validation);
         }
@@ -265,7 +266,8 @@ class Event extends BaseController
             'deleted_at' => date('Y-m-d H:i:s'),
             
         ];
-        $this->eventModel->update($eventid, $data);
+        // $this->eventModel->update($eventid, $data);
+        $this->eventModel->where('eventid', $eventid,)->delete();
     
 
         return redirect()->to('/event')->with('error', 'Event has been delete!');
