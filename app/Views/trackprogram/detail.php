@@ -57,7 +57,7 @@
                 <?php endforeach; ?>
                 <?php if(empty($registrant)):?>
                   <tr>
-                    <td colspan="4">No Record Found</td>
+                    <td class="text-center" colspan="4">No Record Found</td>
                   </tr>
                 <?php endif;?>
             </tbody>
