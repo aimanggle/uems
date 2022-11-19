@@ -51,11 +51,12 @@
                 <div class="row">
                     <div class="col-md-4">
                         <form action="" method="post">
-                            <select class="form-select float-start" name="attendance" onchange="submit()">
+                            <?= csrf_field();?>
+                            <select class="form-select float-start" name="attendance" id="attend" onchange="submit()">
                                 <option value>Select Event Type</option>
-                                <option value="">Semua</option>
-                                <option value="On Going">On Going</option>
-                                <option value="Close">TClose</option>
+                                <option value="">Reset</option>
+                                <option value="Physical">Physical</option>
+                                <option value="Online">Online</option>
                             </select>
                         </form>
                     </div>
@@ -175,6 +176,11 @@ function searchfunct() {
         }
     }
 }
+
+
+
+
+
 </script>
 
 <?= $this->endSection(); ?>
