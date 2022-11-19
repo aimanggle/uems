@@ -38,6 +38,7 @@ class User extends BaseController
      */
     public function insert()
     {
+        
         $data =[
             'email' => $this->request->getVar('email'),
             'username' => $this->request->getVar('username'),

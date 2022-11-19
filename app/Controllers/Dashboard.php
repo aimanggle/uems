@@ -70,8 +70,6 @@ class Dashboard extends BaseController
             'ttlregdef' => $ttlregdef
         ];
         
-
-        // d($data);
         return view('dashboard/dashboard', $data);
     }
 
