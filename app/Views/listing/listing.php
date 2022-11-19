@@ -65,10 +65,10 @@
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid" id="listing">
         <div class="row mt-2 mb-4">
             <?php foreach($event as $e):?>
-            <div class="col-md-4 mt-3 mb-3 shadow-md" id="listing">
+            <div class="col-md-4 mt-3 mb-3 shadow-md" id="">
                 <div class="card border border-secondary border-opacity-50">
                     <div class="card-body">
                         <h5 class="card-title"><?=$e['eventname'];?>  <span class="badge text-bg-warning"><?=$e['eventstatus'];?></span></h5>
@@ -134,7 +134,8 @@
                 data:{eventtype:eventtype},
                 success:function(data){
                     window.history.pushState("", "", "/event/listing/search/"+eventtype);
-                    location.reload();                
+                    $("#listing").load(" #listing");  
+                    console.log("success reload");             
                 },
                 error: function(data){
                     console.log('error');
@@ -142,7 +143,6 @@
             });
         });
     });
-
 
     //sort by scorun
     $(document).ready(function(){
@@ -154,7 +154,8 @@
                 data: {scorun:scorun},
                 success: function(data){
                     window.history.pushState("", "", "/event/listing/search/"+scorun);
-                    location.reload();                
+                    $("#listing").load(" #listing");  
+                    console.log("success reload");             
                 },
             });
         });
@@ -170,7 +171,8 @@
                 data: {category:category},
                 success: function(data){
                     window.history.pushState("", "", "/event/listing/search/"+category);
-                    location.reload();                
+                    $("#listing").load(" #listing");  
+                    console.log("success reload");               
                 },
             });
         });
@@ -187,7 +189,8 @@
                 data: {search:search},
                 success: function(data){
                     window.history.pushState("", "", "/event/listing/search/"+search);
-                    location.reload();                
+                    $("#listing").load(" #listing");  
+                    console.log("success reload");                
                 },
             });
         });
