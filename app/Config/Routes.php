@@ -61,6 +61,7 @@ $routes->get('/dashboard', 'Dashboard::dashboard', ['filter' => 'auth']);
  * --------------------------------------------------------------------
  */
 $routes->get('/event', 'Event::index', ['filter' => 'auth', 'as' => 'event']);
+$routes->post('/event', 'Event::index', ['filter' => 'auth']);
 $routes->get('/event/create', 'Event::create', ['filter' => 'auth', 'as' => 'event.create']);
 $routes->post('/event/create', 'Event::insert', ['filter' => 'auth', 'as' => 'event.store']);
 $routes->get('/event/detail/(:num)', 'Event::detail/$1', ['filter' => 'auth', 'as' => 'event.detail']);
