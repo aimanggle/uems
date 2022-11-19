@@ -9,7 +9,7 @@ class RegistrantModel extends Model
     
     protected $table            = 'registrant';
     protected $primaryKey       = 'regid';
-    protected $allowedFields    = ['regid', 'sid', 'eventid', 'regdate', 'collegeid'];
+    protected $allowedFields    = ['regid', 'sid', 'eventid', 'regdate', 'collegeid', 'regno'];
 
     public function findbyeventid($eventid)
     {
