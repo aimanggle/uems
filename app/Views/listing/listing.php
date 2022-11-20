@@ -5,26 +5,26 @@
 <!-- <div class="container-fluid"> -->
 
 
-    <div class="container-fluid bg-primary mt-3 ">
-        <div class="container-fluid">
-            <div class="row mt-4">
+    <div class="container-fluid bg-primary">
+        <div class="container-fluid ">
+            <div class="row">
                 <div class="col-md-12">
-                    <h1 class="mt-3 fs-2 text-center">Find Your Favourite Event</h1>
+                    <h1 class="mt-3 fs-2 text-center text-light">Find Your Favourite Event</h1>
                 </div>
             </div>
             <div class="row mb-3">
-                <div class="col-md-12 mt-4">
+                <div class="col-md-6 offset-3 mt-4 mb-3">
                     <div class="input-group mb-3">
-                        <input type="text" name="search" id="search"class="form-control" placeholder="Search Event" aria-label="Recipient's username" aria-describedby="button-addon2">
-                        <button class="btn btn-danger" type="submit" id="btn">Search</button>
+                        <input type="text" name="search" id="search"class="form-control" placeholder="Search event" aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <button class="btn btn-light text-bg-light" type="submit" id="btn"><a href="/event/listing" class="text-dark pe-2"><i class="bi bi-x-lg"></i></a><i class="bi bi-search"></i></button>
                     </div>
+                    <h1 class="fs-6 text-center text-light pe-2">Out Of ideas ? <span><a href="/event/listing/search/popular" class="btn btn-outline-light btn-sm">Click Here</a></span></h1>
                 </div>
             </div>
         </div>
     </div>
 
 <div class="container-fluid">
-
 
     <div class="container-fluid">
         <div class="row">
@@ -86,20 +86,19 @@
                                         <small class="text"><i class="bi bi-bookmark-check pe-2"></i> <?=$e['eventtype'];?></small>
                                     </div> 
                                     <div class="row">
-                                        <small class="text"><i class="bi bi-stars pe-2"></i> <?=$e['eventscorun'];?> Scorun</small>
+                                        <?php  if($e['eventscorun'] == 0 ): ?>
+                                            <small class='text'><i class='bi bi-stars pe-2'></i> No Scorun Provided</small>
+                                        <?php else: ?>
+                                            <small class='text'><i class='bi bi-stars pe-2'></i> <?=$e['eventscorun'];?> Scorun</small>
+                                        <?php endif; ?>
                                     </div> 
                             </p>
                 
-                            <?php
-                                if($e['register'] == 'Close')
-                                {
-                                    echo '<button href="#" class="btn btn-secondary">Registration Is Closed</button>';
-                                }
-                                else
-                                {
-                                    echo '<a href="/event/listing/detail/'.$e['eventid'].'" class="btn btn-primary">View More</a>';
-                                } 
-                            ?>
+                            <?php if($e['register'] == 'Close'):?>
+                                <button href="#" class="btn btn-secondary">Registration Is Closed</button>
+                            <?php else:?>
+                                <a href="/event/listing/detail/<?=$e['eventid'];?>" class="btn btn-primary">View More</a>
+                            <?php endif;?>
                             
                     </div>
                 </div>
@@ -115,10 +114,9 @@
                     </div>
                 </div>
             <?php endif; ?>
-            
         </div>
-        
     </div>
+    
 </div>
 <!-- </div> -->
 
@@ -195,8 +193,6 @@
             });
         });
     });
-
-    
     
 
 </script>
