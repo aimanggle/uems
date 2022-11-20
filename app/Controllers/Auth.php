@@ -210,7 +210,7 @@ class Auth extends BaseController
                else
                {
                     //hash password
-                    $password = password_hash($password, PASSWORD_DEFAULT);
+                    $password = password_hash($password, PASSWORD_DEFAULT); 
 
                     //insert user data into database
                     $data = [
