@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <div class="col-md-6 offset-3 mt-4 mb-3">
+                <div class="col-md-6 offset-md-3 mt-4 mb-3">
                     <div class="input-group mb-3">
                         <input type="text" name="search" id="search"class="form-control" placeholder="Search event" aria-label="Recipient's username" aria-describedby="button-addon2">
                         <button class="btn btn-light text-bg-light" type="submit" id="btn"><a href="/event/listing" class="text-dark pe-2"><i class="bi bi-x-lg"></i></a><i class="bi bi-search"></i></button>
@@ -194,6 +194,6 @@
         });
     });
     
-
+    
 </script>
 <?= $this->endSection(); ?>

@@ -9,8 +9,7 @@
             <div class="col-md-12 pt-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb border px-2 py-2 bg-dark bg-opacity-10">
-                        <li class="breadcrumb-item "><a href="/dashboard"
-                                class="text-dark text-underline-hover">Dashboard</a></li>
+                        <li class="breadcrumb-item "><a href="/dashboard" class="text-dark text-underline-hover">Dashboard</a></li>
                         <li class="breadcrumb-item active text-dark text-muted" aria-current="page">Event</li>
                     </ol>
                 </nav>
