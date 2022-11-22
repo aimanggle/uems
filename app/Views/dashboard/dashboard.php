@@ -187,7 +187,6 @@ else
 {
     
     $coepercen = ($coe['total'] / intval($ttlregis['totalreg'])) * 100;
-    // $coepercen = ($coe['total']/=$ttlregis)*100;
     $coepercent = number_format($coepercen, 0, '.', '');
 }
 
