@@ -18,6 +18,13 @@
         </div>
     </div>
 
+    <div class="container-fluid mb-2">
+        <div class="row">
+            <div class="col-md-12">
+                <a href="<?=url_to('export.excel', $event['eventid'])?>" class="btn btn-outline-success float-end">Export to excel <i class="bi bi-file-earmark-spreadsheet-fill"></i></a>
+            </div>
+        </div>
+    </div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6 mb-4">
