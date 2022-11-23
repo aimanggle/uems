@@ -222,14 +222,6 @@
         </div>
     </div>
     <?php endforeach;?>
-
-
-
-
-
 </div>
-
-
-
 
 <?= $this->endSection(); ?>
