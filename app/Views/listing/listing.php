@@ -18,8 +18,44 @@
                         <input type="text" name="search" id="search"class="form-control" placeholder="Search event" aria-label="Recipient's username" aria-describedby="button-addon2">
                         <button class="btn btn-light text-bg-light" type="submit" id="btn"><a href="/event/listing" class="text-dark pe-2"><i class="bi bi-x-lg"></i></a><i class="bi bi-search"></i></button>
                     </div>
-                    <h1 class="fs-6 text-center text-light pe-2">Out Of ideas ? <span><a href="/event/listing/search/popular" class="btn btn-outline-light btn-sm">Click Here</a></span></h1>
+                    <h1 class="fs-6 text-center text-light pe-2">Out Of ideas ? <span><button type="button" class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Click Here</button></span></h1>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Event</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h1 class="text-center fs-5">What event that you are looking for ?</h1>
+                    <form action="" method="get">
+                        <?= csrf_field();?>
+                            <div class="row mt-2">
+                                <label for="" class="form-label">Event Category</label>
+                                <div class="col-md-12">
+                                    <select name="" id="" class="form-select">
+                                        <option value="">Select</option>
+                                        <option value="">Music</option>
+                                        <option value="">Sport</option>
+                                        <option value="">Art</option>
+                                        <option value="">Food</option>
+                                        <option value="">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                    </div>
+                
+            <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+            </div>
             </div>
         </div>
     </div>

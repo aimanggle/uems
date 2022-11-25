@@ -49,6 +49,5 @@ abstract class BaseController extends Controller
 
         // session();
         $this->session = \Config\Services::session();
-        $this->parser = \Config\Services::parser();
     }
 }
