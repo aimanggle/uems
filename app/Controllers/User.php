@@ -25,6 +25,7 @@ class User extends BaseController
     public function index()
     {
         $data = [
+            'url' => 'user',
             'title' => 'User',
             'user' => $this->userModel->findAll(),
         ];

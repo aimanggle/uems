@@ -45,6 +45,7 @@ class Dashboard extends BaseController
         $ttlregdef = $this->registrantModel->countAll();
 
         $data=[
+            'url' => 'dashboard',
             'title' => 'Dashboard | UEMS',
             'event' => $this->eventModel->countevent(),
             'ongoing' => $this->eventModel->countOnGoing(),

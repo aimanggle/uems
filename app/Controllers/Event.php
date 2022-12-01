@@ -39,6 +39,7 @@ class Event extends BaseController
         }
 
         $data=[
+            'url' => 'event',
             'title' => 'Event | UEMS',
             'event' => $event->paginate(15, 'event'),
             'pager' => $this->eventModel->pager,
@@ -58,6 +59,7 @@ class Event extends BaseController
     public function detail($eventid)
     {
         $data=[
+            'url' => 'event',
             'title' => 'Event Detail | UEMS',
             'event' => $this->eventModel->Find($eventid),
             'eventcategory' => $this->eventCategoryModel->findAll(),
@@ -74,6 +76,7 @@ class Event extends BaseController
     public function create()
     {
         $data=[
+            'url' => 'event',
             'title' => 'New Event | UEMS',
             'validation' => $this->validation,
             'eventcategory' => $this->eventCategoryModel->findAll(),
@@ -180,6 +183,7 @@ class Event extends BaseController
     public function edit($eventid)
     {
         $data=[
+            'url' => 'event',
             'title' => 'Edit Event | UEMS',
             'event' => $this->eventModel->find($eventid),
             'eventcategory' => $this->eventCategoryModel->findAll(),
@@ -223,6 +227,7 @@ class Event extends BaseController
     public function retrieve()
     {
         $data=[
+            'url' => 'event',
             'title' => 'Deleted Event | UEMS',
             'event' => $this->eventModel->onlyDeleted()->findAll(),
         ];

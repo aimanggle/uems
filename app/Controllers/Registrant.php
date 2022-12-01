@@ -17,6 +17,7 @@ class Registrant extends BaseController
     public function index()
     {
         $data = [
+            'url' => 'registrant',
             'title' => 'Registrant | UEMS',
             'event' => $this->eventModel->orderBy('eventid', 'DESC')->FindAll(),
         ];
@@ -26,6 +27,7 @@ class Registrant extends BaseController
     public function detail($eventid)
     {
         $data = [
+            'url' => 'registrant',
             'title' => 'Registrant | UEMS',
             'event' => $this->eventModel->Find($eventid),
             'regis' => $this->registrantModel->findbyeventid($eventid),
