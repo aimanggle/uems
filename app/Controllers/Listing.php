@@ -50,12 +50,19 @@ class Listing extends BaseController
      *  @param varchar $query
      * ---------------------------------------------
      */
-    public function filter($query)
+    public function filter($query, $sort = 'null')
     {
         
         if($query)
         {
-            $event = $this->eventModel->like('eventname', $query)->orLike('eventtype', $query)->orLike('eventstatus', $query)->orLike('eventscorun',$query)->orLike('eventcatname', $query)->findAll();
+            $event = $this->eventModel
+                ->like('eventname', $query)
+                ->orLike('eventtype', $query)
+                ->orLike('eventstatus', $query)
+                ->orLike('eventscorun',$query)
+                ->orLike('eventcatname', $query)
+                ->orderBy('eventscorun', $sort)
+                ->findAll();
         }
         else
         {

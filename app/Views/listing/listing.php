@@ -2,9 +2,6 @@
 
 <?= $this->section('content'); ?>
 
-<!-- <div class="container-fluid"> -->
-
-
     <div class="container-fluid bg-primary">
         <div class="container-fluid ">
             <div class="row">
@@ -72,14 +69,14 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-4">              
+            <div class="col-md-3">              
                 <select name="query" id="filtereventtype" class="form-select" onchange="">
                     <option value="">--Event Type--</option>
                     <option value="Physical">Physical</option>
                     <option value="Online">Online</option>
                 </select>                   
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <select name="query" id="filtereventscorun" class="form-select" onchange="">
                     <option value="">--Event Scorun--</option>
                     <option value="1">1</option>
@@ -90,13 +87,20 @@
                     <option value="6">6</option>
                 </select>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <select name="query" id="filtereventcategory" class="form-select" onchange="">
                     <option value="">--Event Category--</option>
                     <?php foreach($eventcat as $ec):?>
                         <option value="<?=$ec['eventcatname']?>"><?=$ec['eventcatname']?></option>
                     <?php endforeach;?>
                 </select>
+            </div>
+            <div class="col-md-3">              
+                <select name="query" id="sort" class="form-select" onchange="">
+                    <option value="">--Sort Scorun--</option>
+                    <option value="ASC">Low To High</option>
+                    <option value="DESC">High To Low</option>
+                </select>                   
             </div>
         </div>
     </div>
@@ -154,7 +158,7 @@
     </div>
     
 </div>
-<!-- </div> -->
+
 
 <script>
 
@@ -212,6 +216,19 @@
         });
     });
 
+    //sort by orderby
+    $(document).ready(function(){
+        $('#sort').change(function(){
+                var sort = $(this).val();
+                var url = window.location.href;
+                var lastsplit = url.split("/");
+                var lastsplit2 = lastsplit[6].split("&");
+                var combineurl = lastsplit[0] + "//" + lastsplit[2] + "/" + lastsplit[3] + "/" + lastsplit[4] + "/" + lastsplit[5] + "/" + lastsplit2[0];
+                window.history.pushState("", "", combineurl + "/" +sort);
+                $("#listing").load(" #listing");  
+        });
+    });
+
     //submit on click button
     $(document).ready(function(){
         $('#btn').click(function(){
@@ -229,7 +246,6 @@
             });
         });
     });
-    
-    
+
 </script>
 <?= $this->endSection(); ?>
