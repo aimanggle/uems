@@ -9,21 +9,21 @@
         <div class="collapse navbar-collapse  " id="navbarTogglerDemo03">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item ">
-                    <a class="nav-link text-dark" aria-current="page" href="/dashboard">Dashboard</a>
+                    <a class="nav-link text-dark <?php if($url == "dashboard"){ echo "active";}else{echo "";}?>" aria-current="page" href="/dashboard">Dashboard</a>
                 </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Event
                         </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">                    
-                                <li><a class="dropdown-item" href="/event"><span><i class="fa-solid fa-calendar"></i></span> Manage Event</a></li>
+                                <li><a class="dropdown-item <?php if($url == "event"){ echo "active";}else{echo "";}?>" href="/event"><span><i class="fa-solid fa-calendar"></i></span> Manage Event</a></li>
                             </ul>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Registrant
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">                    
-                                <li><a class="dropdown-item" href="<?=url_to('registrant')?>"> <span><i class="fa-solid fa-person"></i></span> Manage Registrant</a></li>
+                                <li><a class="dropdown-item <?php if($url == "registrant"){ echo "active";}else{echo "";}?>" href="<?=url_to('registrant')?>"> <span><i class="fa-solid fa-person"></i></span> Manage Registrant</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -31,7 +31,7 @@
                                 User
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">                    
-                                <li><a class="dropdown-item" href="/user"> <span><i class="fa-solid fa-users-line"></i></span> Manage User</a></li>
+                                <li><a class="dropdown-item <?php if($url == "user"){ echo "active";}else{echo "";}?>" href="/user"> <span><i class="fa-solid fa-users-line"></i></span> Manage User</a></li>
                             </ul>
                         </li>
                     </li>
