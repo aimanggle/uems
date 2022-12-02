@@ -1,5 +1,3 @@
-<?php $this->session = \Config\Services::session(); ?>
-
 <nav class="navbar navbar-expand-lg sticky-top px-5-5 py-3 bg-nav">
     <div class="container-fluid">
         <a class="navbar-brand" href="/dashboard"><b>UEMS</b></a>
@@ -39,7 +37,7 @@
         <ul class="nav navbar-nav ms-auto">
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle nav-link text-dark" data-bs-toggle="dropdown" role="button" aria-expanded="false">
-                    <i class="bi bi-person-circle pr-1"></i> <?= $this->session->get('user_name');?> <span class="caret"></span>
+                    <i class="bi bi-person-circle pr-1"></i> <?= username();?> <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right" role="menu">  
                     <li class="nav-item">
