@@ -56,7 +56,10 @@ class App extends BaseConfig
      *
      * @var string
      */
+
+    //how to user 2 Uri Protocol in Codeigniter 4
     public $uriProtocol = 'REQUEST_URI';
+    
 
     /**
      * --------------------------------------------------------------------------
