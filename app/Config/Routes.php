@@ -131,9 +131,8 @@ $routes->get('/program/search/(:any)', 'Listing::findcollege/$1');
  * Api Routes
  * --------------------------------------------------------------------
  */
+$routes->get('/api/event','Api::index');
 
-$routes->get('/api/event/', 'Api::index');
-$routes->get('/api/event/(:num)', 'Api::show/$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
@@ -150,3 +149,5 @@ $routes->get('/api/event/(:num)', 'Api::show/$1');
 if (is_file(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
     require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }
+
+
