@@ -16,23 +16,70 @@ class Api extends ResourceController
      *
      * @return mixed
      */
-    public function index($key = null)
+    public function index()
     {
-        $event = $this->EventModel->findAll();
-        
-        if($event)
+        $apikey = $this->request->getVar('apikey');
+        $eventid = $this->request->getVar('eventid');
+        $eventstatus = $this->request->getVar('eventstatus');
+        $sort = $this->request->getVar('sort');
+
+        if($sort == null)
+        {
+            $sort = 'ASC';
+        }
+
+        if($eventid)
+        {
+            $event = $this->EventModel->find($eventid);
+        }
+        elseif($eventstatus)
+        {
+            
+            $event = $this->EventModel->where('eventstatus', $eventstatus)->orderby('eventid', $sort)->findAll();
+        }
+        else
+        {
+            $event = $this->EventModel->orderby('eventid', $sort)->findAll();
+        }
+
+        if($apikey == "123456")
+        {
+            if($event)
+            {
+                $response = [
+                    'status' => 200,
+                    'messages' => [
+                        'success' => 'Event data found'
+                    ],
+                    'data' => $event
+                ];
+                return $this->respond($response, 200);
+            }
+            else
+            {
+                $response = [
+                    'status' => 404,
+                    'messages' => [
+                        'error' => 'Event data not found'
+                    ],
+                ];
+                return $this->respond($response, 404);
+            }
+        }
+        else
         {
             $response = [
-                'status' => 200,
+                'status' => 401,
                 'error' => null,
                 'messages' => [
-                    'success' => 'Event data has been retrieved successfully'
+                    'error' => 'Unauthorized'
                 ],
-                'data' => $event
+                'data' => null
             ];
-            return $this->respond($response, 200);
-    
+            return $this->respond($response, 401);
         }
+            
+        
     }   
 
     /**
@@ -40,34 +87,9 @@ class Api extends ResourceController
      *
      * @return mixed
      */
-    public function show($eventid = null)
+    public function show($eventid =  null)
     {
-       
-        $event = $this->EventModel->find($eventid);
-        if($event)
-        {
-            $response = [
-                'status' => 200,
-                'error' => null,
-                'messages' => [
-                    'success' => 'Event data has been retrieved successfully'
-                ],
-                'data' => $event
-            ];
-            return $this->respond($response, 200);
-        }
-        else
-        {
-            $response = [
-                'status' => 404,
-                'error' => null,
-                'messages' => [
-                    'fail' => 'Event id not found'
-                ],
-                'data' => null
-            ];
-            return $this->respond($response, 404);
-        }
+        //
     }
 
     /**
