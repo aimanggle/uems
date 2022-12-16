@@ -96,4 +96,11 @@ class RegistrantModel extends Model
         $sql = "SELECT COUNT(DISTINCT sid) AS totalreg FROM registrant";
         return $this->db->query($sql)->getRowArray();
     }
+
+    //count total register between 2 date
+    public function countregbetween($firstdate, $seconddate)
+    {
+        $sql = "SELECT COUNT(*) AS total FROM registrant WHERE date(regdate) BETWEEN '$firstdate' AND '$seconddate'";
+        return $this->db->query($sql)->getRowArray();
+    }              
 }
