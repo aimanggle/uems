@@ -6,7 +6,7 @@
     <div class="container-fluid text-center">
         <div class="row">
             <div class="col-md-12">
-                <img src="/asset/unitensidebarlogo.png" style="max-width:150px">
+                <img src="/asset/finalunitenlogo.png" style="max-width:150px">
                 <h3 class="my-3 py-2">Register | <?=$event['eventname'];?></h3>
 
             </div>
