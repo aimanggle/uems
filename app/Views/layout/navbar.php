@@ -1,6 +1,9 @@
 <nav class="navbar navbar-expand-lg sticky-top px-5-5 py-3 bg-nav">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/dashboard"><b>UEMS</b></a>
+        <a class="navbar-brand" href="/dashboard">
+            <img src="/asset/finalunitenlogo.png" alt="Logo" width="36" height="30" class="d-inline-block align-text-top">
+            UEMS
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
