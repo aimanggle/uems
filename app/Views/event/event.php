@@ -39,8 +39,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <div
-                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="fs-3">Event</h1>
                         <div class="btn-group float-end" role="group" aria-label="Basic outlined example">
                             <a href="<?=url_to('event.create')?>" class="btn btn-outline-primary">New Event</a>

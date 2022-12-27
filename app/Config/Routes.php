@@ -95,7 +95,6 @@ $routes->post('/user/status/(:num)', 'User::updatestat/$1', ['filter' => 'auth']
  */
 $routes->get('/event/listing', 'Listing::index');
 $routes->post('/event/listing', 'Listing::index');
-// $routes->get('/event/listing/(:any)', 'Listing::index/$1');
 $routes->get('/event/listing/search/(:any)', 'Listing::filter/$1');
 $routes->get('/event/listing/detail/(:any)', 'Listing::detail/$1'); 
 $routes->get('/event/listing/register/(:any)', 'Listing::register/$1');
@@ -104,6 +103,7 @@ $routes->post('/event/listing/register/(:any)/step2', 'Listing::register3/$1');
 $routes->post('/event/listing/register/(:any)/step3/(:any)/(:any)', 'Listing::attemptRegister/$1/$2/$3', ['as' => 'event.register.attempt']);
 $routes->post('/event/listing/register/thankyou', 'Listing::thankyou');
 $routes->post('/student/store/(:num)', 'Listing::storestudent/$1', ['as' => 'student.store']);
+$routes->post('/findevent', 'Listing::find');
 
 /**
  * --------------------------------------------------------------------

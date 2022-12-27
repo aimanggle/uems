@@ -68,6 +68,7 @@
                 <select id="evenstat" class="form-select" name="eventstat" >
                     <option <?php if ($event['eventstatus'] == "On Going") echo "selected";?> >On Going</option>
                     <option <?php if ($event['eventstatus'] == "Completed") echo "selected";?> >Completed</option>
+                    <option <?php if ($event['eventstatus'] == "Cancel") echo "selected";?> >Cancel</option>
                     <option <?php if ($event['eventstatus'] == "Close") echo "selected";?> >Close</option>
                 </select>
             </div>

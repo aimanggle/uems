@@ -62,6 +62,7 @@
                     <option value="">Choose...</option>
                     <option value="On Going" <?php if (old('eventstat') == "On Going") echo "selected";?>>On Going</option>
                     <option value="Completed" <?php if (old('eventstat') == "Completed") echo "selected";?>>Completed</option>
+                    <option value="Cancel" <?php if (old('eventstat') == "Cancel") echo "selected";?>>Cancel</option>
                     <option value="Close" <?php if (old('eventstat') == "Close") echo "selected";?>>Close</option>
                 </select>
                 <div class="invalid-feedback"><?= $validation->getError('eventstat');?></div>

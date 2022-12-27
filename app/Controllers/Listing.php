@@ -77,6 +77,24 @@ class Listing extends BaseController
         return view('listing/listing', $data);
     }
 
+    public function find()
+    {
+        $eventcat = $this->request->getVar('eventcat');
+        $eventtype = $this->request->getVar('eventtype');
+
+        $event = $this->eventModel
+            ->Like('eventcatname', $eventcat)
+            ->orLike('eventtype',$eventtype)
+            ->findAll();
+
+        $data=[
+            'title' => 'Listing | UEMS',
+            'event' => $event,
+            'eventcat' => $this->EventCategoryModel->findAll()
+        ];
+        return view('listing/listing', $data);
+    }
+
     /**
      * ---------------------------------------------
      *  Methods for Event Detail

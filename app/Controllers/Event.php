@@ -192,7 +192,7 @@ class Event extends BaseController
         return view('event/edit', $data);
     }
 
-     /**
+    /**
      * --------------------------------------------------------------------
      * Update data into Db
      * @param int $eventid
@@ -200,22 +200,47 @@ class Event extends BaseController
      */
     public function update($eventid)
     {
-        $data=[
-            // 'eventid' => $eventid,
-            'eventname' => $this->request->getVar('eventname'),
-            'eventdesc' => $this->request->getVar('eventdesc'),
-            'eventdate' => $this->request->getVar('eventdate'),
-            'eventtype' => $this->request->getVar('eventtype'),
-            'eventtime' => $this->request->getVar('eventtime'),
-            'eventcatname' => $this->request->getVar('eventcategory'),
-            'eventstatus' => $this->request->getVar('eventstat'),
-            'eventscorun' => $this->request->getVar('eventscorun'),
-            'register' => $this->request->getVar('register'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ];
-        // dd($data);
-        $this->eventModel->update($eventid, $data);
-        return redirect()->back()->with('message', 'Event Detail Has been update');
+        if($this->request->getVar('eventstat') == 'cancel')
+        {
+            $data=[
+                'eventid' => $eventid,
+                'eventname' => $this->request->getVar('eventname'),
+                'eventdesc' => $this->request->getVar('eventdesc'),
+                'eventdate' => $this->request->getVar('eventdate'),
+                'eventtype' => $this->request->getVar('eventtype'),
+                'eventtime' => $this->request->getVar('eventtime'),
+                'eventcatname' => $this->request->getVar('eventcategory'),
+                'eventstatus' => $this->request->getVar('eventstat'),
+                'eventscorun' => $this->request->getVar('eventscorun'),
+                'register' => $this->request->getVar('register'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ];
+            // dd($data);
+            $this->eventModel->update($eventid, $data);
+
+            //create new announcement
+
+            return redirect()->back()->with('message', 'Event Detail Updated');
+        }
+        else
+        {
+            $data=[
+                // 'eventid' => $eventid,
+                'eventname' => $this->request->getVar('eventname'),
+                'eventdesc' => $this->request->getVar('eventdesc'),
+                'eventdate' => $this->request->getVar('eventdate'),
+                'eventtype' => $this->request->getVar('eventtype'),
+                'eventtime' => $this->request->getVar('eventtime'),
+                'eventcatname' => $this->request->getVar('eventcategory'),
+                'eventstatus' => $this->request->getVar('eventstat'),
+                'eventscorun' => $this->request->getVar('eventscorun'),
+                'register' => $this->request->getVar('register'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ];
+            // dd($data);
+            $this->eventModel->update($eventid, $data);
+            return redirect()->back()->with('message', 'Event Detail Has been update');
+        }
     }
 
     /**

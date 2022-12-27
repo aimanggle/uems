@@ -44,6 +44,11 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right" role="menu">  
                     <li class="nav-item">
+                        <a class="dropdown-item" href="/setting">
+                            <i class="fa-solid fa-gear"></i> Setting
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="dropdown-item" href="/logout">
                             <i class="fa-solid fa-right-from-bracket"></i> Logout
                         </a>
