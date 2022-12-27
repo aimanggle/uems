@@ -46,6 +46,7 @@ class User extends BaseController
             'password' => $this->request->getVar('password'),
             'role' => $this->request->getVar('role'),
             'userstat' => $this->request->getVar('userstat'),
+            'created_date' => date('Y-m-d')
         ];
 
         $this->userModel->insert($data);
