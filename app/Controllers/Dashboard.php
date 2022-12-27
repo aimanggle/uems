@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\EventModel;
 use App\Models\CollegeModel;
 use App\Models\StudentModel;
+use App\Models\SemesterModel;
 use App\Models\RegistrantModel;
 use App\Controllers\BaseController;
 
@@ -16,19 +17,12 @@ class Dashboard extends BaseController
         $this->registrantModel = new RegistrantModel();
         $this->collegeModel = new CollegeModel();
         $this->studentModel = new StudentModel();
+        $this->semesterModel = new SemesterModel();
     }
     
     public function dashboard()
     {
 
-        $mondaydate = date('Y-m-d', strtotime('monday this week'));
-        $tuesdaydate = date('Y-m-d', strtotime('tuesday this week'));
-        $wednesdaydate = date('Y-m-d', strtotime('wednesday this week'));
-        $thursdaydate = date('Y-m-d', strtotime('thursday this week'));
-        $fridaydate = date('Y-m-d', strtotime('friday this week'));
-        $saturdaydate = date('Y-m-d', strtotime('saturday this week'));
-        $sundaydate = date('Y-m-d', strtotime('sunday this week'));
-        
         $collegeidcoe = '1';
         $collegeidcoba = '2';
         $collegeidcci = '3';
@@ -44,6 +38,21 @@ class Dashboard extends BaseController
         $ttlregis = $this->registrantModel->countregbysid();
         $ttlregdef = $this->registrantModel->countAll();
 
+        $semdate = $this->semesterModel->first();
+
+        $sem1startdate = $semdate['s1startdate'];
+        $sem1enddate = $semdate['s1enddate'];
+
+        $shortstartdate = $semdate['shortstartdate'];
+        $shortenddate = $semdate['shortenddate'];
+
+        $sem2startdate = $semdate['s2startdate'];
+        $sem2enddate = $semdate['s2enddate'];
+
+        $sem1 = $this->registrantModel->countregbetween($sem1startdate, $sem1enddate);
+        $short = $this->registrantModel->countregbetween($shortstartdate, $shortenddate);
+        $sem2 = $this->registrantModel->countregbetween($sem2startdate, $sem2enddate);
+
         $data=[
             'url' => 'dashboard',
             'title' => 'Dashboard | UEMS',
@@ -52,13 +61,6 @@ class Dashboard extends BaseController
             'complete' => $this->eventModel->countComplete(),
             'eventforthismonth' => $this->eventModel->showeventforthismonth(),
             'regtoday' => $this->registrantModel->countregtoday(),
-            'regfirstdate' => $this->registrantModel->countregfirstdate($mondaydate),
-            'regseconddate' => $this->registrantModel->countregseconddate($tuesdaydate),
-            'regthirddate' => $this->registrantModel->countregthirddate($wednesdaydate),
-            'regfourthdate' => $this->registrantModel->countregfourthdate($thursdaydate),
-            'regfifthdate' => $this->registrantModel->countregfifthdate($fridaydate),
-            'regsixthdate' => $this->registrantModel->countregsixthdate($saturdaydate),
-            'regseventhdate' => $this->registrantModel->countregseventhdate($sundaydate),
             'username' => session()->get('user_name'),
             'college' => $this->collegeModel->FindAll(),
             'student' => $this->studentModel->countstudent(),
@@ -68,9 +70,11 @@ class Dashboard extends BaseController
             'ces' => $ces,
             'cogs' => $cogs,    
             'ttlregis' => $ttlregis,  
-            'ttlregdef' => $ttlregdef
+            'ttlregdef' => $ttlregdef,
+            'sem1' => $sem1,
+            'short' => $short,
+            'sem2' => $sem2,
         ];
-        
         return view('dashboard/dashboard', $data);
     }
 
