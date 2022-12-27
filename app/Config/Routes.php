@@ -78,6 +78,7 @@ $routes->get('/event/restore/(:any)', 'Event::restore/$1', ['filter' => 'auth', 
  */
 $routes->get('/registrant', 'Registrant::index', ['filter' => 'auth', 'as' => 'registrant']);
 $routes->get('/registrant/detail/(:num)', 'Registrant::detail/$1', ['filter' => 'auth', 'as' => 'registrant.detail']);
+
 /**
  * --------------------------------------------------------------------
  * Routes for User
@@ -88,6 +89,13 @@ $routes->post('/user', 'User::insert', ['filter' => 'auth']);
 $routes->post('/user/(:num)', 'User::updatedetail/$1', ['filter' => 'auth']);
 $routes->post('/user/status/(:num)', 'User::updatestat/$1', ['filter' => 'auth']);
 
+/**
+ * --------------------------------------------------------------------
+ * Routes for Setting
+ * --------------------------------------------------------------------
+ */
+$routes->get('/setting', 'Setting::index', ['filter' => 'auth']);
+$routes->post('/setting/semester', 'Setting::updatesemesterdate', ['filter' => 'auth', 'as' => 'update.semester']);
 /**
  * --------------------------------------------------------------------
  * Routes for Event Listing
