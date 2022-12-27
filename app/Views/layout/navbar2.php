@@ -12,7 +12,10 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link active text-light" href="/event/track">Track Program</a>
-            </li>   
+            </li> 
+            <li class="nav-item">
+                <a class="nav-link active text-light" href="/event/announcement">Announcement</a>
+            </li>
           </ul>     
         </div>
       </div>
