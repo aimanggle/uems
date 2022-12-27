@@ -98,8 +98,8 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <h5 class="text-center">Trend Registration Per Day</h5>
-                                <div id="sevendayschart" class="w-auto" style="height: 300px;"></div>
+                                <h5 class="text-center">Trend Registration Per Semester</h5>
+                                <div id="semesterchart" class="w-auto" style="height: 300px;"></div>
                             </div>
                         </div>
                     </div>
@@ -244,7 +244,7 @@ else
     },
     series: [{
     name: 'Register per day',
-    data: [<?=$regfirstdate['total']?>,<?=$regseconddate['total']?>,<?=$regthirddate['total']?>,<?=$regfourthdate['total']?>,<?=$regfifthdate['total']?>,<?=$regsixthdate['total']?>,<?=$regseventhdate['total']?>]
+    data: [<?=$sem1['total'];?>,<?=$short['total'];?>,<?=$sem2['total'];?>,]
     }],
 colors : ['RGB(150 69 255)'],
 fill: {
@@ -259,11 +259,11 @@ fill: {
     }
     },
     xaxis: {
-    categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun',]
+    categories: ['Semester 1', 'Short Semester', 'Semester 2', ]
     }
 }
 
-var chart = new ApexCharts(document.querySelector("#sevendayschart"), options);
+var chart = new ApexCharts(document.querySelector("#semesterchart"), options);
 
 chart.render();
 </script>
