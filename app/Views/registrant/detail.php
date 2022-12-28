@@ -25,6 +25,7 @@
             </div>
         </div>
     </div>
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6 mb-4">
@@ -36,7 +37,7 @@
                                 <p class="mb-0 text-primary fw-bold">Total Register</p>
                             </div>
                             <div class="align-self-center">
-                            <i class="bi bi-cash-coin text-dark fa-3x"></i>
+                            <i class="fa-regular fa-address-card fa-3x"></i>
                             </div>
                         </div>
                     </div>
@@ -51,7 +52,7 @@
                                 <p class="mb-0 text-primary fw-bold">Total Register Today</p>
                             </div>
                             <div class="align-self-center">
-                            <i class="bi bi-cash-coin text-dark fa-3x"></i>
+                            <i class="fa-regular fa-address-card fa-3x"></i>
                             </div>
                         </div>
                     </div>
@@ -60,9 +61,6 @@
             
         </div>
     </div>
-
-
-
 
     <div class="container-fluid">
         <div class="row">
@@ -88,7 +86,7 @@
                                             <td><?=$r['studentid'];?></td>
                                             <td><?=$eventdate;?></td>
                                             <td>
-                                                <a href="/registrant/detail/view/<?= $r['sid'];?>" class="btn btn-secondary" ><span><i class="bi bi-chevron-right"></i></span></a>
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewdetailModal<?= $r['regid'];?>"><i class="bi bi-eye"></i></button>
                                             </td>
                                         </tr>
                                 <?php endforeach;?>
@@ -102,6 +100,54 @@
             </div>
         </div>
     </div>
+
+
+
+
+<?php foreach($regis as $r):?>
+<?php $date = date('d-M-Y',strtotime($r['regdate']));?>
+<div class="modal fade" id="viewdetailModal<?=$r['regid']?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Registrant Detail</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <h1 class="fs-4">Student Detail</h1>
+                <hr>
+                <div class="col-md-4">
+                    <p class="fw-bold">Full Name : </p>
+                    <p class="fw-bold">Student ID : </p>
+                    <p class="fw-bold">College : </p>
+                    <p class="fw-bold">Program :</p>
+                </div>
+                <div class="col-md-8">
+                    <p><?=$r['fullname']?></p>
+                    <p><?=$r['studentid']?></p>
+                    <p><?=$r['collegename']?></p>
+                    <p><?=$r['programname']?></p>
+                </div>
+                <h1 class="fs-4">Register Detail</h1>
+                <hr>
+                <div class="col-md-4">
+                    <p class="fw-bold">Register Date : </p>
+                    <p class="fw-bold">Ticket No : </p>
+                </div>
+                <div class="col-md-8">
+                    <p><?=$date?></p>
+                    <p><?=$r['regno']?></p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+</div>
+<?php endforeach;?>
 
 </div>
 
