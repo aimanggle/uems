@@ -13,7 +13,7 @@ class RegistrantModel extends Model
 
     public function findbyeventid($eventid)
     {
-        $sql = "SELECT * FROM registrant JOIN student ON registrant.sid = student.sid WHERE eventid = $eventid";
+        $sql = "SELECT * FROM registrant JOIN student ON registrant.sid = student.sid JOIN college ON registrant.collegeid = college.collegeid JOIN program ON student.programid = program.programid WHERE eventid = $eventid";
         return $this->db->query($sql)->getResultArray();
     }
 
