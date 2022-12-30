@@ -9,6 +9,10 @@ class RegistrantModel extends Model
     
     protected $table            = 'registrant';
     protected $primaryKey       = 'regid';
+    protected $useSoftDeletes   = true;
+    protected $createdField     = 'created_at';
+    protected $updatedField     = 'updated_at';
+    protected $deletedField     = 'deleted_at';
     protected $allowedFields    = ['regid', 'sid', 'eventid', 'regdate', 'collegeid', 'regno'];
 
     public function findbyeventid($eventid)
