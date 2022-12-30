@@ -77,24 +77,6 @@ class Listing extends BaseController
         return view('listing/listing', $data);
     }
 
-    public function find()
-    {
-        $eventcat = $this->request->getVar('eventcat');
-        $eventtype = $this->request->getVar('eventtype');
-
-        $event = $this->eventModel
-            ->Like('eventcatname', $eventcat)
-            ->orLike('eventtype',$eventtype)
-            ->findAll();
-
-        $data=[
-            'title' => 'Listing | UEMS',
-            'event' => $event,
-            'eventcat' => $this->EventCategoryModel->findAll()
-        ];
-        return view('listing/listing', $data);
-    }
-
     /**
      * ---------------------------------------------
      *  Methods for Event Detail
@@ -201,6 +183,7 @@ class Listing extends BaseController
             'eventid' => $eventid,
             'regdate' => date('Y-m-d H:i:s'),
             'collegeid' => $collegeid,
+            'created_at' => date('Y-m-d H:i:s'),
         ];
 
         if($this->RegistrantModel->save($data))
