@@ -115,10 +115,11 @@ $routes->post('/findevent', 'Listing::find');
 
 /**
  * --------------------------------------------------------------------
- * Routes for Event Listing
+ * Routes for Export Registrant 
  * --------------------------------------------------------------------
  */
 $routes->get('/export/excel/(:num)', 'Export::index/$1', ['filter' =>  'auth', 'as' => 'export.excel']);
+
 /**
  * --------------------------------------------------------------------
  * Routes for Track Program
@@ -126,6 +127,13 @@ $routes->get('/export/excel/(:num)', 'Export::index/$1', ['filter' =>  'auth', '
  */
 $routes->get('/event/track', 'Track::index');
 $routes->post('/event/track', 'Track::show');
+
+/**
+ * --------------------------------------------------------------------
+ * Routes for Announcement
+ * --------------------------------------------------------------------
+ */
+$routes->get('event/announcement', 'Announcement::index', ['filter' => 'auth']);
 
 /**
  * --------------------------------------------------------------------
