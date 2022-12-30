@@ -5,6 +5,7 @@ namespace App\Controllers;
 use Config\Database;
 use Config\Services;
 use App\Models\EventModel;
+use App\Models\RegistrantModel;
 use App\Models\EventCategoryModel;
 use App\Controllers\BaseController;
 
@@ -14,6 +15,7 @@ class Event extends BaseController
     {
         $this->eventModel = new EventModel();
         $this->eventCategoryModel = new EventCategoryModel();
+        $this->registrantModel = new RegistrantModel();
         $this->validation = Services::validation();
     }
 
@@ -275,6 +277,12 @@ class Event extends BaseController
             'updated_at' => date('Y-m-d H:i:s'),
         ];
         $this->eventModel->update($eventid, $data);
+
+        $db = \Config\Database::connect();
+        $builder = $db->table('registrant');
+        $builder->where('eventid', $eventid);
+        $builder->update($data);
+
         return redirect()->to('/event')->with('success', 'Event Has been restore');
     }
 
@@ -287,17 +295,20 @@ class Event extends BaseController
     public function delete($eventid)
     {
         
-        $db = \Config\Database::connect();
-        $builder = $db->table('registrant');
-        $builder->where('eventid', $eventid);
-        $builder->delete();
+        // $db = \Config\Database::connect();
+        // $builder = $db->table('registrant');
+        // $builder->where('eventid', $eventid);
+        // $builder->delete();
 
-        $data=[
-            'deleted_at' => date('Y-m-d H:i:s'),
+        // $data=[
+        //     'deleted_at' => date('Y-m-d H:i:s'),
             
-        ];
+        // ];
         // $this->eventModel->update($eventid, $data);
         $this->eventModel->where('eventid', $eventid,)->delete();
+
+        //for registrant table
+        $this->registrantModel->where('eventid', $eventid,)->delete();
     
 
         return redirect()->to('/event')->with('error', 'Event has been delete!');
