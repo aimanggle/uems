@@ -13,7 +13,7 @@ class EventModel extends Model
     protected $createdField     = 'created_at';
     protected $updatedField     = 'updated_at';
     protected $deletedField     = 'deleted_at';
-    protected $allowedFields    = ['eventid', 'eventname', 'eventdesc', 'eventdate', 'eventcatname', 'eventtype', 'eventtime', 'eventstatus', 'eventscorun', 'register', 'created_at', 'updated_at','deleted_at'];
+    protected $allowedFields    = ['eventid', 'eventname', 'eventdesc', 'eventdate', 'eventcatname', 'eventtype', 'eventtime', 'eventstatus', 'eventscorun', 'register', 'eventimage','created_at', 'updated_at','deleted_at'];
 
     public function countevent()
     {
@@ -45,6 +45,4 @@ class EventModel extends Model
         return $this->table('customer')->like('eventtype', $keyword);
     }
     
-   
-   
 }
