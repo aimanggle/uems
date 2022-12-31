@@ -71,8 +71,9 @@
     <div class="container-fluid" id="listing">
         <div class="row mt-2 mb-4">
             <?php foreach($event as $e):?>
-            <div class="col-md-4 mt-3 mb-3 shadow-md" id="">
+            <div class="col-md-3 mt-3 mb-3 shadow-md" id="">
                 <div class="card border border-secondary border-opacity-50">
+                    <img src="/asset/event/<?=$e['eventimage']?>" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title"><?=$e['eventname'];?>  <span class="badge text-bg-warning"><?=$e['eventstatus'];?></span></h5>
                         <hr>
