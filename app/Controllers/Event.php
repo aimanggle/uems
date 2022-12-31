@@ -230,7 +230,7 @@ class Event extends BaseController
      */
     public function update($eventid)
     {
-        if($this->request->getFile('image') == '')
+        if($this->request->getFile('image') == null)
         {
             if($this->request->getVar('eventstat') == 'cancel')
             {
@@ -287,7 +287,7 @@ class Event extends BaseController
                 'register' => $this->request->getVar('register'),
                 'eventimage' => $filename,
                 'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => null,
+                'updated_at' => date('Y-m-d H:i:s'),
                 'deleted_at' => null,
             ];
             $this->eventModel->update($eventid, $data);
