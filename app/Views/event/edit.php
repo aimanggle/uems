@@ -91,7 +91,15 @@
                     <option value="Close" <?php if ($event['register'] == "Close") echo "selected";?>>Close</option>
                 </select>
             </div>
-
+            <!-- preview image -->
+            <div class="col-md-4">
+                <label for="eventimg" class="form-label">Event Poster Preview </label>
+                <img src="/asset/event/<?=$event['eventimage'];?>" class="img-fluid img-preview border border-dark" alt="Responsive image" style="max-width:300px;">
+            </div>
+            <div class="col-md-8">
+                <label for="eventimg" class="form-label">Event Poster <span class="text-muted fs-6">(Optional)</span></label>
+                <input type="file" class="form-control" id="eventimage" name="image" value="">
+            </div>
             <div class="col-md-12">
                 <button type="submit" class="btn btn-primary float-end"><i class="bi bi-save pr-2"></i> Save Change</button>
             </div>
