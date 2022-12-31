@@ -24,7 +24,7 @@
             </div>
         </div>
 
-        <form class="row g-3" action="<?=url_to('event.create')?>" method="post">
+        <form class="row g-3" action="<?=url_to('event.create')?>" method="post" enctype="multipart/form-data">
             <?=csrf_field();?>       
             <div class="col-md-6">
                 <label for="eventname" class="form-label">Event Name</label>
@@ -92,6 +92,11 @@
                 <div class="invalid-feedback"><?= $validation->getError('register');?></div>
             </div>
             <div class="col-md-12">
+                <label for="eventimg" class="form-label">Event Poster <span class="text-muted fs-6">(Optional)</span></label>
+                <input type="file" class="form-control <?=  ($validation->hasError('image')) ? 'is-invalid' : 'invalid'?>" id="eventimage" name="image" value="<?=old('image')?>">
+                <div class="invalid-feedback"><?= $validation->getError('image');?>
+            </div>
+            <div class="col-md-12 mt-3">
                 <button type="submit" class="btn btn-primary float-end"><i class="bi bi-save pr-2"></i> Submit</button>
             </div>
         </form>
