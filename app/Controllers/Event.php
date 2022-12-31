@@ -157,22 +157,50 @@ class Event extends BaseController
             return redirect()->back()->withInput()->with('validation', $validation);
         }
 
-        $data=[
-            'eventname' => $this->request->getVar('eventname'),
-            'eventdesc' => $this->request->getVar('eventdesc'),
-            'eventdate' => $this->request->getVar('eventdate'),
-            'eventtype' => $this->request->getVar('eventtype'),
-            'eventtime' => $this->request->getVar('eventtime'),
-            'eventcatname' => $this->request->getVar('eventcategory'),
-            'eventstatus' => $this->request->getVar('eventstat'),
-            'eventscorun' => $this->request->getVar('eventscorun'),
-            'register' => $this->request->getVar('register'),
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => null,
-            'deleted_at' => null,
-        ];
-        // dd($data);
-        $this->eventModel->insert($data);
+        if($this->request->getFile('image') == '')
+        {
+
+            $data=[
+                'eventname' => $this->request->getVar('eventname'),
+                'eventdesc' => $this->request->getVar('eventdesc'),
+                'eventdate' => $this->request->getVar('eventdate'),
+                'eventtype' => $this->request->getVar('eventtype'),
+                'eventtime' => $this->request->getVar('eventtime'),
+                'eventcatname' => $this->request->getVar('eventcategory'),
+                'eventstatus' => $this->request->getVar('eventstat'),
+                'eventscorun' => $this->request->getVar('eventscorun'),
+                'register' => $this->request->getVar('register'),
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => null,
+                'deleted_at' => null,
+            ];
+            $this->eventModel->insert($data);
+        }
+        else
+        {
+            $file = $this->request->getFile('image');
+            $file->move('asset/event/');
+            $filename = $file->getName();
+    
+            $data=[
+                'eventname' => $this->request->getVar('eventname'),
+                'eventdesc' => $this->request->getVar('eventdesc'),
+                'eventdate' => $this->request->getVar('eventdate'),
+                'eventtype' => $this->request->getVar('eventtype'),
+                'eventtime' => $this->request->getVar('eventtime'),
+                'eventcatname' => $this->request->getVar('eventcategory'),
+                'eventstatus' => $this->request->getVar('eventstat'),
+                'eventscorun' => $this->request->getVar('eventscorun'),
+                'register' => $this->request->getVar('register'),
+                'eventimage' => $filename,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => null,
+                'deleted_at' => null,
+            ];
+            // dd($data);
+            $this->eventModel->insert($data);
+
+        }
         return redirect()->to('/event')->with('success', 'Success Add New Event');
     }
     
@@ -202,32 +230,52 @@ class Event extends BaseController
      */
     public function update($eventid)
     {
-        if($this->request->getVar('eventstat') == 'cancel')
+        if($this->request->getFile('image') == '')
         {
-            $data=[
-                'eventid' => $eventid,
-                'eventname' => $this->request->getVar('eventname'),
-                'eventdesc' => $this->request->getVar('eventdesc'),
-                'eventdate' => $this->request->getVar('eventdate'),
-                'eventtype' => $this->request->getVar('eventtype'),
-                'eventtime' => $this->request->getVar('eventtime'),
-                'eventcatname' => $this->request->getVar('eventcategory'),
-                'eventstatus' => $this->request->getVar('eventstat'),
-                'eventscorun' => $this->request->getVar('eventscorun'),
-                'register' => $this->request->getVar('register'),
-                'updated_at' => date('Y-m-d H:i:s'),
-            ];
-            // dd($data);
-            $this->eventModel->update($eventid, $data);
+            if($this->request->getVar('eventstat') == 'cancel')
+            {
+                $data=[
+                    'eventname' => $this->request->getVar('eventname'),
+                    'eventdesc' => $this->request->getVar('eventdesc'),
+                    'eventdate' => $this->request->getVar('eventdate'),
+                    'eventtype' => $this->request->getVar('eventtype'),
+                    'eventtime' => $this->request->getVar('eventtime'),
+                    'eventcatname' => $this->request->getVar('eventcategory'),
+                    'eventstatus' => $this->request->getVar('eventstat'),
+                    'eventscorun' => $this->request->getVar('eventscorun'),
+                    'register' => $this->request->getVar('register'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ];
+                $this->eventModel->update($eventid, $data);
 
-            //create new announcement
+                //create new announcement
 
-            return redirect()->back()->with('message', 'Event Detail Updated');
+                return redirect()->back()->with('message', 'Event Detail Updated');
+            }
+            else
+            {
+                $data=[
+                    'eventname' => $this->request->getVar('eventname'),
+                    'eventdesc' => $this->request->getVar('eventdesc'),
+                    'eventdate' => $this->request->getVar('eventdate'),
+                    'eventtype' => $this->request->getVar('eventtype'),
+                    'eventtime' => $this->request->getVar('eventtime'),
+                    'eventcatname' => $this->request->getVar('eventcategory'),
+                    'eventstatus' => $this->request->getVar('eventstat'),
+                    'eventscorun' => $this->request->getVar('eventscorun'),
+                    'register' => $this->request->getVar('register'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ];
+                $this->eventModel->update($eventid, $data);
+            }
         }
         else
         {
+            $file = $this->request->getFile('image');
+            $file->move('asset/event/');
+            $filename = $file->getName();
+    
             $data=[
-                // 'eventid' => $eventid,
                 'eventname' => $this->request->getVar('eventname'),
                 'eventdesc' => $this->request->getVar('eventdesc'),
                 'eventdate' => $this->request->getVar('eventdate'),
@@ -237,12 +285,14 @@ class Event extends BaseController
                 'eventstatus' => $this->request->getVar('eventstat'),
                 'eventscorun' => $this->request->getVar('eventscorun'),
                 'register' => $this->request->getVar('register'),
-                'updated_at' => date('Y-m-d H:i:s'),
+                'eventimage' => $filename,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => null,
+                'deleted_at' => null,
             ];
-            // dd($data);
             $this->eventModel->update($eventid, $data);
-            return redirect()->back()->with('message', 'Event Detail Has been update');
         }
+        return redirect()->back()->with('message', 'Event Detail Has been update');
     }
 
     /**
@@ -258,10 +308,7 @@ class Event extends BaseController
             'title' => 'Deleted Event | UEMS',
             'event' => $this->eventModel->onlyDeleted()->findAll(),
         ];
-
         return view('event/retrieve', $data);
-        d($data);
-
     }
 
     /**
@@ -295,22 +342,10 @@ class Event extends BaseController
     public function delete($eventid)
     {
         
-        // $db = \Config\Database::connect();
-        // $builder = $db->table('registrant');
-        // $builder->where('eventid', $eventid);
-        // $builder->delete();
-
-        // $data=[
-        //     'deleted_at' => date('Y-m-d H:i:s'),
-            
-        // ];
-        // $this->eventModel->update($eventid, $data);
         $this->eventModel->where('eventid', $eventid,)->delete();
 
-        //for registrant table
         $this->registrantModel->where('eventid', $eventid,)->delete();
     
-
         return redirect()->to('/event')->with('error', 'Event has been delete!');
     }
 }
