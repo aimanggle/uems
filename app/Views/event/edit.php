@@ -37,7 +37,7 @@
             </div>
         </div>
 
-        <form class="row g-3" action="/event/edit/<?=$event['eventid'];?>" method="post">
+        <form class="row g-3" action="/event/edit/<?=$event['eventid'];?>" method="post" enctype="multipart/form-data">
             <?=csrf_field();?>       
             <div class="col-md-6">
                 <label for="eventname" class="form-label">Event Name</label>
