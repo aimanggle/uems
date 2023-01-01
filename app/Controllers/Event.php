@@ -11,6 +11,20 @@ use App\Controllers\BaseController;
 
 class Event extends BaseController
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Event Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller is responsible to handle all user requests related to events.
+    |
+     */
+
+    /**
+     * ---------------------------------------------
+     *  Constructor to load model
+     * ---------------------------------------------
+     */
     public function __construct()
     {
         $this->eventModel = new EventModel();
@@ -21,8 +35,8 @@ class Event extends BaseController
 
     /**
      * --------------------------------------------------------------------
-     * Show Event Page Function
-     * @param null
+     *  Method to show event page with pagination
+     *  @param null
      * --------------------------------------------------------------------
      */
     public function index()
@@ -54,8 +68,8 @@ class Event extends BaseController
 
     /**
      * --------------------------------------------------------------------
-     * Show Event Detail Page Function
-     * @param int $eventid
+     *  Method to show event detail page
+     *  @param int $eventid
      * --------------------------------------------------------------------
      */
     public function detail($eventid)
@@ -71,8 +85,8 @@ class Event extends BaseController
 
     /**
      * --------------------------------------------------------------------
-     * Show Event Create Page Function
-     * @param null
+     *  Method to show create new event page
+     *  @param null
      * --------------------------------------------------------------------
      */
     public function create()
@@ -89,8 +103,8 @@ class Event extends BaseController
 
     /**
      * --------------------------------------------------------------------
-     * Attempt Event Create Function
-     * @param null
+     *  Method to insert new event
+     *  @param null
      * --------------------------------------------------------------------
      */
     public function insert()
@@ -206,8 +220,8 @@ class Event extends BaseController
     
     /**
      * --------------------------------------------------------------------
-     * Show Event Edit Page Function
-     * @param int $eventid
+     *  Method to show edit event page
+     *  @param int $eventid
      * --------------------------------------------------------------------
      */
     public function edit($eventid)
@@ -224,8 +238,8 @@ class Event extends BaseController
 
     /**
      * --------------------------------------------------------------------
-     * Update data into Db
-     * @param int $eventid
+     *  Method to update event data
+     *  @param int $eventid
      * --------------------------------------------------------------------
      */
     public function update($eventid)
@@ -297,8 +311,8 @@ class Event extends BaseController
 
     /**
      * --------------------------------------------------------------------
-     * Show retrieve event page
-     * @param null
+     *  Method to show delete event
+     *  @param null
      * --------------------------------------------------------------------
      */
     public function retrieve()
@@ -313,8 +327,8 @@ class Event extends BaseController
 
     /**
      * --------------------------------------------------------------------
-     * restore event 
-     * @param int $eventid
+     *  Method to restore event data
+     *  @param int $eventid
      * --------------------------------------------------------------------
      */
     public function restore($eventid)
@@ -335,8 +349,8 @@ class Event extends BaseController
 
     /**
      * --------------------------------------------------------------------
-     * Delete data from table
-     * @param int $eventid
+     *  Method to delete event data
+     *  @param int $eventid
      * --------------------------------------------------------------------
      */
     public function delete($eventid)
