@@ -12,9 +12,17 @@ use App\Controllers\BaseController;
 
 class Listing extends BaseController
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Listing Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller is responsible for all data show in listing page
+    |
+     *
     /**
      * ---------------------------------------------
-     * Public Methods
+     *  Constructor to load model
      * ---------------------------------------------
      */
     public function __construct()
@@ -47,7 +55,7 @@ class Listing extends BaseController
     /**
      * ---------------------------------------------
      *  Methods for Event filter
-     *  @param varchar $query
+     *  @param mixed $query
      * ---------------------------------------------
      */
     public function filter($query, $sort = 'null')
