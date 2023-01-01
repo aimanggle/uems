@@ -8,6 +8,15 @@ use App\Controllers\BaseController;
 
 class Setting extends BaseController
 {
+    /*
+    |--------------------------------------------------------------------------
+    | SettingController
+    |--------------------------------------------------------------------------
+    |
+    | This controller is responsible for all related to setting page
+    |
+     *
+    
     /**
      * --------------------------------------------------------------------
      * Constructor
@@ -21,8 +30,8 @@ class Setting extends BaseController
 
     /**
      * --------------------------------------------------------------------
-     * Method for show setting page
-     * @param null
+     *  Method for show setting page
+     *  @param null
      * --------------------------------------------------------------------
      */
     public function index()
@@ -38,8 +47,8 @@ class Setting extends BaseController
 
     /**
      * --------------------------------------------------------------------
-     * Method for update semester date
-     * @param null
+     *  Method for update semester date
+     *  @param null
      * --------------------------------------------------------------------
      */
     public function updatesemesterdate()
