@@ -41,7 +41,6 @@ class EventModel extends Model
     
     public function search($keyword)
     {
-        
         return $this->table('customer')->like('eventtype', $keyword);
     }
     
