@@ -8,9 +8,18 @@ use App\Controllers\BaseController;
 
 class Auth extends BaseController
 {
+     /*
+     |--------------------------------------------------------------------------
+     | Auth Controller
+     |--------------------------------------------------------------------------
+     |
+     | This controller is responsible for handling authentication requests
+     |
+     *
+
      /**
      * ---------------------------------------------
-     * Public Methods
+     * Constructor to load model and validation class
      * ---------------------------------------------
      */
      public function __construct()
@@ -164,7 +173,8 @@ class Auth extends BaseController
 
      /**
       * --------------------------------------------------------------------
-      * Show Register Page Function
+      *   Method to show register page
+      *   @param null
       * --------------------------------------------------------------------
       */
      public function register()
@@ -177,7 +187,8 @@ class Auth extends BaseController
 
      /**
       * --------------------------------------------------------------------
-      * Attempt Register Function
+      *   Method to attempt register
+      *   @param null
       * --------------------------------------------------------------------
       */
      public function attempRegister()
@@ -190,7 +201,7 @@ class Auth extends BaseController
 
           //check if user exists in database
           $user = $this->userModel->where('email', $email)->first();
-    
+
           //if user exists
           if ($user) 
           {
@@ -230,7 +241,8 @@ class Auth extends BaseController
 
      /**
       * --------------------------------------------------------------------
-      * Logout Function
+      *   Method to logout user
+      *   @param null
       * --------------------------------------------------------------------
       */
      public function logout()
