@@ -8,15 +8,34 @@ use App\Controllers\BaseController;
 
 class Track extends BaseController
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Track Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller is responsible for handling track program
+    |
+     *
+
+    /**
+     * ---------------------------------------------
+     * Constructor to load model
+     * ---------------------------------------------
+     */
     public function __construct()
     {
         $this->studentModel = new StudentModel();
         $this->registrantModel = new RegistrantModel();
     }
 
+    /**
+     * ---------------------------------------------
+     * Methods for show track program page
+     * @param null
+     * ---------------------------------------------
+     */
     public function index()
     {
-       
         $data = [
             'title' => 'Track | UEMS',
         ];
@@ -24,11 +43,17 @@ class Track extends BaseController
     
     }
 
+    /**
+     * ---------------------------------------------
+     * Methods for find join event by student id
+     * @param mixed $query
+     * ---------------------------------------------
+     */
     public function show()
     {
         $studentid = $this->request->getVar('studentid');
         $student = $this->studentModel->detail($studentid);
-        if ($student) 
+        if($student) 
         {
             $data = [
                 'title' => 'Track | UEMS',
