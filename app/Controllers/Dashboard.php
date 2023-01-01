@@ -11,6 +11,20 @@ use App\Controllers\BaseController;
 
 class Dashboard extends BaseController
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Dashboard Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller is responsible for all data show in dashboard
+    |
+     */
+
+    /**
+     * ---------------------------------------------
+     * Constructor to load model
+     * ---------------------------------------------
+     */
     public function __construct()
     {
         $this->eventModel = new EventModel();
@@ -20,6 +34,12 @@ class Dashboard extends BaseController
         $this->semesterModel = new SemesterModel();
     }
     
+    /**
+     *  ----------------------------------------
+     *  Methods to view dashboard page
+     *  @param null
+     *  ----------------------------------------
+     */
     public function dashboard()
     {
 
