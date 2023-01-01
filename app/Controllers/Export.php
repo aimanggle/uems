@@ -10,11 +10,32 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Export extends BaseController
 {
+	/*
+	|--------------------------------------------------------------------------
+	| Export Controller
+	|--------------------------------------------------------------------------
+	|
+	| This controller is responsible for handling export requests
+	|
+     *
+
+    /**
+     * ---------------------------------------------
+     * Constructor to load model and validation class
+     * ---------------------------------------------
+     */
     public function __construct()
     {
         $this->eventModel = new EventModel();
         $this->registrantModel = new RegistrantModel();
     }
+
+	/**
+	 *  ----------------------------------------
+	 *  Methods to export data to excel
+	 *  @param int $eventid
+	 *  ----------------------------------------
+	 */
     public function index($eventid)
     {
         $event = $this->eventModel->Find($eventid);
