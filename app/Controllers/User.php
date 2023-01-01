@@ -7,9 +7,18 @@ use App\Controllers\BaseController;
 
 class User extends BaseController
 {
+    /*
+    |--------------------------------------------------------------------------
+    | User Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller is responsible for handling user page
+    |
+     *
+
     /**
      *  ----------------------------------------
-     *  Public Methods
+     *  Constructor to load model
      *  ----------------------------------------
      */
     public function __construct()
@@ -20,6 +29,7 @@ class User extends BaseController
     /**
      *  ----------------------------------------
      *  Methods to view all users
+     *  @param null
      *  ----------------------------------------
      */
     public function index()
@@ -34,7 +44,8 @@ class User extends BaseController
 
     /**
      *  ----------------------------------------
-     *  Function to insert new user
+     *  Methods to insert new user
+     *  @param null
      *  ----------------------------------------
      */
     public function insert()
@@ -55,7 +66,7 @@ class User extends BaseController
 
     /**
      *  ----------------------------------------
-     *  Function to update user detail
+     *  Methods to update user detail
      *  @param int $id
      *  ----------------------------------------
      */
@@ -75,7 +86,7 @@ class User extends BaseController
 
     /**
      *  ----------------------------------------
-     *  Function to update user status
+     *  Methods to update user status
      *  @param int $id
      *  ----------------------------------------
      */
