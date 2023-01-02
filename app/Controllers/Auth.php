@@ -79,6 +79,7 @@ class Auth extends BaseController
           {
                return redirect()->to('/login')->withInput()->with('validation', $this->validation);
           }
+          
           $auth = $this->request->getVar('auth');
           $password = $this->request->getVar('password');
 
