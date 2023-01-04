@@ -106,7 +106,7 @@ class Auth extends BaseController
           }
           else 
           {
-               session()->setFlashdata('error', 'Incorrect Password');
+               session()->setFlashdata('error', 'Incorrect Username / Password');
                return redirect()->back()->withInput();
           }
      }
