@@ -6,6 +6,7 @@ use Config\Database;
 use Config\Services;
 use App\Models\EventModel;
 use App\Models\RegistrantModel;
+use App\Models\AnnouncementModel;
 use App\Models\EventCategoryModel;
 use App\Controllers\BaseController;
 
@@ -30,6 +31,7 @@ class Event extends BaseController
         $this->eventModel = new EventModel();
         $this->eventCategoryModel = new EventCategoryModel();
         $this->registrantModel = new RegistrantModel();
+        $this->announcementModel = new AnnouncementModel();
         $this->validation = Services::validation();
     }
 
@@ -244,9 +246,9 @@ class Event extends BaseController
      */
     public function update($eventid)
     {
-        if($this->request->getFile('image') == null)
+        if($this->request->getFile('image') == '')
         {
-            if($this->request->getVar('eventstat') == 'cancel')
+            if($this->request->getVar('eventstat') == 'Cancel')
             {
                 $data=[
                     'eventname' => $this->request->getVar('eventname'),
@@ -262,7 +264,13 @@ class Event extends BaseController
                 ];
                 $this->eventModel->update($eventid, $data);
 
-                //create new announcement
+                $dataAnnouncement = [
+                    'announcetitle' => 'Event Cancelled',
+                    'announcedesc' => 'Event '.$this->request->getVar('eventname').' has been cancelled',
+                    'eventid' => $eventid,
+                    'announcedate' => date('Y-m-d H:i:s'),
+                ];
+                $this->announcementModel->insert($dataAnnouncement);
 
                 return redirect()->back()->with('message', 'Event Detail Updated');
             }
