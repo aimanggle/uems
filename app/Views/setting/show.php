@@ -23,31 +23,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <?php if (session()->get('success')) :?>
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <?=session()->get('success');?>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                <?php endif;?>
-                <?php if (session()->get('error')) :?>
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <?=session()->get('error');?>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                <?php endif;?>
-            </div>
-        </div>
-    </div>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="dash-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Semester</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="college-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">College</button>
                     </li>
                 </ul>
                 <div class="tab-content" id="d-tab">
@@ -107,30 +85,29 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-content ctab" id="c-tab">
-                    <div class="tab-pane fade show active" id="tab" role="tabpanel" aria-labelledby="contact-tab">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h1 class="fs-3 mt-3">College Setting</h1>
-                                    <hr>
-                                    <form action="/setting/update/1" method="post" enctype="multipart/form-data">
-                                        <?=csrf_field();?>
-                                        <input type="hidden" name="_method" value="PUT">
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 
 </div>
 
+<?php if (session()->get('success')) :?>
+<div class="toast-container position-fixed top-0 end-0 p-3">
+<!-- <div class="toast align-items-center text-bg-primary border-0"> -->
+    <div id="liveToast" class="toast text-bg-success" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header text-bg-white">
+        <strong class="me-auto">UEMS</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+        <?=session()->get('success');?>
+        </div>
+    </div>
+</div>
+<?php endif;?>
+
 <script>
-    //jquery to hide navtab when navtab is click
+    
     $(document).ready(function() {
         $('#dash-tab').on('click', function(e) {
             console.log('dash tab is click');
@@ -141,12 +118,7 @@
     });
 
     $(document).ready(function() {
-        $('#college-tab').on('click', function(e) {
-            console.log('college tab is click');
-            e.preventDefault();
-            $('#c-tab').show();
-            $('#d-tab').hide();
-        });
+        $('#liveToast').toast('show');
     });
 </script>
 
