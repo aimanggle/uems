@@ -26,20 +26,14 @@
 
         <form class="row g-3" action="<?=url_to('event.create')?>" method="post" enctype="multipart/form-data">
             <?=csrf_field();?>       
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <label for="eventname" class="form-label">Event Name</label>
                 <input type="text" class="form-control <?=  ($validation->hasError('eventname')) ? 'is-invalid' : 'invalid'?>" id="eventname" name="eventname" value="<?=old('eventname')?>">
                 <div class="invalid-feedback"><?= $validation->getError('eventname');?></div>
             </div>
             <div class="col-md-6">
-                <label for="eventname" class="form-label">Event Description</label>
-                <textarea class="form-control <?=  ($validation->hasError('eventdesc')) ? 'is-invalid' : 'invalid'?>" id="eventdesc" name="eventdesc"><?=old('eventdesc')?></textarea>
-                <div class="invalid-feedback"><?= $validation->getError('eventdesc');?></div>
-                <div class="text-muted float-end" id="count_message">500 word remaining</div>
-            </div>
-            <div class="col-md-6">
                 <label for="startdate" class="form-label">Start Date</label>
-                <input type="date" class="form-control <?=  ($validation->hasError('eventdate')) ? 'is-invalid' : 'invalid'?>" id="eventdate" name="eventdate" value="<?=old('eventdate')?>" >
+                <input type="date" class="form-control <?=  ($validation->hasError('eventdate')) ? 'is-invalid' : 'invalid'?>" id="eventdate" min="<?=date('Y-m-d')?>" name="eventdate" value="<?=old('eventdate')?>" >
                 <div class="invalid-feedback"><?= $validation->getError('eventdate');?></div>
             </div>
             <div class="col-md-6">
@@ -95,6 +89,12 @@
                 <label for="eventimg" class="form-label">Event Poster <span class="text-muted fs-6">(Optional)</span></label>
                 <input type="file" class="form-control <?=  ($validation->hasError('image')) ? 'is-invalid' : 'invalid'?>" id="eventimage" name="image" value="<?=old('image')?>">
                 <div class="invalid-feedback"><?= $validation->getError('image');?>
+            </div>
+             <div class="col-md-12 mt-3">
+                <label for="eventname" class="form-label">Event Description</label>
+                <textarea class="form-control <?=  ($validation->hasError('eventdesc')) ? 'is-invalid' : 'invalid'?>" id="eventdesc" name="eventdesc"><?=old('eventdesc')?></textarea>
+                <div class="invalid-feedback"><?= $validation->getError('eventdesc');?></div>
+                <div class="text-muted float-end" id="count_message">500 word remaining</div>
             </div>
             <div class="col-md-12 mt-3">
                 <button type="submit" class="btn btn-primary float-end"><i class="bi bi-save pr-2"></i> Submit</button>
