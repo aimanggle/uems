@@ -16,10 +16,10 @@
             <?php foreach($announce as $a):?>
             <div class="col-md-12">
                 <div class="card mb-3">
-                    <img src="..." class="card-img-top" alt="...">
+                    <!-- <img src="..." class="card-img-top" alt="..."> -->
                     <div class="card-body">
                         <h5 class="card-title"><?= $a['announcetitle'];?></h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><?= $a['announcedesc'];?></p>
                     </div>
                 </div>
             </div>
