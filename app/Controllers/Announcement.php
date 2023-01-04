@@ -18,8 +18,9 @@ class Announcement extends BaseController
     {
         $data = [
             'title' => 'Announcement | UEMS',
-            'announce' => $this->announcementModel->findAll(),
+            'announce' => $this->announcementModel->join('event', 'announcement.eventid = event.eventid')->orderby('announceid', 'DESC')->findAll(),
         ];
+        // d($data);
         return view('announcement/show', $data);
     }
 }
